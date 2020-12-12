@@ -1,0 +1,22 @@
+.container, .light {
+    border: 1px solid #000;
+}
+
+.container {
+}
+
+.light {
+
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.green {
+    background-color: green;
+}
