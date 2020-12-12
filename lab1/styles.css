@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+}
+
+h2, a {
+    color: blue;
+}
+
+h2 {
+    margin: 10px 0;
+}
+
+a {
+    margin: 15px;
+    display: flex;
+    justify-content: flex-end;
+    text-decoration: none;
+}
+
+p {
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.bordered {
+    width: 600px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border: 1px solid #000;
+}
