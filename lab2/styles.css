@@ -1,12 +1,31 @@
+.main, .container  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    height: 100vh;
+    width: 100vw;
+    min-width: 300px;
+    max-width: 1600px;
+}
+
 .container, .light {
-    border: 1px solid #000;
+    border: 1.5px solid #000;
 }
 
 .container {
+    flex-direction: column;
+    width: 270px;
+    height: 550px;
 }
 
 .light {
-
+    width: 50%;
+    height: 25%;
+    border-radius: 50%;
+    margin: 5px 0;
 }
 
 .red {
