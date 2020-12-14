@@ -1,4 +1,4 @@
-.main, .container  {
+.main, .container, .clue {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,11 +7,11 @@
 .main {
     height: 100vh;
     width: 100vw;
-    min-width: 300px;
+    min-width: 320px;
     max-width: 1600px;
 }
 
-.container, .light {
+.container, .red, .yellow, .green {
     border: 1.5px solid #000;
 }
 
@@ -21,7 +21,7 @@
     height: 550px;
 }
 
-.light {
+.red, .yellow, .green {
     width: 50%;
     height: 25%;
     border-radius: 50%;
@@ -29,13 +29,62 @@
 }
 
 .red {
-    background-color: red;
+    background-color: rgba(255, 0, 0, 1);
 }
 
 .yellow {
-    background-color: yellow;
+    background-color: rgba(255, 255, 0, 1);
 }
 
 .green {
-    background-color: green;
+    background-color: rgba(0, 128, 0, 1);
 }
+
+.red > .clue {
+    background-color: rgba(255, 0, 0, 0.4);
+}
+
+.yellow > .clue {
+    background-color: rgba(255, 255, 0, 0.4);
+}
+
+.green > .clue {
+    background-color: rgba(0, 128, 0, 0.4);
+}
+
+.clue {
+    padding: 2%;
+    position: absolute;
+    visibility: hidden;
+    margin: 25px;
+    width: calc(((100vw - 270px) / 2) - 50px);
+    height: calc((550px / 3) - 50px);
+    font-size: 1.5vw;
+}
+
+.red:hover > .clue, .yellow:hover > .clue, .green:hover > .clue {
+    visibility: visible;
+    right: 0;
+}
+
+.red:hover > .clue {
+    top: calc((100vh - 550px) / 2);
+}
+
+.yellow:hover > .clue {
+    top: calc(((100vh - 550px) / 2) + 550px / 3);
+    left: 0;
+}
+
+.green:hover > .clue {
+    top: calc(((100vh - 550px) / 2) + 2 * 550px / 3);
+}
+
+
+@media only screen and (max-width: 600px) {
+    .red:hover > .clue, .yellow:hover > .clue, .green:hover > .clue {
+        visibility: hidden;
+    }
+}
+
+
