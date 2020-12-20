@@ -108,3 +108,32 @@ console.log(me == enemy)   // false
 // Если же введено было число - кидать в alert наименование месяца (введено 1 - вывести January);
 // По желанию  - сделать задачу с минимальным использованием switch/case.
 
+const MONTHS = [
+    {value: 1, name: "January"},
+    {value: 2, name: "February"},
+    {value: 3, name: "March"},
+    {value: 4, name: "April"},
+    {value: 5, name: "May"},
+    {value: 6, name: "June"},
+    {value: 7, name: "July"},
+    {value: 8, name: "August"},
+    {value: 9, name: "September"},
+    {value: 10, name: "November"},
+    {value: 11, name: "October"},
+    {value: 12, name: "December"}
+];
+
+let month = prompt('What month is your birthday?', "1");
+
+month_to_num = Number(month)
+if ( 0 < month_to_num && month_to_num <= 12) {
+    const month_str = MONTHS.find(element => element.value == month_to_num);
+    alert(`${month_str.name} = ${month}`);
+} else{
+    const month_num = MONTHS.find(element => element.name == month);
+    if (month_num) {
+        alert(`${month} = ${month_num.value}`);
+    } else {
+        alert(`Oops.. there is no such month as ${month} ..`);
+    }
+}
