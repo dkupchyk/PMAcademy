@@ -26,7 +26,7 @@
 
 <!--Запросить у пользователя два числа, n и m - вывести все числа в диапазоне между ними.-->
 <h3>Задание 1</h3>
-<div id="task-1">
+<div class="form-wrapper">
     <form>
         <div class="inputs">
             <div>
@@ -51,17 +51,17 @@
 <!--Запросить у пользователя два числа, написать функцию при помощи стрелочного синтаксиса и аналог с function expression
  которая бы возводила первое число в степень второго введенного числа, или в степень 2 по умолчанию-->
 <h3>Задание 2</h3>
-<div id="task-2">
+<div class="form-wrapper">
     <form>
         <div class="inputs">
             <div>
-                <label for="task-1-n">Введите n:</label>
-                <input type="number" id="task-2-n" value="NaN">
+                <label for="task-2-n">Введите n:</label>
+                <input type="number" id="task-2-n">
             </div>
 
             <div>
-                <label for="task-1-m">Введите m:</label>
-                <input type="number" id="task-2-m" value="NaN">
+                <label for="task-2-m">Введите m:</label>
+                <input type="number" id="task-2-m">
             </div>
         </div>
         <br>
@@ -73,9 +73,81 @@
     </form>
 </div>
 
+<h2>Работа с Number</h2>
+
+<!--Запросить у пользователя два числа с плавающей точкой - умножить на 0.3 и округлить до ближайшего целого числа.-->
 <h3>Задание 3</h3>
+<div class="form-wrapper">
+    <form>
+        <div class="inputs">
+            <div>
+                <label for="task-3-n">Введите первое число:</label>
+                <input type="number" id="task-3-n">
+            </div>
+
+            <div>
+                <label for="task-3-m">Введите второе число:</label>
+                <input type="number" id="task-3-m">
+            </div>
+        </div>
+        <br>
+
+        <button id="task-3-button" type="button" name="button">Умножить на 0.3 и округлить до ближайшего целого числа.</button>
+        <br>
+
+        <div id="task-3-answer"></div>
+    </form>
+</div>
+
+<!--Запросить у пользователя два числа - вывести случайное целое число в этом диапазоне.-->
 <h3>Задание 4</h3>
+<div class="form-wrapper">
+    <form>
+        <div class="inputs">
+            <div>
+                <label for="task-4-n">Введите первое число:</label>
+                <input type="number" id="task-4-n">
+            </div>
+
+            <div>
+                <label for="task-4-m">Введите второе число:</label>
+                <input type="number" id="task-4-m">
+            </div>
+        </div>
+        <br>
+
+        <button id="task-4-button" type="button" name="button">Вывести случайное целое число в диапазоне между этими чисел.</button>
+        <br>
+
+        <div id="task-4-answer"></div>
+    </form>
+</div>
+
+<h2>Работа со строками</h2>
+<!--Запросить  у пользователя две строки, найти сколько раз повторяется вторая в первой. Вывести индексы всех вхождений.-->
 <h3>Задание 5</h3>
+<div class="form-wrapper">
+    <form>
+        <div class="inputs">
+            <div>
+                <label for="task-5-n">Введите первую строку:</label>
+                <input type="text" id="task-5-n">
+            </div>
+
+            <div>
+                <label for="task-5-m">Введите вторую строку:</label>
+                <input type="text" id="task-5-m">
+            </div>
+        </div>
+        <br>
+
+        <button id="task-5-button" type="button" name="button">Найти сколько раз повторяется вторая в первой и вывести индексы всех вхождений.</button>
+        <br>
+
+        <div id="task-5-answer"></div>
+    </form>
+</div>
+
 <h3>Задание 6</h3>
 
 

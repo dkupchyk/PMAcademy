@@ -37,7 +37,6 @@ const task2FuncExp = function (x, y=2) {
 const task2Arrow = (x, y=2) => x ** y;
 
 
-
 let task1N = document.getElementById("task-1-n");
 let task1M = document.getElementById("task-1-m");
 
