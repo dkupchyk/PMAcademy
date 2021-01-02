@@ -35,7 +35,7 @@ h3 {
     color: #03FD15;
 }
 
-#task-1 {
+#task-1, #task-2 {
     margin: 0 auto;
     width: 70%;
     padding: 4% 7%;
@@ -50,28 +50,34 @@ h3 {
 
 }
 
-#task-1 form {
+#task-1 form,
+#task-2 form {
     width: 100%;
 }
 
 #task-1 form .inputs,
+#task-2 form .inputs,
+#task-2 button,
 #task-1 button,
-#task-1 #task-1-answer
-{
+#task-1 #task-1-answer,
+#task-2 #task-1-answer {
     width: 96%;
 }
 
-#task-1 form .inputs {
+#task-1 form .inputs,
+#task-2 form .inputs {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-#task-1 label {
+#task-1 label,
+#task-2 label{
     margin-right: 10px;
 }
 
-#task-1 input {
+#task-1 input,
+#task-2 input{
     margin-right: 10px;
 
     color: #ffffff;
@@ -82,7 +88,8 @@ h3 {
     outline: none;
 }
 
-#task-1 button {
+#task-1 button,
+#task-2 button {
     padding: 2%;
     margin: 25px 0;
 
@@ -100,7 +107,8 @@ h3 {
 }
 
 
-#task-1 button:hover {
+#task-1 button:hover,
+#task-2 button:hover{
     background-color: #03FD15;
     color: #161616;
 }
