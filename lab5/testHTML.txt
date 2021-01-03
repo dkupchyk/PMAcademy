@@ -54,7 +54,6 @@
       text-align: center;
     }
 
-
     .friends .header > nav {
       flex: 1;
     }
@@ -74,7 +73,7 @@
   </noscript>
   <div id="⚛️" style="height: 100%">
     <h1>Contacts page <h1>
-    <h1>Feeel free to contact<h1>
+    <h1>Feel free to contact<h1>
     <h1>Support <h1>
         
         
