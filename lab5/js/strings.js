@@ -15,7 +15,7 @@ const task6 = function () {
     if (valid("ЗАДАНИЕ 6: Введите значение строки.", 0, task6N.value.length)) {
         let sourceStr = task6N.value;
 
-        let indexes = [...sourceStr.matchAll(new RegExp(/\d/, 'g'))];
+        let indexes = [...sourceStr.matchAll(new RegExp(/[0-9]+/, 'g'))];
         let answer = (indexes.length === 0) ? " - " : indexes.join(", ");
 
         document.getElementById("task-6-answer").innerText = `Ответ: ${answer}`;
