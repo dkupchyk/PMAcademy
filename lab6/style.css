@@ -1,0 +1,93 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    margin: 50px 0;
+    width: 100%;
+    height: 100%;
+    background-color: #161616;
+    min-width: 650px;
+}
+
+h3, h2 {
+    text-align: center;
+    color: #03FD15;
+}
+
+h2 {
+    margin-top: 100px;
+}
+
+form {
+    width: 100%;
+}
+
+form .inputs, button, .answer {
+    width: 96%;
+}
+
+form .inputs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label {
+    margin-right: 10px;
+}
+
+input {
+    margin-right: 10px;
+
+    color: #ffffff;
+    background-color: #161616;
+
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    outline: none;
+}
+
+button {
+    padding: 2%;
+    margin: 25px 0;
+
+    border: 2px solid #03FD15;
+    border-radius: 5px;
+
+    font-weight: 600;
+    font-size: 1em;
+
+    color: #03FD15;
+    background-color: #161616;
+
+    outline: none;
+    transition: .5s;
+}
+
+button:hover {
+    background-color: #03FD15;
+    color: #161616;
+}
+
+.form-wrapper {
+    margin: 0 auto;
+    width: 60%;
+    padding: 4% 7%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+#task-6 .inputs > div,
+#task-7 .inputs > div {
+    width: 100%;
+}
+
+#task-6 input,
+#task-7 input {
+    width: 70%;
+}
