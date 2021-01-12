@@ -1,29 +1,41 @@
-// const mouseOverHandler = (event) => {
-//     if (!event.target.dataset.popover) {
-//         return;
-//     }
-//     const popover = document.createElement('div');
-//     popover.innerText = event.target.dataset.popover;
-//     popover.classList.add('popover');
-//     event.target.append(popover);
-// };
-//
-// const mouseOutHandler = (event) => {
-//     if (!event.target.dataset.popover) {
-//         return;
-//     }
-//     event.target.querySelector('.popover').remove();
-// };
-//
-// document.addEventListener('mouseover', mouseOverHandler);
-// document.addEventListener('mouseout', mouseOutHandler);
-
+// Initialization of all files
 const containerElement = document.querySelector(`.container`);
 const allFiles = containerElement.querySelectorAll(`.file`);
 
-for (const file of allFiles) {
-    file.draggable = true;
-}
+// Popovers
+const popoverHandler = (event) => {
+    let allPopovers = document.querySelectorAll('.popover')
+
+    if (allPopovers.length) {
+        allPopovers[0].remove();
+    }
+
+    let fileName = event.target.innerText;
+    const popover = document.createElement('div');
+    popover.classList.add('popover');
+    popover.innerHTML = "<p class='edit'>Edit</p>" +
+                        "<p class='delete'>Delete</p>"
+    event.target.append(popover);
+
+    document.querySelector('.edit').addEventListener('click', () => {
+        let name = prompt('Enter file name', fileName);
+        event.target.innerText = name;
+    });
+
+    document.querySelector('.delete').addEventListener('click', () => {
+        event.target.remove();
+    });
+};
+
+// const createNewFile = () => {
+//     let name = prompt("Name:");
+//     const newFile = document.createElement('div');
+//     newFile.innerHTML = name;
+//     newFile.classList.add('file');
+//     containerElement.appendChild(newFile);
+// }
+
+// Drag n drop
 
 containerElement.addEventListener(`dragstart`, (event) => {
     event.target.classList.add(`selected`);
@@ -62,7 +74,6 @@ containerElement.addEventListener(`dragover`, (event) => {
     containerElement.insertBefore(activeElement, nextElement);
 });
 
-
 const getNextElement = (cursorPosition, currentElement) => {
     // Получаем объект с размерами и координатами
     const currentElementCoord = currentElement.getBoundingClientRect();
@@ -75,3 +86,10 @@ const getNextElement = (cursorPosition, currentElement) => {
         currentElement :
         currentElement.nextElementSibling;
 };
+
+// document.addEventListener('click', createNewFilePopover);
+
+for (const file of allFiles) {
+    file.draggable = true;
+    file.addEventListener('click', popoverHandler);
+}

@@ -22,25 +22,36 @@ body {
 }
 
 .file {
+    cursor: pointer;
     border-radius: 5px;
     border: 1px solid #03FD15;
     padding: 5px 25px;
     margin: 7px;
-}
-
-[data-popover] {
     position: relative;
 }
 
-.popover {
+.file p:hover {
+   color: #03FD15;
+}
+
+.popover, .crete-file-popover {
+    z-index: 5;
     position: absolute;
-    left: 55%;
     background: #fff;
     border: 1px solid #161616;
-    padding: 5px 10px;
+    padding: 0 10px;
     color: #161616;
-    min-width: 100%;
     text-align: center;
+    font-weight: 500;
+}
+
+.popover {
+    left: 55%;
+    min-width: 100%;
+}
+
+.crete-file-popover {
+    width: 200px;
 }
 
 .selected {
