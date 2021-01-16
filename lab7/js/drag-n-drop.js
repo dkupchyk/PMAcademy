@@ -1,54 +1,46 @@
-//
-// containerElement.addEventListener(`dragstart`, (event) => {
-//     event.target.classList.add(`selected`);
-// })
-//
-// containerElement.addEventListener(`dragend`, (event) => {
-//     event.target.classList.remove(`selected`);
-// });
-//
-// containerElement.addEventListener(`dragover`, (event) => {
-//     event.preventDefault();
-//
-//     const activeElement = containerElement.querySelector(`.selected`);
-//     const currentElement = event.target;
-//     // const isMoveable = activeElement !== currentElement &&
-//     //     currentElement.classList.contains(`file`);
-//     //
-//     // if (!isMoveable) {
-//     //     return;
-//     // }
-//
-//     // evt.clientY — вертикальная координата курсора в момент,
-//     // когда сработало событие
-//     const nextElement = getNextElement(event.clientY, currentElement);
-//
-//     // Проверяем, нужно ли менять элементы местами
-//     if (
-//         nextElement &&
-//         activeElement === nextElement.previousElementSibling ||
-//         activeElement === nextElement
-//     ) {
-//         // Если нет, выходим из функции, чтобы избежать лишних изменений в DOM
-//         return;
-//     }
-//
-//     containerElement.insertBefore(activeElement, nextElement);
-// });
-//
-// const getNextElement = (cursorPosition, currentElement) => {
-//     // Получаем объект с размерами и координатами
-//     const currentElementCoord = currentElement.getBoundingClientRect();
-//
-//     // Находим вертикальную координату центра текущего элемента
-//     const currentElementCenter = currentElementCoord.y + currentElementCoord.height / 2;
-//
-//     console.log(cursorPosition)
-//     console.log(currentElementCenter);
-//
-//     // Если курсор выше центра элемента, возвращаем текущий элемент
-//     // В ином случае — следующий DOM-элемент
-//     return (cursorPosition < currentElementCenter) ?
-//         currentElement :
-//         currentElement.nextElementSibling;
-// };
+let allFiles = containerElement.querySelectorAll(`.file`);
+let activeElement = null;
+let nextElement = null;
+
+containerElement.addEventListener(`dragstart`, (event) => {
+    deleteOpenedPopovers();
+    event.target.classList.add(`selected`);
+})
+
+containerElement.addEventListener(`dragend`, (event) => {
+    if (activeElement !== null && nextElement !== null) {
+        containerElement.insertBefore(activeElement, nextElement);
+    }
+    event.target.classList.remove(`selected`);
+});
+
+containerElement.addEventListener(`dragover`, (event) => {
+    event.preventDefault();
+
+    activeElement = containerElement.querySelector(`.selected`);
+    const currentElement = event.target;
+    const isMovable = activeElement !== currentElement &&
+        currentElement.classList.contains(`file`);
+
+    if (!isMovable) {
+        return;
+    }
+
+    nextElement = getNextElement(event.clientY, currentElement);
+});
+
+const getNextElement = (cursorPosition, currentElement) => {
+    const currentElementCoord = currentElement.getBoundingClientRect();
+    const currentElementCenter = currentElementCoord.y + currentElementCoord.height / 2;
+    return (cursorPosition < currentElementCenter) ?
+        currentElement :
+        currentElement.nextElementSibling;
+};
+
+const updateAllFiles = () => {
+    for (const file of allFiles) {
+        file.draggable = true;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', updateAllFiles());

@@ -42,11 +42,12 @@ const createFile = () => {
     if (name === null) {
         return;
     }
-    
+
     const newFile = document.createElement('div');
     newFile.innerHTML = name;
     newFile.classList.add('file');
     containerElement.appendChild(newFile);
+    updateAllFiles();
 }
 
 const checkIfValidFileName = (name) => {
@@ -73,5 +74,3 @@ const isValidName = (oldName, mainPrompt, errorPrompt) => {
 }
 
 document.addEventListener('click', popoverHandler);
-
-
