@@ -1,11 +1,9 @@
-/* color: #03FD15;
-   background-color: #161616;
-*/
-
-
-body {
+html {
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
+}
+
+body {
     margin: 50px 10px;
     width: calc(100% - 20px);
     height: 100%;
@@ -31,10 +29,6 @@ body {
     position: relative;
 }
 
-.file p:hover {
-   color: #03FD15;
-}
-
 .popover, .crete-file-popover {
     z-index: 5;
     position: absolute;
@@ -51,10 +45,11 @@ body {
     left: 55%;
     width: 80px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
-.crete-file-popover {
-    width: 200px;
+.file p:hover, .popover p:hover {
+    color: #03FD15;
 }
 
 .selected {
