@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="15" viewBox="0 0 32 15">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ff6837;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="меню_слева" data-name="меню слева" class="cls-1" d="M474,13h30a1,1,0,0,1,1,1v1a1,1,0,0,1-1,1H474a1,1,0,0,1-1-1V14A1,1,0,0,1,474,13Zm0,6h30a1,1,0,0,1,1,1v1a1,1,0,0,1-1,1H474a1,1,0,0,1-1-1V20A1,1,0,0,1,474,19Zm0,6h30a1,1,0,0,1,1,1v1a1,1,0,0,1-1,1H474a1,1,0,0,1-1-1V26A1,1,0,0,1,474,25Z" transform="translate(-473 -13)"/>
+</svg>
