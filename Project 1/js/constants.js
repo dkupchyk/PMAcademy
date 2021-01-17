@@ -1,5 +1,5 @@
-const TOP_MENU_MAX = 9
-const MENU_MAX = 10
+const TOP_MENU_MAX = 9;
+const MENU_MAX = 10;
 
 const DEFAULT_NEWS_IMG = "https://motionarray.imgix.net/preview-221009-qr45Mrcxf8-high_0000.jpg";
 

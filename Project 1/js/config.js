@@ -267,13 +267,33 @@ const PROMOTIONS = [
 
 const BUYING_RIGHT_NOW = [
     {
-        title: 'Название товара',
-        img: 'https://same_url.jpg',
+        title: 'Название товара 1',
+        img: './resources/image/block-11-img-1.png',
         url: 'https://same_url/item.html',
     },
     {
         title: 'Название товара 2',
-        img: 'https://same_url.jpg',
+        img: './resources/image/block-11-img-1.png',
+        url: 'https://same_url/item.html',
+    },
+    {
+        title: 'Название товара',
+        img: './resources/image/block-11-img-1.png',
+        url: 'https://same_url/item.html',
+    },
+    {
+        title: 'Название товара 2',
+        img: './resources/image/block-11-img-1.png',
+        url: 'https://same_url/item.html',
+    },
+    {
+        title: 'Название товара',
+        img: './resources/image/block-11-img-1.png',
+        url: 'https://same_url/item.html',
+    },
+    {
+        title: 'Название товара 2',
+        img: './resources/image/block-11-img-1.png',
         url: 'https://same_url/item.html',
     },
 ]

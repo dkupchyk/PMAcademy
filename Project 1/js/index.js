@@ -13,41 +13,7 @@ const order = (array) => {
 const topMenuArraySorted = order(topMenuArray);
 const menuArraySorted = order(MENU);
 const newsArraySorted = order(NEWS);
-
-// Validators
-const isValidMenu = (menu) => {
-    return !(menu.length === 0 || allMenuItemsAreInvalid(menu))
-}
-
-const allMenuItemsAreInvalid = (menu) => {
-    for (let item of menu) {
-        if (isValidMenuItem(item)) return false;
-    }
-    return true;
-}
-
-const isValidMenuItem = (item) => {
-    console.log()
-    return !(Object.keys(item).length === 0 || !item.hasOwnProperty('title') || !item.title)
-}
-
-
-const isValidNews = (news) => {
-    return !(menu.length === 0 || allNewsItemsAreInvalid(news))
-}
-
-const allNewsItemsAreInvalid = (news) => {
-    for (let item of news) {
-        if (!(Object.keys(item).length === 0 ||
-            !item.hasOwnProperty('date') || !item.date ||
-            !item.hasOwnProperty('title') || !item.title ||
-            !item.hasOwnProperty('description') || !item.description ||
-            !item.hasOwnProperty('img') || !item.img ||
-            !item.hasOwnProperty('url') || !item.url))
-            return false;
-    }
-    return true;
-}
+const buyingRightNowArraySorted = order(BUYING_RIGHT_NOW);
 
 
 // TOP MENU -> Block 1
@@ -178,6 +144,24 @@ const displayNews = () => {
 };
 
 
+// BUYING_RIGHT_NOW -> Block 11
+const displayBuyingRightNow  = () => {
+    if (!blockExists(buyingRightNowArraySorted) || !isValidBuyingNow(buyingRightNowArraySorted)) {
+        document.getElementsByClassName('buy--now')[0].style.display = 'none';
+        return;
+    }
+
+    let buyingNow = document.getElementById('buying-now-items');
+
+    for (let item of buyingRightNowArraySorted) {
+        buyingNow.innerHTML += "<div>" +
+                `<img src=\"${item.img}\" alt=\"item-img\">` +
+                `<a href=\"${item.url}\">${item.title}</a>` +
+            "</div>";
+    }
+};
+
+
 const blockExists = (block) => {
     return block !== null && block !== [];
 }
@@ -186,4 +170,4 @@ const blockExists = (block) => {
 displayTopMenu();
 // displayMenu();
 displayNews();
-
+displayBuyingRightNow();
