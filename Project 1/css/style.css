@@ -8,8 +8,8 @@ html, body {
 /* Screen size 320px */
 
 body {
-    display: grid;
-    grid-template-rows: 40px 1fr 50px;
+    /*display: grid;*/
+    /*grid-template-rows: 40px 1fr 50px;*/
 
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
@@ -119,6 +119,7 @@ main {
 
 
 .nav {
+    height: 40px;
     background-color: #040d0d;
     color: white;
 }
@@ -275,7 +276,7 @@ a {
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
     color: #040d0d;
-    font-size: 1.8em;
+    font-size: 2.4em;
     font-weight: lighter;
 }
 
@@ -1322,6 +1323,7 @@ footer .max-width, .important-info,
 
 
 .pre-footer {
+    /*bottom: 0;*/
     margin-top: auto;
 
     background-color: #5c7489;
@@ -1449,6 +1451,8 @@ footer .max-width, .important-info,
 
 
 footer {
+    height: 50px;
+
     font-weight: 200;
     font-size: 0.7em;
 
@@ -1458,7 +1462,7 @@ footer {
     justify-content: center;
 }
 
-footer .max-width {
+footer .max-width *{
     margin-top: 10px;
 }
 
@@ -1522,6 +1526,10 @@ footer .statistics {
 /* Screen size 750px */
 
 @media only screen and (min-width: 750px) {
+
+    .header__main .logo {
+        font-size: 1.8em;
+    }
 
     .important-info {
         font-size: 0.8em;

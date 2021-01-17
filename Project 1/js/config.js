@@ -11,126 +11,126 @@ const BASKET = {
 };
 
 const TOP_MENU = {
-    catalog: {
-        order: 1,
-        title: 'Каталог',
-        submenu: [
-            {
-                title: ""
-            }
-        ]
-    },
-    about_company: {
-        order: 2,
-        title: 'О компании',
-        submenu: [
-            {
-                order: 1,
-                title: 'VOIP оборудование',
-                url: 'voip_equipment.html',
-            },
-            {
-                order: 2,
-                title: 'GSM оборудование',
-                url: 'gsm_equipment.html',
-            }
-        ]
-    },
-    payment_delivery: {
-        order: 3,
-        title: 'Payment and delivery',
-        url: 'payment_delivery.html',
-    },
-    a: {
-        order: 1,
-        title: 'Каталог',
-        submenu: [
-            {
-                title: ""
-            }
-        ]
-    },
-    b: {
-        order: 2,
-        title: 'О компании',
-        submenu: [
-            {
-                order: 1,
-                title: 'VOIP оборудование',
-                url: 'voip_equipment.html',
-            },
-            {
-                order: 2,
-                title: 'GSM оборудование',
-                url: 'gsm_equipment.html',
-            }
-        ]
-    },
-    c: {
-        order: 3,
-        title: 'Payment and delivery',
-        url: 'payment_delivery.html',
-    },
-    d: {
-        order: 1,
-        title: 'Каталог',
-        submenu: [
-            {
-                title: ""
-            }
-        ]
-    },
-    e: {
-        order: 2,
-        title: 'О компании',
-        submenu: [
-            {
-                order: 1,
-                title: 'VOIP оборудование',
-                url: 'voip_equipment.html',
-            },
-            {
-                order: 2,
-                title: 'GSM оборудование',
-                url: 'gsm_equipment.html',
-            }
-        ]
-    },
-    g: {
-        order: 3,
-        title: 'Payment and delivery',
-        url: 'payment_delivery.html',
-    },
-    j: {
-        order: 1,
-        title: 'Каталог',
-        submenu: [
-            {
-                title: ""
-            }
-        ]
-    },
-    u: {
-        order: 2,
-        title: 'О компании',
-        submenu: [
-            {
-                order: 1,
-                title: 'VOIP оборудование',
-                url: 'voip_equipment.html',
-            },
-            {
-                order: 2,
-                title: 'GSM оборудование',
-                url: 'gsm_equipment.html',
-            }
-        ]
-    },
-    o: {
-        order: 3,
-        title: 'Payment and delivery',
-        url: 'payment_delivery.html',
-    }
+    // catalog: {
+    //     order: 1,
+    //     title: 'Каталог',
+    //     submenu: [
+    //         {
+    //             title: ""
+    //         }
+    //     ]
+    // },
+    // about_company: {
+    //     order: 2,
+    //     title: 'О компании',
+    //     submenu: [
+    //         {
+    //             order: 1,
+    //             title: 'VOIP оборудование',
+    //             url: 'voip_equipment.html',
+    //         },
+    //         {
+    //             order: 2,
+    //             title: 'GSM оборудование',
+    //             url: 'gsm_equipment.html',
+    //         }
+    //     ]
+    // },
+    // payment_delivery: {
+    //     order: 3,
+    //     title: 'Payment and delivery',
+    //     url: 'payment_delivery.html',
+    // },
+    // a: {
+    //     order: 1,
+    //     title: 'Каталог',
+    //     submenu: [
+    //         {
+    //             title: ""
+    //         }
+    //     ]
+    // },
+    // b: {
+    //     order: 2,
+    //     title: 'О компании',
+    //     submenu: [
+    //         {
+    //             order: 1,
+    //             title: 'VOIP оборудование',
+    //             url: 'voip_equipment.html',
+    //         },
+    //         {
+    //             order: 2,
+    //             title: 'GSM оборудование',
+    //             url: 'gsm_equipment.html',
+    //         }
+    //     ]
+    // },
+    // c: {
+    //     order: 3,
+    //     title: 'Payment and delivery',
+    //     url: 'payment_delivery.html',
+    // },
+    // d: {
+    //     order: 1,
+    //     title: 'Каталог',
+    //     submenu: [
+    //         {
+    //             title: ""
+    //         }
+    //     ]
+    // },
+    // e: {
+    //     order: 2,
+    //     title: 'О компании',
+    //     submenu: [
+    //         {
+    //             order: 1,
+    //             title: 'VOIP оборудование',
+    //             url: 'voip_equipment.html',
+    //         },
+    //         {
+    //             order: 2,
+    //             title: 'GSM оборудование',
+    //             url: 'gsm_equipment.html',
+    //         }
+    //     ]
+    // },
+    // g: {
+    //     order: 3,
+    //     title: 'Payment and delivery',
+    //     url: 'payment_delivery.html',
+    // },
+    // j: {
+    //     order: 1,
+    //     title: 'Каталог',
+    //     submenu: [
+    //         {
+    //             title: ""
+    //         }
+    //     ]
+    // },
+    // u: {
+    //     order: 2,
+    //     title: 'О компании',
+    //     submenu: [
+    //         {
+    //             order: 1,
+    //             title: 'VOIP оборудование',
+    //             url: 'voip_equipment.html',
+    //         },
+    //         {
+    //             order: 2,
+    //             title: 'GSM оборудование',
+    //             url: 'gsm_equipment.html',
+    //         }
+    //     ]
+    // },
+    // o: {
+    //     order: 3,
+    //     title: 'Payment and delivery',
+    //     url: 'payment_delivery.html',
+    // }
 };
 
 const MENU = [
