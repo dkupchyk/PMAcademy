@@ -11,126 +11,126 @@ const BASKET = {
 };
 
 const TOP_MENU = {
-    // catalog: {
-    //     order: 1,
-    //     title: 'Каталог',
-    //     submenu: [
-    //         {
-    //             title: ""
-    //         }
-    //     ]
-    // },
-    // about_company: {
-    //     order: 2,
-    //     title: 'О компании',
-    //     submenu: [
-    //         {
-    //             order: 1,
-    //             title: 'VOIP оборудование',
-    //             url: 'voip_equipment.html',
-    //         },
-    //         {
-    //             order: 2,
-    //             title: 'GSM оборудование',
-    //             url: 'gsm_equipment.html',
-    //         }
-    //     ]
-    // },
-    // payment_delivery: {
-    //     order: 3,
-    //     title: 'Payment and delivery',
-    //     url: 'payment_delivery.html',
-    // },
-    // a: {
-    //     order: 1,
-    //     title: 'Каталог',
-    //     submenu: [
-    //         {
-    //             title: ""
-    //         }
-    //     ]
-    // },
-    // b: {
-    //     order: 2,
-    //     title: 'О компании',
-    //     submenu: [
-    //         {
-    //             order: 1,
-    //             title: 'VOIP оборудование',
-    //             url: 'voip_equipment.html',
-    //         },
-    //         {
-    //             order: 2,
-    //             title: 'GSM оборудование',
-    //             url: 'gsm_equipment.html',
-    //         }
-    //     ]
-    // },
-    // c: {
-    //     order: 3,
-    //     title: 'Payment and delivery',
-    //     url: 'payment_delivery.html',
-    // },
-    // d: {
-    //     order: 1,
-    //     title: 'Каталог',
-    //     submenu: [
-    //         {
-    //             title: ""
-    //         }
-    //     ]
-    // },
-    // e: {
-    //     order: 2,
-    //     title: 'О компании',
-    //     submenu: [
-    //         {
-    //             order: 1,
-    //             title: 'VOIP оборудование',
-    //             url: 'voip_equipment.html',
-    //         },
-    //         {
-    //             order: 2,
-    //             title: 'GSM оборудование',
-    //             url: 'gsm_equipment.html',
-    //         }
-    //     ]
-    // },
-    // g: {
-    //     order: 3,
-    //     title: 'Payment and delivery',
-    //     url: 'payment_delivery.html',
-    // },
-    // j: {
-    //     order: 1,
-    //     title: 'Каталог',
-    //     submenu: [
-    //         {
-    //             title: ""
-    //         }
-    //     ]
-    // },
-    // u: {
-    //     order: 2,
-    //     title: 'О компании',
-    //     submenu: [
-    //         {
-    //             order: 1,
-    //             title: 'VOIP оборудование',
-    //             url: 'voip_equipment.html',
-    //         },
-    //         {
-    //             order: 2,
-    //             title: 'GSM оборудование',
-    //             url: 'gsm_equipment.html',
-    //         }
-    //     ]
-    // },
-    // o: {
-    //     order: 3,
-    //     title: 'Payment and delivery',
-    //     url: 'payment_delivery.html',
-    // }
+    catalog: {
+        order: 1,
+        title: 'Каталог',
+        submenu: [
+            {
+                title: ""
+            }
+        ]
+    },
+    about_company: {
+        order: 2,
+        title: 'О компании',
+        submenu: [
+            {
+                order: 1,
+                title: 'VOIP оборудование',
+                url: 'voip_equipment.html',
+            },
+            {
+                order: 2,
+                title: 'GSM оборудование',
+                url: 'gsm_equipment.html',
+            }
+        ]
+    },
+    payment_delivery: {
+        order: 3,
+        title: 'Payment and delivery',
+        url: 'payment_delivery.html',
+    },
+    a: {
+        order: 1,
+        title: 'Каталог',
+        submenu: [
+            {
+                title: ""
+            }
+        ]
+    },
+    b: {
+        order: 2,
+        title: 'О компании',
+        submenu: [
+            {
+                order: 1,
+                title: 'VOIP оборудование',
+                url: 'voip_equipment.html',
+            },
+            {
+                order: 2,
+                title: 'GSM оборудование',
+                url: 'gsm_equipment.html',
+            }
+        ]
+    },
+    c: {
+        order: 3,
+        title: 'Payment and delivery',
+        url: 'payment_delivery.html',
+    },
+    d: {
+        order: 1,
+        title: 'Каталог',
+        submenu: [
+            {
+                title: ""
+            }
+        ]
+    },
+    e: {
+        order: 2,
+        title: 'О компании',
+        submenu: [
+            {
+                order: 1,
+                title: 'VOIP оборудование',
+                url: 'voip_equipment.html',
+            },
+            {
+                order: 2,
+                title: 'GSM оборудование',
+                url: 'gsm_equipment.html',
+            }
+        ]
+    },
+    g: {
+        order: 3,
+        title: 'Payment and delivery',
+        url: 'payment_delivery.html',
+    },
+    j: {
+        order: 1,
+        title: 'Каталог',
+        submenu: [
+            {
+                title: ""
+            }
+        ]
+    },
+    u: {
+        order: 2,
+        title: 'О компании',
+        submenu: [
+            {
+                order: 1,
+                title: 'VOIP оборудование',
+                url: 'voip_equipment.html',
+            },
+            {
+                order: 2,
+                title: 'GSM оборудование',
+                url: 'gsm_equipment.html',
+            }
+        ]
+    },
+    o: {
+        order: 3,
+        title: 'Payment and delivery',
+        url: 'payment_delivery.html',
+    }
 };
 
 const MENU = [
@@ -161,21 +161,42 @@ const NEWS = [
         date: '2021/01/01',
         title: 'Новинка от «Элтекс» - точка доступа WEP',
         description: 'Предприятие «Элтекс» запустило производство точки доступа WEP-2ac.',
-        img: 'https://same_url.jpg',
+        img: 'https://www.freecodecamp.org/news/content/images/2020/04/w-qjCHPZbeXCQ-unsplash.jpg',
         url: 'voip_equipment.html',
     },
     {
         date: '2020/12/25',
         title: 'Новинка от компании Grandstream!',
         description: 'Скоро в продаже мощный маршрутизатор GWN7000!',
-        img: 'https://same_url.jpg',
+        img: 'https://www.freecodecamp.org/news/content/images/2020/04/w-qjCHPZbeXCQ-unsplash.jpg',
         url: 'voip_equipment.html',
     },
     {
         date: '2021/01/14',
         title: 'WiFi точка доступа от компании Grandstream!',
         description: 'Уже скоро в продаже!',
-        img: 'https://same_url.jpg',
+        img: 'https://www.freecodecamp.org/news/content/images/2020/04/w-qjCHPZbeXCQ-unsplash.jpg',
+        url: 'voip_equipment.html',
+    },
+    {
+        date: '2021/01/01',
+        title: '1',
+        description: 'Предприятие «Элтекс» запустило производство точки доступа WEP-2ac.',
+        img: 'https://www.freecodecamp.org/news/content/images/2020/04/w-qjCHPZbeXCQ-unsplash.jpg',
+        url: 'voip_equipment.html',
+    },
+    {
+        date: '2020/12/25',
+        title: '2!',
+        description: 'Скоро в продаже мощный маршрутизатор GWN7000!',
+        img: 'https://www.freecodecamp.org/news/content/images/2020/04/w-qjCHPZbeXCQ-unsplash.jpg',
+        url: 'voip_equipment.html',
+    },
+    {
+        date: '2021/01/14',
+        title: '3!',
+        description: 'Уже скоро в продаже!',
+        img: 'https://www.freecodecamp.org/news/content/images/2020/04/w-qjCHPZbeXCQ-unsplash.jpg',
         url: 'voip_equipment.html',
     },
 ];
