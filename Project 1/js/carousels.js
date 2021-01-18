@@ -2,9 +2,20 @@
 let CAROUSEL_MAX = 1;
 
 //Initialization of carousels
-const itemsNewArrayFiltered = ITEMS.filter(item => item.type === 'new');
-const itemsRecArrayFiltered = ITEMS.filter(item => item.type === 'recommended');
-const itemsSaleArrayFiltered = ITEMS.filter(item => item.type === 'sale');
+const itemsNewArrayFiltered = ITEMS.filter(item => item.type === 'new')
+    .sort(function (a, b) {
+        return new Date(b.date) - new Date(a.date);
+    });
+
+const itemsRecArrayFiltered = ITEMS.filter(item => item.type === 'recommended')
+    .sort(function (a, b) {
+        return a.price - b.price;
+    });
+
+const itemsSaleArrayFiltered = ITEMS.filter(item => item.type === 'sale')
+    .sort(function (a, b) {
+        return (a.oldPrice - a.price) - (b.oldPrice - b.price);
+    });
 
 const itemsNewArray = itemsNewArrayFiltered.length <= CAROUSEL_ALL_MAX
     ? itemsNewArrayFiltered
@@ -71,43 +82,43 @@ const recPrevButtons = document.getElementsByClassName('rec-prev-btn');
 const saleNextButtons = document.getElementsByClassName('sale-next-btn');
 const salePrevButtons = document.getElementsByClassName('sale-prev-btn');
 
-Array.from(newNextButtons).forEach(function(element) {
+Array.from(newNextButtons).forEach(function (element) {
     element.addEventListener('click', () => {
         newCarousel.startIndex++;
         newCarousel.changeSlides();
     });
 });
 
-Array.from(newPrevButtons).forEach(function(element) {
-    element.addEventListener('click',() => {
+Array.from(newPrevButtons).forEach(function (element) {
+    element.addEventListener('click', () => {
         newCarousel.startIndex--;
         newCarousel.changeSlides();
     });
 });
 
-Array.from(recNextButtons).forEach(function(element) {
+Array.from(recNextButtons).forEach(function (element) {
     element.addEventListener('click', () => {
         recCarousel.startIndex++;
         recCarousel.changeSlides();
     });
 });
 
-Array.from(recPrevButtons).forEach(function(element) {
-    element.addEventListener('click',() => {
+Array.from(recPrevButtons).forEach(function (element) {
+    element.addEventListener('click', () => {
         recCarousel.startIndex--;
         recCarousel.changeSlides();
     });
 });
 
-Array.from(saleNextButtons).forEach(function(element) {
+Array.from(saleNextButtons).forEach(function (element) {
     element.addEventListener('click', () => {
         saleCarousel.startIndex++;
         saleCarousel.changeSlides();
     });
 });
 
-Array.from(salePrevButtons).forEach(function(element) {
-    element.addEventListener('click',() => {
+Array.from(salePrevButtons).forEach(function (element) {
+    element.addEventListener('click', () => {
         saleCarousel.startIndex--;
         saleCarousel.changeSlides();
     });
