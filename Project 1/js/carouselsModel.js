@@ -10,7 +10,7 @@ class Carousel {
     }
 
     initCarousel() {
-        if (!blockExists(this.carouselSlidesElement)) {
+        if (!blockExists(this.carouselSlidesElement) && allCarouselItemAreInvalid(this.carouselSlidesElement)) {
             this.carouselElement.style.display = 'none';
             return;
         }
@@ -32,6 +32,9 @@ class Carousel {
         this.activeSlides = this.changeActiveSlides();
 
         for (let item of this.activeSlides) {
+
+            // Check if we can buy it -> if not make button disabled
+
             this.carouselSlidesElement.innerHTML += this.templateHTMLFunc(item);
         }
     }

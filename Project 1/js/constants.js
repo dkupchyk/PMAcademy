@@ -18,7 +18,7 @@ const MONTHS = [
 ];
 
 const CAROUSEL_NEW_OVERLAY = `<div class="overlay overlay-news">
-                                   <p class="new" class="links-details">NEW</p>
+                                   <p class="new links-details">NEW</p>
                                </div>`;
 
 const CAROUSEL_REC_OVERLAY = `<div class="overlay overlay-rec">

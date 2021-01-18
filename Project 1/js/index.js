@@ -12,7 +12,8 @@ const order = (array) => {
 
 const topMenuArraySorted = order(topMenuArray.filter(item => isValidMenuItem(item)));
 const menuArraySorted = order(MENU.filter(item => isValidMenuItem(item)));
-const newsArraySorted = order(NEWS.filter(item => isValidNewsItem(item)));
+const newsArraySorted = NEWS.filter(item => isValidNewsItem(item));
+
 const buyingRightNowArraySorted = order(BUYING_RIGHT_NOW);
 
 const menuAmountElementsMin = menuArraySorted.length < MENU_MAX ? menuArraySorted.length : MENU_MAX;
@@ -62,13 +63,14 @@ const initTopMenu = () => {
 
         nav[0].innerHTML += "<div class=\"nav__vertical-line\"></div>"
     }
-
+    nav[0].querySelector('.nav__vertical-line:last-child').style.display = 'none';
 }
 
 // MENU -> Block 3
 const menu = document.getElementById('menu-list')
 const menuBtnRight = document.getElementById('menu-button-right');
 const menuBtnLeft = document.getElementById('menu-button-left')
+
 let startIndexMenu = 0;
 
 const initMenu = () => {
@@ -80,9 +82,15 @@ const initMenu = () => {
     changeSlidesMenu();
     roundChildMenu(true);
 
-    if (menuAmountElementsMin <= MENU_MAX) {
+    console.log(menuAmountElementsMin)
+    if (menuAmountElementsMin < MENU_MAX || menuArraySorted.length === 10) {
         menuBtnRight.style.display = 'none';
         roundChildMenu(false);
+
+        // If there is only one element -> first-child == last-child
+        if (menuArraySorted.length === 1) {
+            menu.querySelector('#menu-list > li:first-child').style.borderRadius = '5px';
+        }
     }
 };
 
@@ -146,6 +154,7 @@ const parseDate = (date) => {
 const initNews = () => {
     if (!blockExists(newsArraySorted) || !isValidNews(newsArraySorted)) {
         document.getElementsByClassName('news')[0].style.display = 'none';
+        document.querySelector('.important-info .advert').style.width = '100%';
         return;
     }
 
@@ -194,7 +203,6 @@ const initBuyingRightNow = () => {
             "</div>";
     }
 };
-
 
 initTopMenu();
 initMenu();

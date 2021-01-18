@@ -13,12 +13,8 @@ const BASKET = {
 const TOP_MENU = {
     catalog: {
         order: 1,
-        title: 'Каталог',
-        submenu: [
-            {
-                title: ""
-            }
-        ]
+        title: ''
+
     },
     about_company: {
         order: 2,
@@ -199,7 +195,7 @@ const MENU = [
 const NEWS = [
     {
         date: '2021/01/01',
-        title: 'Новинка от «Элтекс» - точка доступа WEP',
+        title: '',
         description: 'Предприятие «Элтекс» запустило производство точки доступа WEP-2ac.',
         img: 'https://www.freecodecamp.org/news/content/images/2020/04/w-qjCHPZbeXCQ-unsplash.jpg',
         url: 'voip_equipment.html',
