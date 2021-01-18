@@ -136,22 +136,62 @@ const TOP_MENU = {
 const MENU = [
     {
         order: 1,
-        title: 'VOIP ОБОРУДОВАНИЕ',
+        title: '1',
         url: 'voip_equipment.html',
     },
     {
         order: 2,
-        title: 'SKYPE оборудование',
+        title: '2',
         url: 'skype_equipment.html',
     },
     {
         order: 3,
-        title: 'GSM оборудование',
+        title: '3',
         url: 'gsm_equipment.html',
     },
     {
         order: 4,
-        title: 'VIDEO оборудование',
+        title: '4',
+        url: 'video_equipment.html',
+    },
+    {
+        order: 5,
+        title: '5',
+        url: 'voip_equipment.html',
+    },
+    {
+        order: 6,
+        title: '6',
+        url: 'skype_equipment.html',
+    },
+    {
+        order: 7,
+        title: '7',
+        url: 'gsm_equipment.html',
+    },
+    {
+        order: 8,
+        title: '8',
+        url: 'video_equipment.html',
+    },
+    {
+        order: 9,
+        title: '9',
+        url: 'voip_equipment.html',
+    },
+    {
+        order: 10,
+        title: '10',
+        url: 'skype_equipment.html',
+    },
+    {
+        order: 11,
+        title: '11',
+        url: 'gsm_equipment.html',
+    },
+    {
+        order: 12,
+        title: '12',
         url: 'video_equipment.html',
     }
 ];

@@ -15,6 +15,8 @@ const menuArraySorted = order(MENU);
 const newsArraySorted = order(NEWS);
 const buyingRightNowArraySorted = order(BUYING_RIGHT_NOW);
 
+const menuAmountElementsMin = menuArraySorted.length < MENU_MAX ? menuArraySorted.length : MENU_MAX;
+
 
 // TOP MENU -> Block 1
 const createNavElement = (key) => {
@@ -41,7 +43,7 @@ const createDropdown = (submenuArray) => {
     return submenuHTML;
 }
 
-const displayTopMenu = () => {
+const initTopMenu = () => {
     if (!blockExists(topMenuArraySorted) || !isValidMenu(topMenuArraySorted)) {
         document.getElementsByClassName('nav')[0].style.display = 'none';
         return;
@@ -69,37 +71,68 @@ const menu = document.getElementById('menu-list')
 const menuBtnRight = document.getElementById('menu-button-right');
 const menuBtnLeft = document.getElementById('menu-button-left')
 
-menuBtnLeft.style.display = 'none';
-// menu.style.border = '5px 0 0 5px';
+const initMenu = () => {
+    if (!blockExists(menuArraySorted) || !isValidMenu(menuArraySorted)) {
+        document.getElementsByClassName('catalog-navigation')[0].style.display = 'none';
+        return;
+    }
+    changeSlidesMenu(0, true);
+    roundChildMenu(true);
+};
 
-/*#menu-list > li:first-child {*/
-/*    border-radius: 5px 0 0 5px;*/
-/*}*/
-//
-// const displayMenu = () => {
-//     if (!blockExists(menuArraySorted) || !isValidMenu(menuArraySorted)) {
-//         document.getElementsByClassName('catalog-navigation')[0].style.display = 'none';
-//         return;
-//     }
-//
-//     let menu = document.getElementsByClassName('catalog-navigation');
-//
-//     for (let index in menuArraySorted) {
-//         if (+index === MENU_MAX) break;
-//
-//         let key = menuArraySorted[index];
-//         if (key.hasOwnProperty('submenu') && isValidMenu(key.submenu)) {
-//             menu[0].appendChild(createNavElement(key));
-//         } else {
-//             menu[0].innerHTML += `<a class=\"nav__link\" href=\"https://homy.ru/support/\">${key.title}</a>`
-//         }
-//
-//         menu[0].innerHTML += "<div class=\"nav__vertical-line\"></div>"
-//     }
-//
-// };
-//
-// document.getElementById('menu-button-right').addEventListener('click', () => {});
+const roundChildMenu = (firstChild) => {
+    if (firstChild) {
+        menu.querySelector('#menu-list > li:first-child').style.borderRadius = '5px 0 0 5px';
+    } else {
+        menu.querySelector('#menu-list > li:last-child').style.borderRadius = '0 5px 5px 0';
+    }
+}
+
+const changeRoundedChild = () => {
+    let menuBtnRightDisplay = menuBtnRight.style.display;
+    if (menuBtnRightDisplay === 'none') {
+        roundChildMenu(false);
+    } else {
+        roundChildMenu(true);
+    }
+}
+
+const changeSlidesMenu = (startIndex = 0, toRight) => {
+    menu.innerHTML = "";
+
+    for (let i = startIndex; i < menuArraySorted.length && i < menuAmountElementsMin + startIndex; i++) {
+        let item = menuArraySorted[i];
+        menu.innerHTML += `<li><a href="${item.url}">${item.title}</a></li>`;
+    }
+
+    if (menuAmountElementsMin < MENU_MAX) {
+        menuBtnRight.style.display = 'none';
+    }
+
+    if (startIndex === 0) {
+        menuBtnRight.style.display = 'block';
+        menuBtnLeft.style.display = 'none';
+
+    } else if (MENU_MAX + startIndex === menuArraySorted.length) {
+        menuBtnLeft.style.display = 'block';
+        menuBtnRight.style.display = 'none';
+    }
+}
+
+
+let startIndex = 0;
+
+menuBtnRight.addEventListener('click', () => {
+    startIndex++;
+    changeSlidesMenu(startIndex, true);
+    changeRoundedChild();
+});
+
+menuBtnLeft.addEventListener('click', () => {
+    startIndex--;
+    changeSlidesMenu(startIndex, false);
+    changeRoundedChild();
+});
 
 // NEWS -> Block 4
 const parseDate = (date) => {
@@ -111,7 +144,7 @@ const parseDate = (date) => {
     }
 }
 
-const displayNews = () => {
+const initNews = () => {
     if (!blockExists(newsArraySorted) || !isValidNews(newsArraySorted)) {
         document.getElementsByClassName('news')[0].style.display = 'none';
         return;
@@ -145,7 +178,7 @@ const displayNews = () => {
 
 
 // BUYING_RIGHT_NOW -> Block 11
-const displayBuyingRightNow  = () => {
+const initBuyingRightNow = () => {
     if (!blockExists(buyingRightNowArraySorted) || !isValidBuyingNow(buyingRightNowArraySorted)) {
         document.getElementsByClassName('buy--now')[0].style.display = 'none';
         return;
@@ -155,8 +188,8 @@ const displayBuyingRightNow  = () => {
 
     for (let item of buyingRightNowArraySorted) {
         buyingNow.innerHTML += "<div>" +
-                `<img src=\"${item.img}\" alt=\"item-img\">` +
-                `<a href=\"${item.url}\">${item.title}</a>` +
+            `<img src=\"${item.img}\" alt=\"item-img\">` +
+            `<a href=\"${item.url}\">${item.title}</a>` +
             "</div>";
     }
 };
@@ -167,7 +200,7 @@ const blockExists = (block) => {
 }
 
 
-displayTopMenu();
-// displayMenu();
-displayNews();
-displayBuyingRightNow();
+initTopMenu();
+initMenu();
+initNews();
+initBuyingRightNow();

@@ -194,6 +194,7 @@ a {
 }
 
 .header .items {
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -311,7 +312,7 @@ a {
     width: 130px;
 
     margin: 0 auto;
-    padding-top: 10px;
+    padding-top: 30px;
     padding-right: 10px;
 
     text-align: center;
@@ -322,6 +323,7 @@ a {
 }
 
 .contacts__recall a {
+    margin-top: 100px;
     text-decoration: none;
     border-bottom: #4673ab 1px dotted;
 }
@@ -1462,7 +1464,7 @@ footer {
     justify-content: center;
 }
 
-footer .max-width *{
+footer .max-width * {
     margin-top: 10px;
 }
 
@@ -1637,8 +1639,6 @@ footer .statistics {
 
 
     /* Block 7 */
-
-
     .carousel-block__heading {
         margin-bottom: 3.5%;
     }
@@ -1934,13 +1934,13 @@ footer .statistics {
 
     /*Block 3*/
     .catalog-navigation {
-        width: 100%;
         height: 43px;
         margin: 23px auto 0 auto;
         line-height: 1.35;
     }
 
     #menu-list, .catalog-navigation {
+        width: 100%;
         display: flex;
         justify-content: center;
     }
@@ -1955,11 +1955,15 @@ footer .statistics {
         justify-content: center;
         align-items: center;
         height: 100%;
+        width: 100%;
         padding: 0 1%;
-        color: #ffffff;
         font-size: 0.65em;
         text-decoration: none;
         background-color: #ff6837;
+    }
+
+    #menu-list  a {
+        color: #ffffff;
     }
 
     .catalog-navigation li:not(:last-child):after {
@@ -1986,17 +1990,23 @@ footer .statistics {
         transform: rotateY(180deg);
     }
 
-    .catalog-navigation > li:hover,
-    .catalog-navigation > .arrow-right:hover {
+    #menu-list > li:hover,
+    .catalog-navigation > #menu-button-right:hover,
+    .catalog-navigation > #menu-button-left:hover {
         cursor: pointer;
         background-color: #f79372;
         border-bottom-color: #f79372;
         text-decoration: underline;
     }
 
-    .catalog-navigation  li,
-    .catalog-navigation  .arrow-right {
+    .catalog-navigation li,
+    .catalog-navigation .arrow-right {
         border-bottom: #c44817 3px solid;
+    }
+
+    .catalog-navigation > #menu-button-left,
+    .catalog-navigation > #menu-button-right {
+        display: none;
     }
 
     /*Block 7*/
@@ -2300,8 +2310,6 @@ footer .statistics {
 
 
     /* Block 1 */
-
-
     .nav__nav-body_wide {
         display: flex;
     }
@@ -2397,6 +2405,10 @@ footer .statistics {
     .important-info .advert {
         font-size: 0.95em;
         width: 76%;
+    }
+
+    .header__main .contacts-inner > .contacts__recall {
+        padding-top: 15px;
     }
 
     /*Block 7*/
