@@ -53,7 +53,9 @@
             <div class="header__main">
                 <a class="logo" href="#">
                     <div class="logo__text">
-                        HO<div>MY</div>RU
+                        HO
+                        <div>MY</div>
+                        RU
                     </div>
                     <div class="logo__tagline hide-before-750">
                         ОБОРУДОВАНИЕ И РЕШЕНИЯ ДЛЯ VOIP
@@ -118,7 +120,8 @@
         <div class="catalog-navigation hide-before-1140-flex">
             <img id="menu-button-left" class="arrow-right" src="resources/icon/white-arrow-right.svg" alt="arrow-right">
             <ul id="menu-list"></ul>
-            <img id="menu-button-right" class="arrow-right" src="resources/icon/white-arrow-right.svg" alt="arrow-right">
+            <img id="menu-button-right" class="arrow-right" src="resources/icon/white-arrow-right.svg"
+                 alt="arrow-right">
         </div>
 
         <section class="important-info hide-before-750-flex">
@@ -189,7 +192,7 @@
         </section>
 
         <!--Block-7-->
-        <div class="block carousel-block">
+        <div id="new-carousel" class="block carousel-block">
 
             <div class="carousel-block__heading">
                 <h2>НОВИНКИ</h2>
@@ -199,99 +202,23 @@
 
                 <a href="#">Все новинки</a>
                 <div class="arrows hide-after-1140">
-                    <figure class="prev"></figure>
-                    <figure class="next"></figure>
+                    <figure class="prev new-prev-btn"></figure>
+                    <figure class="next new-next-btn"></figure>
                 </div>
             </div>
 
             <div class="carousel-block__carousel">
-                <img class="arrow-left" src="resources/icon/arrow-left.svg" alt="arrow-left">
+                <img class="new-prev-btn arrow-left" src="resources/icon/arrow-left.svg" alt="arrow-left">
 
-                <div class="carousel-block__instances">
-                    <div class="carousel-block__instance">
+                <div id="new-carousel-block" class="carousel-block__instances"></div>
 
-                        <div class="overlay overlay-news">
-                            <p class="new">NEW</p>
-                        </div>
-
-                        <img src="resources/image/block-7-img-1.png" alt="item">
-                        <a href="#">IP телефон Siemens Gigaset C530AIP</a>
-                        <p>Цена: <span class="bold">14 000р</span> <span class="crossed"> 15 600р</span></p>
-                        <div class="bottom">
-                            <button>
-                                <img class="cart" src="resources/icon/cart.svg" alt="cart">
-                                КУПИТЬ
-                            </button>
-                            <a href="#" class="links-details">Подробнее</a>
-                        </div>
-
-                    </div>
-
-                    <div class="carousel-block__instance">
-
-                        <div class="overlay overlay-news">
-                            <p class="new">NEW</p>
-                        </div>
-
-                        <img class="item-image" src="resources/image/block-7-img-2.png" alt="item">
-                        <a href="#">IP телефон Siemens Gigaset C530AIP</a>
-                        <p>Цена: <span class="bold">14 000р</span> <span class="crossed"> 15 600р</span></p>
-                        <div class="bottom">
-                            <button>
-                                <img class="cart" src="resources/icon/cart.svg" alt="cart">
-                                КУПИТЬ
-                            </button>
-                            <a href="#" class="links-details">Подробнее</a>
-                        </div>
-
-                    </div>
-
-                    <div class="carousel-block__instance">
-
-                        <div class="overlay overlay-news">
-                            <p class="new">NEW</p>
-                        </div>
-
-                        <img class="item-image" src="resources/image/block-7-img-3.png" alt="item">
-                        <a href="#">IP телефон Siemens Gigaset C530AIP</a>
-                        <p>Цена: <span class="bold">14 000р</span> <span class="crossed"> 15 600р</span></p>
-                        <div class="bottom">
-                            <button>
-                                <img class="cart" src="resources/icon/cart.svg" alt="cart">
-                                КУПИТЬ
-                            </button>
-                            <a href="#" class="links-details">Подробнее</a>
-                        </div>
-
-                    </div>
-
-                    <div class="carousel-block__instance">
-
-                        <div class="overlay overlay-news">
-                            <p class="new" class="links-details">NEW</p>
-                        </div>
-
-                        <img class="item-image" src="resources/image/block-7-img-4.png" alt="item">
-                        <a href="#">IP телефон Siemens Gigaset C530AIP</a>
-                        <p>Цена: <span class="bold">14 000р</span> <span class="crossed"> 15 600р</span></p>
-                        <div class="bottom">
-                            <button>
-                                <img class="cart" src="resources/icon/cart.svg" alt="cart">
-                                КУПИТЬ
-                            </button>
-                            <a href="#" class="links-details">Подробнее</a>
-                        </div>
-                    </div>
-
-                </div>
-
-                <img class="arrow-right" src="resources/icon/arrow-right.svg" alt="arrow-right">
+                <img class="new-next-btn arrow-right" src="resources/icon/arrow-right.svg" alt="arrow-right">
             </div>
 
         </div>
 
         <!--Block-8-->
-        <div class="block carousel-block">
+        <div id="rec-carousel" class="block carousel-block">
 
             <div class="carousel-block__heading">
                 <h2>РЕКОМЕНДУЕМ</h2>
@@ -301,99 +228,23 @@
 
                 <a href="#">Все рекомендации</a>
                 <div class="arrows hide-after-1140">
-                    <figure class="prev"></figure>
-                    <figure class="next"></figure>
+                    <figure class="rec-prev-btn prev"></figure>
+                    <figure class="rec-next-btn next"></figure>
                 </div>
             </div>
 
             <div class="carousel-block__carousel">
-                <img class="arrow-left" src="resources/icon/arrow-left.svg" alt="arrow-left">
+                <img class="rec-prev-btn arrow-left" src="resources/icon/arrow-left.svg" alt="arrow-left">
 
-                <div class="carousel-block__instances">
-                    <div class="carousel-block__instance">
+                <div id="rec-carousel-block" class="carousel-block__instances"></div>
 
-                        <div class="overlay overlay-rec">
-                            <img class="like-icon" src="resources/icon/block-8-like.svg" alt="like">
-                        </div>
-
-                        <img class="item-image" src="resources/image/block-7-img-3.png" alt="item">
-                        <a href="#">IP телефон Siemens Gigaset C530AIP</a>
-                        <p>Цена: <span class="bold">14 000р</span> <span class="crossed"> 15 600р</span></p>
-                        <div class="bottom">
-                            <button>
-                                <img class="cart" src="resources/icon/cart.svg" alt="cart">
-                                КУПИТЬ
-                            </button>
-                            <a href="#" class="links-details">Подробнее</a>
-                        </div>
-
-                    </div>
-
-                    <div class="carousel-block__instance">
-
-                        <div class="overlay overlay-rec">
-                            <img class="like-icon" src="resources/icon/block-8-like.svg" alt="like">
-                        </div>
-
-                        <img class="item-image" src="resources/image/block-7-img-4.png" alt="item">
-                        <a href="#">IP телефон Siemens Gigaset C530AIP</a>
-                        <p>Цена: <span class="bold">14 000р</span> <span class="crossed"> 15 600р</span></p>
-                        <div class="bottom">
-                            <button>
-                                <img class="cart" src="resources/icon/cart.svg" alt="cart">
-                                КУПИТЬ
-                            </button>
-                            <a href="#" class="links-details">Подробнее</a>
-                        </div>
-
-                    </div>
-
-                    <div class="carousel-block__instance">
-
-                        <div class="overlay overlay-rec">
-                            <img class="like-icon" src="resources/icon/block-8-like.svg" alt="like">
-                        </div>
-
-                        <img src="resources/image/block-7-img-1.png" alt="item">
-                        <a href="#">IP телефон Siemens Gigaset C530AIP</a>
-                        <p>Цена: <span class="bold">14 000р</span> <span class="crossed"> 15 600р</span></p>
-                        <div class="bottom">
-                            <button>
-                                <img class="cart" src="resources/icon/cart.svg" alt="cart">
-                                КУПИТЬ
-                            </button>
-                            <a href="#" class="links-details">Подробнее</a>
-                        </div>
-
-                    </div>
-
-                    <div class="carousel-block__instance">
-
-                        <div class="overlay overlay-rec">
-                            <img class="like-icon" src="resources/icon/block-8-like.svg" alt="like">
-                        </div>
-
-                        <img class="item-image" src="resources/image/block-7-img-2.png" alt="item">
-                        <a href="#">IP телефон Siemens Gigaset C530AIP</a>
-                        <p>Цена: <span class="bold">14 000р</span> <span class="crossed"> 15 600р</span></p>
-                        <div class="bottom">
-                            <button>
-                                <img class="cart" src="resources/icon/cart.svg" alt="cart">
-                                КУПИТЬ
-                            </button>
-                            <a href="#" class="links-details">Подробнее</a>
-                        </div>
-                    </div>
-
-                </div>
-
-                <img class="arrow-right" src="resources/icon/arrow-right.svg" alt="arrow-right">
+                <img class="rec-next-btn arrow-right" src="resources/icon/arrow-right.svg" alt="arrow-right">
             </div>
 
         </div>
 
         <!--Block-9-->
-        <div class=" block carousel-block">
+        <div id="sale-carousel" class=" block carousel-block">
 
             <div class="carousel-block__heading">
                 <h2>РАСПРОДАЖА</h2>
@@ -403,93 +254,17 @@
 
                 <a href="#">Все товары</a>
                 <div class="arrows hide-after-1140">
-                    <figure class="prev"></figure>
-                    <figure class="next"></figure>
+                    <figure class="sale-prev-btn prev"></figure>
+                    <figure class="sale-next-btn next"></figure>
                 </div>
             </div>
 
             <div class="carousel-block__carousel">
-                <img class="arrow-left" src="resources/icon/arrow-left.svg" alt="arrow-left">
+                <img class="sale-prev-btn arrow-left" src="resources/icon/arrow-left.svg" alt="arrow-left">
 
-                <div class="carousel-block__instances">
-                    <div class="carousel-block__instance">
+                <div id="sale-carousel-block" class="carousel-block__instances"></div>
 
-                        <div class="overlay overlay-sale">
-                            <p class="percentage">%</p>
-                        </div>
-
-                        <img class="item-image" src="resources/image/block-7-img-3.png" alt="item">
-                        <a href="#">IP телефон Siemens Gigaset C530AIP</a>
-                        <p>Цена: <span class="bold">14 000р</span> <span class="crossed"> 15 600р</span></p>
-                        <div class="bottom">
-                            <button>
-                                <img class="cart" src="resources/icon/cart.svg" alt="cart">
-                                КУПИТЬ
-                            </button>
-                            <a href="#" class="links-details">Подробнее</a>
-                        </div>
-
-                    </div>
-
-                    <div class="carousel-block__instance">
-
-                        <div class="overlay overlay-sale">
-                            <p class="percentage">%</p>
-                        </div>
-
-                        <img class="item-image" src="resources/image/block-7-img-4.png" alt="item">
-                        <a href="#">IP телефон Siemens Gigaset C530AIP</a>
-                        <p>Цена: <span class="bold">14 000р</span> <span class="crossed"> 15 600р</span></p>
-                        <div class="bottom">
-                            <button>
-                                <img class="cart" src="resources/icon/cart.svg" alt="cart">
-                                КУПИТЬ
-                            </button>
-                            <a href="#" class="links-details">Подробнее</a>
-                        </div>
-
-                    </div>
-
-                    <div class="carousel-block__instance">
-
-                        <div class="overlay overlay-sale">
-                            <p class="percentage">%</p>
-                        </div>
-
-                        <img src="resources/image/block-7-img-1.png" alt="item">
-                        <a href="#">IP телефон Siemens Gigaset C530AIP</a>
-                        <p>Цена: <span class="bold">14 000р</span> <span class="crossed"> 15 600р</span></p>
-                        <div class="bottom">
-                            <button>
-                                <img class="cart" src="resources/icon/cart.svg" alt="cart">
-                                КУПИТЬ
-                            </button>
-                            <a href="#" class="links-details">Подробнее</a>
-                        </div>
-
-                    </div>
-
-                    <div class="carousel-block__instance">
-
-                        <div class="overlay overlay-sale">
-                            <p class="percentage">%</p>
-                        </div>
-
-                        <img class="item-image" src="resources/image/block-7-img-2.png" alt="item">
-                        <a href="#">IP телефон Siemens Gigaset C530AIP</a>
-                        <p>Цена: <span class="bold">14 000р</span> <span class="crossed"> 15 600р</span></p>
-                        <div class="bottom">
-                            <button>
-                                <img class="cart" src="resources/icon/cart.svg" alt="cart">
-                                КУПИТЬ
-                            </button>
-                            <a href="#" class="links-details">Подробнее</a>
-                        </div>
-                    </div>
-
-                </div>
-
-                <img class="arrow-right" src="resources/icon/arrow-right.svg" alt="arrow-right">
+                <img class="sale-next-btn arrow-right" src="resources/icon/arrow-right.svg" alt="arrow-right">
             </div>
 
         </div>
@@ -1065,6 +840,8 @@
 <script src="js/constants.js" charset="utf-8"></script>
 <script src="js/config.js" charset="utf-8"></script>
 <script src="js/validation.js" charset="utf-8"></script>
+<script src="js/carouselsModel.js" charset="utf-8"></script>
+<script src="js/carousels.js" charset="utf-8"></script>
 <script src="js/index.js" charset="utf-8"></script>
 
 </body>

@@ -10,13 +10,12 @@ const order = (array) => {
     })
 }
 
-const topMenuArraySorted = order(topMenuArray);
-const menuArraySorted = order(MENU);
-const newsArraySorted = order(NEWS);
+const topMenuArraySorted = order(topMenuArray.filter(item => isValidMenuItem(item)));
+const menuArraySorted = order(MENU.filter(item => isValidMenuItem(item)));
+const newsArraySorted = order(NEWS.filter(item => isValidNewsItem(item)));
 const buyingRightNowArraySorted = order(BUYING_RIGHT_NOW);
 
 const menuAmountElementsMin = menuArraySorted.length < MENU_MAX ? menuArraySorted.length : MENU_MAX;
-
 
 // TOP MENU -> Block 1
 const createNavElement = (key) => {
@@ -70,14 +69,21 @@ const initTopMenu = () => {
 const menu = document.getElementById('menu-list')
 const menuBtnRight = document.getElementById('menu-button-right');
 const menuBtnLeft = document.getElementById('menu-button-left')
+let startIndexMenu = 0;
 
 const initMenu = () => {
     if (!blockExists(menuArraySorted) || !isValidMenu(menuArraySorted)) {
         document.getElementsByClassName('catalog-navigation')[0].style.display = 'none';
         return;
     }
-    changeSlidesMenu(0, true);
+
+    changeSlidesMenu();
     roundChildMenu(true);
+
+    if (menuAmountElementsMin <= MENU_MAX) {
+        menuBtnRight.style.display = 'none';
+        roundChildMenu(false);
+    }
 };
 
 const roundChildMenu = (firstChild) => {
@@ -97,40 +103,33 @@ const changeRoundedChild = () => {
     }
 }
 
-const changeSlidesMenu = (startIndex = 0, toRight) => {
+const changeSlidesMenu = () => {
     menu.innerHTML = "";
 
-    for (let i = startIndex; i < menuArraySorted.length && i < menuAmountElementsMin + startIndex; i++) {
+    for (let i = startIndexMenu; i < menuArraySorted.length && i < menuAmountElementsMin + startIndexMenu; i++) {
         let item = menuArraySorted[i];
         menu.innerHTML += `<li><a href="${item.url}">${item.title}</a></li>`;
     }
 
-    if (menuAmountElementsMin < MENU_MAX) {
-        menuBtnRight.style.display = 'none';
-    }
-
-    if (startIndex === 0) {
+    if (startIndexMenu === 0) {
         menuBtnRight.style.display = 'block';
         menuBtnLeft.style.display = 'none';
 
-    } else if (MENU_MAX + startIndex === menuArraySorted.length) {
+    } else if (MENU_MAX + startIndexMenu === menuArraySorted.length) {
         menuBtnLeft.style.display = 'block';
         menuBtnRight.style.display = 'none';
     }
 }
 
-
-let startIndex = 0;
-
 menuBtnRight.addEventListener('click', () => {
-    startIndex++;
-    changeSlidesMenu(startIndex, true);
+    startIndexMenu++;
+    changeSlidesMenu();
     changeRoundedChild();
 });
 
 menuBtnLeft.addEventListener('click', () => {
-    startIndex--;
-    changeSlidesMenu(startIndex, false);
+    startIndexMenu--;
+    changeSlidesMenu();
     changeRoundedChild();
 });
 
@@ -176,6 +175,8 @@ const initNews = () => {
     }
 };
 
+// BANNER -> Block 6
+
 
 // BUYING_RIGHT_NOW -> Block 11
 const initBuyingRightNow = () => {
@@ -195,12 +196,8 @@ const initBuyingRightNow = () => {
 };
 
 
-const blockExists = (block) => {
-    return block !== null && block !== [];
-}
-
-
 initTopMenu();
 initMenu();
 initNews();
 initBuyingRightNow();
+
