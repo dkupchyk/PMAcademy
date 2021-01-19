@@ -17,6 +17,8 @@ const itemsSaleArrayFiltered = ITEMS.filter(item => item.type === 'sale')
         return (a.oldPrice - a.price) - (b.oldPrice - b.price);
     });
 
+const promotionsArraySorted = PROMOTIONS.filter(item => isValidPromotionItem(item));
+
 const itemsNewArray = itemsNewArrayFiltered.length <= CAROUSEL_ALL_MAX
     ? itemsNewArrayFiltered
     : itemsNewArrayFiltered.slice(0, CAROUSEL_ALL_MAX);
@@ -29,25 +31,26 @@ const itemsSaleArray = itemsSaleArrayFiltered.length <= CAROUSEL_ALL_MAX
     ? itemsSaleArrayFiltered
     : itemsSaleArrayFiltered.slice(0, CAROUSEL_ALL_MAX);
 
-const newCarousel = new Carousel(itemsNewArray, carouselNew, carouselSlidesNew, newNextButtons, newPrevButtons, TEMPLATE_CAROUSEL_NEW);
-const recCarousel = new Carousel(itemsRecArray, carouselRec, carouselSlidesRec, recNextButtons, recPrevButtons, TEMPLATE_CAROUSEL_REC);
-const saleCarousel = new Carousel(itemsSaleArray, carouselSale, carouselSlidesSale, saleNextButtons, salePrevButtons, TEMPLATE_CAROUSEL_SALE);
+const itemsPromotionArray = promotionsArraySorted.length <= CAROUSEL_ALL_MAX
+    ? promotionsArraySorted
+    : promotionsArraySorted.slice(0, CAROUSEL_ALL_MAX);
+
+
+const newCarousel = new Carousel('new', itemsNewArray, carouselNew, carouselSlidesNew, newNextButtons, newPrevButtons, TEMPLATE_CAROUSEL_NEW);
+const recCarousel = new Carousel('rec', itemsRecArray, carouselRec, carouselSlidesRec, recNextButtons, recPrevButtons, TEMPLATE_CAROUSEL_REC);
+const saleCarousel = new Carousel('sale', itemsSaleArray, carouselSale, carouselSlidesSale, saleNextButtons, salePrevButtons, TEMPLATE_CAROUSEL_SALE);
+const promotionCarousel = new Carousel('prom', itemsPromotionArray, carouselProm, carouselSlidesProm, promNextButtons, promPrevButtons, TEMPLATE_CAROUSEL_PROM);
 
 newCarousel.initCarousel();
 recCarousel.initCarousel();
 saleCarousel.initCarousel();
+promotionCarousel.initCarousel()
 
 //Media queries
-const mediaQueries = [
-    window.matchMedia("(max-width: 750px)"),
-    window.matchMedia("(max-width: 980px)"),
-    window.matchMedia("(max-height: 1140px)")
-]
-
-function mediaQueryResponse(mql) {
-    if (mediaQueries[0].matches) {
+window.addEventListener("resize", function () {
+    if (document.documentElement.clientWidth < 750) {
         CAROUSEL_MAX = 1;
-    } else if (mediaQueries[1].matches) {
+    } else if (document.documentElement.clientWidth < 980) {
         CAROUSEL_MAX = 3;
     } else {
         CAROUSEL_MAX = 4
@@ -55,10 +58,19 @@ function mediaQueryResponse(mql) {
     newCarousel.changeSlides();
     recCarousel.changeSlides();
     saleCarousel.changeSlides();
+    promotionCarousel.changeSlides()
+});
+
+window.onload = function () {
+    if (document.documentElement.clientWidth < 750) {
+        CAROUSEL_MAX = 1;
+    } else if (document.documentElement.clientWidth < 980) {
+        CAROUSEL_MAX = 3;
+    } else {
+        CAROUSEL_MAX = 4
+    }
+    newCarousel.changeSlides();
+    recCarousel.changeSlides();
+    saleCarousel.changeSlides();
+    promotionCarousel.changeSlides()
 }
-
-mediaQueries[0].addListener(mediaQueryResponse)
-mediaQueries[1].addListener(mediaQueryResponse)
-mediaQueries[2].addListener(mediaQueryResponse)
-
-window.onload = mediaQueryResponse;

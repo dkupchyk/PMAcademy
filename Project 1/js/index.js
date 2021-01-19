@@ -12,11 +12,10 @@ const order = (array) => {
 
 const topMenuArraySorted = order(topMenuArray.filter(item => isValidMenuItem(item)));
 const menuArraySorted = order(MENU.filter(item => isValidMenuItem(item)));
-const newsArraySorted = NEWS.filter(item => isValidNewsItem(item));
-
-const buyingRightNowArraySorted = order(BUYING_RIGHT_NOW);
-
 const menuAmountElementsMin = menuArraySorted.length < MENU_MAX ? menuArraySorted.length : MENU_MAX;
+
+const newsArraySorted = NEWS.filter(item => isValidNewsItem(item));
+const buyingRightNowArraySorted = order(BUYING_RIGHT_NOW);
 
 // TOP MENU -> Block 1
 const createNavElement = (key) => {
@@ -129,7 +128,6 @@ menuBtnRight.addEventListener('click', () => {
     changeSlidesMenu();
     changeRoundedChild();
 });
-console.log("___________________")
 
 menuBtnLeft.addEventListener('click', () => {
     startIndexMenu--;
@@ -183,6 +181,8 @@ const initNews = () => {
 // BANNER -> Block 6
 
 
+
+
 // BUYING_RIGHT_NOW -> Block 11
 const initBuyingRightNow = () => {
     if (!blockExists(buyingRightNowArraySorted) || !isValidBuyingNow(buyingRightNowArraySorted)) {
@@ -202,7 +202,6 @@ const initBuyingRightNow = () => {
 
 const changeCartValues = (amount, price) => {
     cartValues.innerHTML = `<a href="#">${amount}</a> / ${price} <span class="currency">${CURRENCY}</span>`
-
 }
 
 // Changing currency
@@ -214,5 +213,6 @@ changeCartValues(cartItemsAmount, cartItemsPrice);
 initTopMenu();
 initMenu();
 initNews();
+// initPromotions();
 initBuyingRightNow();
 

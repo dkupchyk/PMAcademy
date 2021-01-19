@@ -51,6 +51,14 @@ const isAvailableCarouselItem = (item) => {
     return (item.hasOwnProperty('price') && !(item.price === 0) && !isNaN(item.price))
 }
 
+const isValidPromotionItem = (item) => {
+    return (Object.keys(item).length !== 0 &&
+        item.hasOwnProperty('title') && item.title &&
+        item.hasOwnProperty('description') && item.description &&
+        item.hasOwnProperty('img') && item.img &&
+        item.hasOwnProperty('url') && item.url)
+}
+
 const isValidBuyingNow = (items) => {
     return !(items.length === 0 || allBuyingNowItemsAreInvalid(items))
 }

@@ -1,6 +1,7 @@
 class Carousel {
 
-    constructor(itemsArray, carouselElement, carouselSlidesElement, nextButtons, prevButtons, templateHTMLFunc) {
+    constructor(type, itemsArray, carouselElement, carouselSlidesElement, nextButtons, prevButtons, templateHTMLFunc) {
+        this.type = type;
         this.itemsArray = itemsArray;
         this.carouselElement = carouselElement;
         this.carouselSlidesElement = carouselSlidesElement;
@@ -25,6 +26,8 @@ class Carousel {
     changeActiveSlides() {
         this.startIndex = mod(this.startIndex, this.itemsArray.length);
 
+        if (CAROUSEL_MAX >= this.itemsArray.length) return this.itemsArray;
+
         return (CAROUSEL_MAX > this.itemsArray.length - this.startIndex)
             ? [...this.itemsArray.slice(this.startIndex, this.startIndex + (this.itemsArray.length - this.startIndex)),
                 ...this.itemsArray.slice(0, CAROUSEL_MAX - (this.itemsArray.length - this.startIndex))]
@@ -33,11 +36,21 @@ class Carousel {
 
     changeSlides() {
         this.carouselSlidesElement.innerHTML = "";
-        this.activeSlides = this.changeActiveSlides();
+        this.activeSlides = this.changeActiveSlides()
+
+        // if (this.itemsArray.length <= CAROUSEL_MAX) {
+        //     this.hideButtons()
+        // } else {
+        //     this.showButtons()
+        // }
 
         for (let item of this.activeSlides) {
-            item.price = changeCurrency(item.price, item.currency);
-            item.oldPrice = changeCurrency(item.oldPrice, item.currency);
+
+            if (this.type === 'new' || this.type === 'rec' || this.type === 'sales'){
+                item.price = changeCurrency(item.price, item.currency);
+                item.oldPrice = changeCurrency(item.oldPrice, item.currency);
+                item.currency = CURRENCY;
+            }
 
             this.carouselSlidesElement.innerHTML += this.templateHTMLFunc(item, isAvailableCarouselItem(item));
         }
@@ -60,9 +73,30 @@ class Carousel {
             });
         }, this);
     }
+
+    hideButtons() {
+        Array.from(this.nextButtons).forEach(function (element) {
+            element.style.display = 'none';
+        });
+
+        Array.from(this.prevButtons).forEach(function (element) {
+            element.style.display = 'none';
+        });
+    }
+
+    showButtons() {
+        Array.from(this.nextButtons).forEach(function (element) {
+            element.style.display = 'inline';
+        });
+
+        Array.from(this.prevButtons).forEach(function (element) {
+            element.style.display = 'inline';
+        });
+    }
 }
 
 const changeCurrency = (price, pricesCurrency) => {
+
     if (CURRENCY_EXCHANGE.hasOwnProperty(pricesCurrency)) {
         return Math.floor(price * CURRENCY_EXCHANGE[pricesCurrency]);
     }

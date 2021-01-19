@@ -713,8 +713,7 @@ carousel-block__carousel {
     cursor: pointer;
     position: relative;
 
-    max-width: 270px;
-    min-width: 270px;
+    width: 270px;
     height: auto;
 
     padding: 25px 35px;
@@ -1664,10 +1663,10 @@ footer .statistics {
     }
 
     .carousel-block .carousel-block__instance {
-        max-width: none;
-        min-width: 0;
+        /*max-width: none;*/
+        /*min-width: 0;*/
 
-        width: 100%;
+        /*width: 100%;*/
         height: auto;
 
         padding: 15px 10px;
@@ -2057,7 +2056,7 @@ footer .statistics {
     .carousel-block .carousel-block__instances {
         width: 100%;
         height: 100%;
-        justify-content: stretch;
+        justify-content: center;
     }
 
     .carousel-block__heading a {
@@ -2453,7 +2452,6 @@ footer .statistics {
     .carousel-block .carousel-block__instances {
         width: 97%;
         height: 100%;
-        justify-content: stretch;
     }
 
     /*Block 18*/
