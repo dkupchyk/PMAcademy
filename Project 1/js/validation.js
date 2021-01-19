@@ -47,6 +47,10 @@ const isValidCarouselItem = (item) => {
         item.hasOwnProperty('url') && item.url)
 }
 
+const isAvailableCarouselItem = (item) => {
+    return (item.hasOwnProperty('price') && !(item.price === 0) && !isNaN(item.price))
+}
+
 const isValidBuyingNow = (items) => {
     return !(items.length === 0 || allBuyingNowItemsAreInvalid(items))
 }

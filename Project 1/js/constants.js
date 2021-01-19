@@ -1,3 +1,6 @@
+const cartValues = document.getElementById('cart-values');
+
+
 const TOP_MENU_MAX = 9;
 const MENU_MAX = 10;
 const CAROUSEL_ALL_MAX = 10;
@@ -29,31 +32,39 @@ const CAROUSEL_SALE_OVERLAY = `<div class="overlay overlay-sale">
                                    <p class="percentage">%</p>
                                </div>`;
 
-const TEMPLATE_CAROUSEL_ITEM = function (item, overlayBlock) {
-    return `<div class="carousel-block__instance">`
-        + overlayBlock +
-        `<img class="item-image" src="${item.img}" alt="item">
-                <a href="${item.url}">${item.description}</a>
-                <p>Цена: <span class="bold">${item.price} ${item.currency}</span> <span class="crossed"> ${item.oldPrice} ${item.currency}</span></p>
-                <div class="bottom">
-                    <button>
-                        <img class="cart" src="resources/icon/cart.svg" alt="cart">
-                        КУПИТЬ
-                    </button>
-                    <a href="#" class="links-details">Подробнее</a>
-                 </div>
+const CAROUSEL_BOTTOM_AVAIL = function (price) {
+    return `<div class="bottom">
+                <button onclick="addItemToCart(${price})">
+                    <img class="cart" src="resources/icon/cart.svg" alt="cart">
+                    КУПИТЬ
+                </button>
+                <a href="#" class="links-details">Подробнее</a>
             </div>`;
 }
 
-const TEMPLATE_CAROUSEL_NEW = function (item) {
-    return TEMPLATE_CAROUSEL_ITEM(item, CAROUSEL_NEW_OVERLAY)
+const CAROUSEL_BOTTOM_NOT_AVAIL = `<div class="bottom">
+                                       <p class="unavailable">Товар временно не доступен</p>
+                                   </div>`;
+
+const TEMPLATE_CAROUSEL_ITEM = function (item, overlayBlock, available) {
+    return `<div class="carousel-block__instance">`
+        + overlayBlock +
+        `<img class="item-image" src="${item.img}" alt="item">
+         <a href="${item.url}">${item.description}</a>`
+        + (available ? `<p>Цена: <span class="bold">${item.price} <span class="currency">${CURRENCY}</span></span> <span class="crossed"> ${item.oldPrice} <span class="currency">${CURRENCY}</span></span></p>` : ``)
+        + (available ? CAROUSEL_BOTTOM_AVAIL(item.price) : CAROUSEL_BOTTOM_NOT_AVAIL) +
+        `</div>`;
 }
 
-const TEMPLATE_CAROUSEL_REC = function (item) {
-    return TEMPLATE_CAROUSEL_ITEM(item, CAROUSEL_REC_OVERLAY)
+const TEMPLATE_CAROUSEL_NEW = function (item, available) {
+    return TEMPLATE_CAROUSEL_ITEM(item, CAROUSEL_NEW_OVERLAY, available)
 }
 
-const TEMPLATE_CAROUSEL_SALE = function (item) {
-    return TEMPLATE_CAROUSEL_ITEM(item, CAROUSEL_SALE_OVERLAY)
+const TEMPLATE_CAROUSEL_REC = function (item, available) {
+    return TEMPLATE_CAROUSEL_ITEM(item, CAROUSEL_REC_OVERLAY, available)
+}
+
+const TEMPLATE_CAROUSEL_SALE = function (item, available) {
+    return TEMPLATE_CAROUSEL_ITEM(item, CAROUSEL_SALE_OVERLAY, available)
 }
 

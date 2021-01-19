@@ -82,7 +82,6 @@ const initMenu = () => {
     changeSlidesMenu();
     roundChildMenu(true);
 
-    console.log(menuAmountElementsMin)
     if (menuAmountElementsMin < MENU_MAX || menuArraySorted.length === 10) {
         menuBtnRight.style.display = 'none';
         roundChildMenu(false);
@@ -203,6 +202,17 @@ const initBuyingRightNow = () => {
             "</div>";
     }
 };
+
+const changeCartValues = (amount, price) => {
+    cartValues.innerHTML = `<a href="#">${amount}</a> / ${price} <span class="currency">${CURRENCY}</span>`
+
+}
+
+// Changing currency
+let cartItemsAmount = 100;
+let cartItemsPrice = 4000;
+
+changeCartValues(cartItemsAmount, cartItemsPrice);
 
 initTopMenu();
 initMenu();

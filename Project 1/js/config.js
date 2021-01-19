@@ -254,9 +254,9 @@ const BANNER = [
 const ITEMS = [
     {
         type: 'new',
-        description: '2021/01/01',
+        description: '1',
         img: 'resources/image/block-7-img-4.png',
-        price: '1000',
+        price: 'ffff',
         oldPrice: '1100',
         currency: 'UAH',
         date: '2021/01/01',
