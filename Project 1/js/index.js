@@ -67,10 +67,6 @@ const initTopMenu = () => {
 }
 
 // MENU -> Block 3
-const menu = document.getElementById('menu-list')
-const menuBtnRight = document.getElementById('menu-button-right');
-const menuBtnLeft = document.getElementById('menu-button-left')
-
 let startIndexMenu = 0;
 
 const initMenu = () => {
@@ -133,6 +129,7 @@ menuBtnRight.addEventListener('click', () => {
     changeSlidesMenu();
     changeRoundedChild();
 });
+console.log("___________________")
 
 menuBtnLeft.addEventListener('click', () => {
     startIndexMenu--;

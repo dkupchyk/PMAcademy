@@ -29,18 +29,9 @@ const itemsSaleArray = itemsSaleArrayFiltered.length <= CAROUSEL_ALL_MAX
     ? itemsSaleArrayFiltered
     : itemsSaleArrayFiltered.slice(0, CAROUSEL_ALL_MAX);
 
-const carouselNew = document.getElementById('new-carousel')
-const carouselSlidesNew = document.getElementById('new-carousel-block')
-
-const carouselRec = document.getElementById('rec-carousel')
-const carouselSlidesRec = document.getElementById('rec-carousel-block')
-
-const carouselSale = document.getElementById('sale-carousel')
-const carouselSlidesSale = document.getElementById('sale-carousel-block')
-
-const newCarousel = new Carousel(itemsNewArray, carouselNew, carouselSlidesNew, TEMPLATE_CAROUSEL_NEW);
-const recCarousel = new Carousel(itemsRecArray, carouselRec, carouselSlidesRec, TEMPLATE_CAROUSEL_REC);
-const saleCarousel = new Carousel(itemsSaleArray, carouselSale, carouselSlidesSale, TEMPLATE_CAROUSEL_SALE);
+const newCarousel = new Carousel(itemsNewArray, carouselNew, carouselSlidesNew, newNextButtons, newPrevButtons, TEMPLATE_CAROUSEL_NEW);
+const recCarousel = new Carousel(itemsRecArray, carouselRec, carouselSlidesRec, recNextButtons, recPrevButtons, TEMPLATE_CAROUSEL_REC);
+const saleCarousel = new Carousel(itemsSaleArray, carouselSale, carouselSlidesSale, saleNextButtons, salePrevButtons, TEMPLATE_CAROUSEL_SALE);
 
 newCarousel.initCarousel();
 recCarousel.initCarousel();
@@ -71,55 +62,3 @@ mediaQueries[1].addListener(mediaQueryResponse)
 mediaQueries[2].addListener(mediaQueryResponse)
 
 window.onload = mediaQueryResponse;
-
-// Buttons functionality: next slide, prev slide
-const newNextButtons = document.getElementsByClassName('new-next-btn');
-const newPrevButtons = document.getElementsByClassName('new-prev-btn');
-
-const recNextButtons = document.getElementsByClassName('rec-next-btn');
-const recPrevButtons = document.getElementsByClassName('rec-prev-btn');
-
-const saleNextButtons = document.getElementsByClassName('sale-next-btn');
-const salePrevButtons = document.getElementsByClassName('sale-prev-btn');
-
-Array.from(newNextButtons).forEach(function (element) {
-    element.addEventListener('click', () => {
-        newCarousel.startIndex++;
-        newCarousel.changeSlides();
-    });
-});
-
-Array.from(newPrevButtons).forEach(function (element) {
-    element.addEventListener('click', () => {
-        newCarousel.startIndex--;
-        newCarousel.changeSlides();
-    });
-});
-
-Array.from(recNextButtons).forEach(function (element) {
-    element.addEventListener('click', () => {
-        recCarousel.startIndex++;
-        recCarousel.changeSlides();
-    });
-});
-
-Array.from(recPrevButtons).forEach(function (element) {
-    element.addEventListener('click', () => {
-        recCarousel.startIndex--;
-        recCarousel.changeSlides();
-    });
-});
-
-Array.from(saleNextButtons).forEach(function (element) {
-    element.addEventListener('click', () => {
-        saleCarousel.startIndex++;
-        saleCarousel.changeSlides();
-    });
-});
-
-Array.from(salePrevButtons).forEach(function (element) {
-    element.addEventListener('click', () => {
-        saleCarousel.startIndex--;
-        saleCarousel.changeSlides();
-    });
-});

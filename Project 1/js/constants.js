@@ -1,5 +1,27 @@
 const cartValues = document.getElementById('cart-values');
 
+const menu = document.getElementById('menu-list')
+const menuBtnRight = document.getElementById('menu-button-right');
+const menuBtnLeft = document.getElementById('menu-button-left')
+
+const carouselNew = document.getElementById('new-carousel')
+const carouselSlidesNew = document.getElementById('new-carousel-block')
+
+const carouselRec = document.getElementById('rec-carousel')
+const carouselSlidesRec = document.getElementById('rec-carousel-block')
+
+const carouselSale = document.getElementById('sale-carousel')
+const carouselSlidesSale = document.getElementById('sale-carousel-block')
+
+const newNextButtons = document.getElementsByClassName('new-next-btn');
+const newPrevButtons = document.getElementsByClassName('new-prev-btn');
+
+const recNextButtons = document.getElementsByClassName('rec-next-btn');
+const recPrevButtons = document.getElementsByClassName('rec-prev-btn');
+
+const saleNextButtons = document.getElementsByClassName('sale-next-btn');
+const salePrevButtons = document.getElementsByClassName('sale-prev-btn');
+
 
 const TOP_MENU_MAX = 9;
 const MENU_MAX = 10;

@@ -1,12 +1,17 @@
 class Carousel {
 
-    constructor(itemsArray, carouselElement, carouselSlidesElement, templateHTMLFunc) {
+    constructor(itemsArray, carouselElement, carouselSlidesElement, nextButtons, prevButtons, templateHTMLFunc) {
         this.itemsArray = itemsArray;
         this.carouselElement = carouselElement;
         this.carouselSlidesElement = carouselSlidesElement;
         this.templateHTMLFunc = templateHTMLFunc;
+        this.nextButtons = nextButtons;
+        this.prevButtons = prevButtons;
         this.startIndex = 0;
         this.activeSlides = this.itemsArray.slice(this.startIndex, this.startIndex + CAROUSEL_MAX);
+
+        this.addNextSlideClick();
+        this.addPrevSlideClick();
     }
 
     initCarousel() {
@@ -37,6 +42,24 @@ class Carousel {
             this.carouselSlidesElement.innerHTML += this.templateHTMLFunc(item, isAvailableCarouselItem(item));
         }
     }
+
+    addNextSlideClick() {
+        Array.from(this.nextButtons).forEach(function (element) {
+            element.addEventListener('click', () => {
+                this.startIndex++;
+                this.changeSlides();
+            });
+        }, this);
+    }
+
+    addPrevSlideClick() {
+        Array.from(this.prevButtons).forEach(function (element) {
+            element.addEventListener('click', () => {
+                this.startIndex--;
+                this.changeSlides();
+            });
+        }, this);
+    }
 }
 
 const changeCurrency = (price, pricesCurrency) => {
@@ -47,11 +70,10 @@ const changeCurrency = (price, pricesCurrency) => {
 }
 
 const addItemToCart = (price) => {
-    cartItemsAmount ++;
+    cartItemsAmount++;
     cartItemsPrice += price
     changeCartValues(cartItemsAmount, cartItemsPrice)
 }
-
 
 const mod = (n, m) => {
     return ((n % m) + m) % m;
