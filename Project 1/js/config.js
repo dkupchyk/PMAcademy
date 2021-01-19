@@ -240,12 +240,12 @@ const NEWS = [
 const BANNER = [
     {
         order: 1,
-        img: 'https://same_url.jpg',
+        img: './resources/image/block-6-background.png',
         url: 'voip_equipment.html',
     },
     {
         order: 2,
-        img: 'https://same_url2.jpg',
+        img: './resources/image/block-10-img-1.png',
         url: 'voip_equipment.html',
     }
 ];
@@ -636,25 +636,6 @@ const PROMOTIONS = [
         img: 'resources/image/block-10-img-1.png',
         url: 'https://same_url/item.html',
         time_action: '1d 2h 20m'
-    },
-    {
-        title: 'Название акции 4',
-        description: 'IP телефон Siemens Gigaset C530A IP',
-        img: 'resources/image/block-10-img-1.png',
-        url: 'https://same_url/item.html',
-    },
-    {
-        title: 'Название акции 5',
-        description: 'IP телефон Siemens Gigaset C530A IP',
-        img: 'resources/image/block-10-img-1.png',
-        url: 'https://same_url/item.html',
-        time_action: '1d 2h 20m'
-    },
-    {
-        title: 'Название акции 6',
-        description: 'IP телефон Siemens Gigaset C530A IP',
-        img: 'resources/image/block-10-img-1.png',
-        url: 'https://same_url/item.html',
     }
 ];
 

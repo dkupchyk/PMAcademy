@@ -4,12 +4,6 @@ for (let [key, value] of Object.entries(TOP_MENU)) {
     topMenuArray.push(value);
 }
 
-const order = (array) => {
-    return array.sort(function (a, b) {
-        return a.order - b.order;
-    })
-}
-
 const topMenuArraySorted = order(topMenuArray.filter(item => isValidMenuItem(item)));
 const menuArraySorted = order(MENU.filter(item => isValidMenuItem(item)));
 const menuAmountElementsMin = menuArraySorted.length < MENU_MAX ? menuArraySorted.length : MENU_MAX;
@@ -205,8 +199,8 @@ const changeCartValues = (amount, price) => {
 }
 
 // Changing currency
-let cartItemsAmount = 100;
-let cartItemsPrice = 4000;
+let cartItemsAmount = BASKET.elements;
+let cartItemsPrice = BASKET.price;
 
 changeCartValues(cartItemsAmount, cartItemsPrice);
 

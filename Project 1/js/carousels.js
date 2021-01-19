@@ -1,5 +1,5 @@
 // CAROUSELS -> Blocks 7,8,9
-let CAROUSEL_MAX = 1;
+let screenWidth = 1140;
 
 //Initialization of carousels
 const itemsNewArrayFiltered = ITEMS.filter(item => item.type === 'new')
@@ -35,42 +35,61 @@ const itemsPromotionArray = promotionsArraySorted.length <= CAROUSEL_ALL_MAX
     ? promotionsArraySorted
     : promotionsArraySorted.slice(0, CAROUSEL_ALL_MAX);
 
+const itemsBrandsArray = BRANDS;
+const itemsNumbersArray = WE_IN_NUMBERS;
+const itemsBannerArray = order(BANNER)
 
+const bannerCarousel = new Carousel('banner', itemsBannerArray, carouselBanner, carouselSlidesBanner, bannerNextButtons, bannerPrevButtons, TEMPLATE_CAROUSEL_BANNER, 1)
 const newCarousel = new Carousel('new', itemsNewArray, carouselNew, carouselSlidesNew, newNextButtons, newPrevButtons, TEMPLATE_CAROUSEL_NEW);
 const recCarousel = new Carousel('rec', itemsRecArray, carouselRec, carouselSlidesRec, recNextButtons, recPrevButtons, TEMPLATE_CAROUSEL_REC);
 const saleCarousel = new Carousel('sale', itemsSaleArray, carouselSale, carouselSlidesSale, saleNextButtons, salePrevButtons, TEMPLATE_CAROUSEL_SALE);
-const promotionCarousel = new Carousel('prom', itemsPromotionArray, carouselProm, carouselSlidesProm, promNextButtons, promPrevButtons, TEMPLATE_CAROUSEL_PROM);
+const promoCarousel = new Carousel('prom', itemsPromotionArray, carouselProm, carouselSlidesProm, promNextButtons, promPrevButtons, TEMPLATE_CAROUSEL_PROM);
+const brandsCarousel = new Carousel('brands', itemsBrandsArray, carouselBrands, carouselSlidesBrands, brandsNextButtons, brandsPrevButtons, TEMPLATE_CAROUSEL_BRANDS);
+const numbersCarousel = new Carousel('numbers', itemsNumbersArray, carouselNumbers, carouselSlidesNumbers, numbersNextButtons, numbersPrevButtons, TEMPLATE_CAROUSEL_NUMBERS);
 
+bannerCarousel.initCarousel();
 newCarousel.initCarousel();
 recCarousel.initCarousel();
 saleCarousel.initCarousel();
-promotionCarousel.initCarousel()
+promoCarousel.initCarousel();
+brandsCarousel.initCarousel();
+numbersCarousel.initCarousel();
 
 //Media queries
-window.addEventListener("resize", function () {
-    if (document.documentElement.clientWidth < 750) {
-        CAROUSEL_MAX = 1;
-    } else if (document.documentElement.clientWidth < 980) {
-        CAROUSEL_MAX = 3;
-    } else {
-        CAROUSEL_MAX = 4
-    }
-    newCarousel.changeSlides();
-    recCarousel.changeSlides();
-    saleCarousel.changeSlides();
-    promotionCarousel.changeSlides()
-});
+const updateMaxSizes = function () {
 
-window.onload = function () {
     if (document.documentElement.clientWidth < 750) {
-        CAROUSEL_MAX = 1;
+        newCarousel.maxItemsInRow = recCarousel.maxItemsInRow = saleCarousel.maxItemsInRow = promoCarousel.maxItemsInRow = 1;
+        brandsCarousel.maxItemsInRow = 5;
+        numbersCarousel.maxItemsInRow = 4;
+        screenWidth = 320;
+
     } else if (document.documentElement.clientWidth < 980) {
-        CAROUSEL_MAX = 3;
+        newCarousel.maxItemsInRow = recCarousel.maxItemsInRow = saleCarousel.maxItemsInRow = promoCarousel.maxItemsInRow = 3;
+        brandsCarousel.maxItemsInRow = 7;
+        numbersCarousel.maxItemsInRow = 4;
+        screenWidth = 750;
+
+    } else if (document.documentElement.clientWidth < 1140) {
+        newCarousel.maxItemsInRow = recCarousel.maxItemsInRow = saleCarousel.maxItemsInRow =  promoCarousel.maxItemsInRow = 4;
+        brandsCarousel.maxItemsInRow = 7;
+        numbersCarousel.maxItemsInRow = 6;
+        screenWidth = 980;
+
     } else {
-        CAROUSEL_MAX = 4
+        brandsCarousel.maxItemsInRow = 9;
+        numbersCarousel.maxItemsInRow = 6;
+        screenWidth = 1140;
     }
+
+    bannerCarousel.changeSlides();
     newCarousel.changeSlides();
     recCarousel.changeSlides();
     saleCarousel.changeSlides();
-    promotionCarousel.changeSlides()
-}
+    promoCarousel.changeSlides();
+    brandsCarousel.changeSlides();
+    numbersCarousel.changeSlides();
+};
+
+window.addEventListener("resize", updateMaxSizes);
+window.onload = updateMaxSizes;

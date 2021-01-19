@@ -1173,29 +1173,22 @@ carousel-block__carousel {
 }
 
 .numbers .items > div figure {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: 150px;
     height: 150px;
 
     margin: 0 auto 16px;
-    padding-top: 35px;
 
     border: 2px solid #e3e5eb;
     border-radius: 50%;
 
     font-weight: bold;
-    font-size: 5em;
+    font-size: calc(2vh + 2vw);
     text-align: center;
     color: #ff5816;
-}
-
-.numbers .items > div:nth-child(2) figure {
-    padding-top: 50px;
-    font-size: 3em;
-}
-
-.numbers .items > div:nth-child(3) figure {
-    padding-top: 30px;
-    font-size: 2em;
 }
 
 .numbers .items > div:nth-child(2n) figure {
@@ -1921,10 +1914,6 @@ footer .statistics {
     .hide-before-750 {
         display: block;
     }
-
-    /*.hide-after-750 {*/
-    /*    display: none !important;*/
-    /*}*/
 }
 
 
@@ -2130,18 +2119,8 @@ footer .statistics {
     .numbers .items > div figure {
         width: 125px;
         height: 125px;
-    }
 
-    .numbers .items > div figure {
-        padding-top: 23px;
-    }
-
-    .numbers .items > div:nth-child(2) figure {
-        padding-top: 40px;
-    }
-
-    .numbers .items > div:nth-child(3) figure {
-        padding-top: 20px;
+        font-size: calc(1.3vh + 1.3vw);
     }
 
     .how--work__top > div {

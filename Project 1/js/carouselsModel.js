@@ -1,15 +1,16 @@
 class Carousel {
 
-    constructor(type, itemsArray, carouselElement, carouselSlidesElement, nextButtons, prevButtons, templateHTMLFunc) {
+    constructor(type, itemsArray, carouselElement, carouselSlidesElement, nextButtons, prevButtons, templateHTMLFunc, maxItemsInRow = 4) {
         this.type = type;
         this.itemsArray = itemsArray;
         this.carouselElement = carouselElement;
         this.carouselSlidesElement = carouselSlidesElement;
         this.templateHTMLFunc = templateHTMLFunc;
+        this.maxItemsInRow = maxItemsInRow;
         this.nextButtons = nextButtons;
         this.prevButtons = prevButtons;
         this.startIndex = 0;
-        this.activeSlides = this.itemsArray.slice(this.startIndex, this.startIndex + CAROUSEL_MAX);
+        this.activeSlides = this.itemsArray.slice(this.startIndex, this.startIndex + maxItemsInRow);
 
         this.addNextSlideClick();
         this.addPrevSlideClick();
@@ -26,23 +27,19 @@ class Carousel {
     changeActiveSlides() {
         this.startIndex = mod(this.startIndex, this.itemsArray.length);
 
-        if (CAROUSEL_MAX >= this.itemsArray.length) return this.itemsArray;
+        if (this.maxItemsInRow >= this.itemsArray.length) return this.itemsArray;
 
-        return (CAROUSEL_MAX > this.itemsArray.length - this.startIndex)
+        return (this.maxItemsInRow > this.itemsArray.length - this.startIndex)
             ? [...this.itemsArray.slice(this.startIndex, this.startIndex + (this.itemsArray.length - this.startIndex)),
-                ...this.itemsArray.slice(0, CAROUSEL_MAX - (this.itemsArray.length - this.startIndex))]
-            : this.itemsArray.slice(this.startIndex, this.startIndex + CAROUSEL_MAX);
+                ...this.itemsArray.slice(0, this.maxItemsInRow - (this.itemsArray.length - this.startIndex))]
+            : this.itemsArray.slice(this.startIndex, this.startIndex + this.maxItemsInRow);
     }
 
     changeSlides() {
         this.carouselSlidesElement.innerHTML = "";
-        this.activeSlides = this.changeActiveSlides()
+        this.activeSlides = this.changeActiveSlides();
 
-        // if (this.itemsArray.length <= CAROUSEL_MAX) {
-        //     this.hideButtons()
-        // } else {
-        //     this.showButtons()
-        // }
+        changeButtonsVisability(this);
 
         for (let item of this.activeSlides) {
 
@@ -73,30 +70,36 @@ class Carousel {
             });
         }, this);
     }
+}
 
-    hideButtons() {
-        Array.from(this.nextButtons).forEach(function (element) {
-            element.style.display = 'none';
-        });
-
-        Array.from(this.prevButtons).forEach(function (element) {
-            element.style.display = 'none';
-        });
+const changeButtonsVisability = (carousel) => {
+    if (screenWidth < 1140) {
+        changeVisabilityTopButtons('inline');
+        changeVisabilityBottomButtons('none');
+    } else {
+        changeVisabilityTopButtons('none');
+        changeVisabilityBottomButtons('inline');
     }
 
-    showButtons() {
-        Array.from(this.nextButtons).forEach(function (element) {
-            element.style.display = 'inline';
-        });
-
-        Array.from(this.prevButtons).forEach(function (element) {
-            element.style.display = 'inline';
-        });
+    if (carousel.itemsArray.length <= carousel.maxItemsInRow) {
+        changeVisabilityTopButtons('none');
+        changeVisabilityBottomButtons('none');
     }
 }
 
-const changeCurrency = (price, pricesCurrency) => {
+const changeVisabilityTopButtons = (displayValue) => {
+    Array.from(topArrowButtons).forEach(function (element) {
+        element.style.display = displayValue;
+    });
+}
 
+const changeVisabilityBottomButtons = (displayValue) => {
+    Array.from(bottomArrowButtons).forEach(function (element) {
+        element.style.display = displayValue;
+    });
+}
+
+const changeCurrency = (price, pricesCurrency) => {
     if (CURRENCY_EXCHANGE.hasOwnProperty(pricesCurrency)) {
         return Math.floor(price * CURRENCY_EXCHANGE[pricesCurrency]);
     }
@@ -111,4 +114,10 @@ const addItemToCart = (price) => {
 
 const mod = (n, m) => {
     return ((n % m) + m) % m;
+}
+
+const order = (array) => {
+    return array.sort(function (a, b) {
+        return a.order - b.order;
+    })
 }

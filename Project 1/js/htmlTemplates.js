@@ -1,3 +1,21 @@
+const TEMPLATE_CAROUSEL_BANNER = function (item) {
+    return `<img src="${item.img}" alt="banner-slide">
+            <div class="slide__text">
+                <p>РЕВОЛЮЦИОННОЕ РЕШЕНИЕ</p>
+                <p>НА РЫНКЕ СРЕДИ СИСТЕМ ВКС!</p>
+                <p>GVS MAINSTREAM 228 ОТ КОМПАНИИ GRANDSTREAM ЭТО:</p>
+                <ul>
+                    <li>9-ти сторонняя аудио/видео конференция без покупки доп. ПО</li>
+                    <li>2 Мпикс камера CMOS с разрешением 1080р@15fps</li>
+                    <li>Гигабитный порт, встроенный модуль WIFI и Bluetooth 4.0 Miracast</li>
+                </ul>
+                <div class="details">
+                    <a href="${item.url}">ПОДРОБНЕЕ</a>
+                 </div>
+            </div>`;
+}
+
+
 const CAROUSEL_NEW_OVERLAY = `<div class="overlay overlay-news">
                                    <p class="new links-details">NEW</p>
                                </div>`;
@@ -85,6 +103,18 @@ const TEMPLATE_CAROUSEL_PROM = function (item) {
              </div>`;
 }
 
+const TEMPLATE_CAROUSEL_BRANDS = function (item) {
+    return `<img src="${item.src}" alt="${item.alt}">`;
+}
+
+const TEMPLATE_CAROUSEL_NUMBERS = function (item) {
+    return `<div>
+                <figure>
+                    ${item.figure}
+                </figure>
+                <p>${item.p}</p>
+            </div>`;
+}
 
 const convertDateToHTML = (date) => {
     let dateArray = [0,0,0,0,0,0]
@@ -119,7 +149,6 @@ const convertDateToHTML = (date) => {
         dateArray[4] = min[0];
         dateArray[5] = min[1];
     }
-
 
     return dateArray;
 }
