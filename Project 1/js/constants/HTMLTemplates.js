@@ -15,6 +15,20 @@ const TEMPLATE_CAROUSEL_BANNER = function (item) {
             </div>`;
 }
 
+const TEMPLATE_NEWS = function (item) {
+    return `<div class="item">
+                <div class="col img-col">
+                    <img src="${item.img}" alt="background">
+                    <div class="day">${item.date.day}</div>
+                        <p>${item.date.month}</p>
+                    </div>
+                    <div class="col text-col">
+                        <a href="${item.url}">${item.title}</a>
+                        <p>${item.description}</p>
+                    </div>
+                </div>
+                <hr class="dotted">`;
+}
 
 const CAROUSEL_NEW_OVERLAY = `<div class="overlay overlay-news">
                                    <p class="new links-details">NEW</p>
@@ -30,7 +44,7 @@ const CAROUSEL_SALE_OVERLAY = `<div class="overlay overlay-sale">
 
 const CAROUSEL_BOTTOM_AVAIL = function (price) {
     return `<div class="bottom">
-                <button onclick="addItemToCart(${price})">
+                <button onclick="CartService.addItemToCart(${price})">
                     <img class="cart" src="resources/icon/cart.svg" alt="cart">
                     КУПИТЬ
                 </button>
@@ -96,7 +110,7 @@ const TEMPLATE_CAROUSEL_PROM = function (item) {
                 <div class="timing">
                     <p>Срок действия:</p>`
                         + (item.hasOwnProperty('time_action') && item.time_action
-                            ? TEMPLATE_CAROUSEL_PROM_WITH_DATE(convertDateToHTML(item.time_action))
+                            ? TEMPLATE_CAROUSEL_PROM_WITH_DATE(DateService.convertDateToHTML(item.time_action))
                             : TEMPLATE_CAROUSEL_PROM_WITHOUT_DATE) +
                `</div>
                 <a class="centered" href="#">Подробнее</a>
@@ -116,39 +130,9 @@ const TEMPLATE_CAROUSEL_NUMBERS = function (item) {
             </div>`;
 }
 
-const convertDateToHTML = (date) => {
-    let dateArray = [0,0,0,0,0,0]
-    date = date.replace(/\s/g,'')
-
-    date = date.split('d')
-    let day = date[0];
-
-    date = date[1].split('h')
-    let hours = date[0];
-
-    date = date[1].split('m')
-    let min = date[0];
-
-    if (day.length === 1) {
-        dateArray[1] = day;
-    }else {
-        dateArray[0] = day[0];
-        dateArray[1] = day[1];
-    }
-
-    if (hours.length === 1) {
-        dateArray[3] = hours;
-    }else {
-        dateArray[2] = hours[0];
-        dateArray[3] = hours[1];
-    }
-
-    if (min.length === 1) {
-        dateArray[5] = min;
-    }else {
-        dateArray[4] = min[0];
-        dateArray[5] = min[1];
-    }
-
-    return dateArray;
+const TEMPLATE_BUYING_NOW = function (item) {
+    return `<div>
+                <img src="${item.img}" alt="item-img">
+                <a href="${item.url}">${item.title}</a>
+            </div>`;
 }

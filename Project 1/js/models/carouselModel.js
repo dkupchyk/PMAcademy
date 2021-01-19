@@ -44,8 +44,8 @@ class Carousel {
         for (let item of this.activeSlides) {
 
             if (this.type === 'new' || this.type === 'rec' || this.type === 'sales'){
-                item.price = changeCurrency(item.price, item.currency);
-                item.oldPrice = changeCurrency(item.oldPrice, item.currency);
+                item.price = CurrencyService.changeCurrency(item.price, item.currency);
+                item.oldPrice = CurrencyService.changeCurrency(item.oldPrice, item.currency);
                 item.currency = CURRENCY;
             }
 
@@ -58,6 +58,10 @@ class Carousel {
             element.addEventListener('click', () => {
                 this.startIndex++;
                 this.changeSlides();
+                if (this.type === 'banner') {
+                    console.log("++++++++")
+                    this.changeFocusNav();
+                }
             });
         }, this);
     }
@@ -67,9 +71,17 @@ class Carousel {
             element.addEventListener('click', () => {
                 this.startIndex--;
                 this.changeSlides();
+                if (this.type === 'banner') {
+                    this.changeFocusNav();
+                }
             });
         }, this);
     }
+
+    changeFocusNav = () => {
+        document.querySelector("#nav-btn-" + this.startIndex).checked = 'true';
+    }
+
 }
 
 const changeButtonsVisability = (carousel) => {
@@ -97,27 +109,4 @@ const changeVisabilityBottomButtons = (displayValue) => {
     Array.from(bottomArrowButtons).forEach(function (element) {
         element.style.display = displayValue;
     });
-}
-
-const changeCurrency = (price, pricesCurrency) => {
-    if (CURRENCY_EXCHANGE.hasOwnProperty(pricesCurrency)) {
-        return Math.floor(price * CURRENCY_EXCHANGE[pricesCurrency]);
-    }
-    return Math.floor(price);
-}
-
-const addItemToCart = (price) => {
-    cartItemsAmount++;
-    cartItemsPrice += price
-    changeCartValues(cartItemsAmount, cartItemsPrice)
-}
-
-const mod = (n, m) => {
-    return ((n % m) + m) % m;
-}
-
-const order = (array) => {
-    return array.sort(function (a, b) {
-        return a.order - b.order;
-    })
 }

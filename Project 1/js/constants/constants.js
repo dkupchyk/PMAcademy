@@ -1,5 +1,4 @@
-const cartValues = document.getElementById('cart-values');
-
+// Carousel constants
 const menu = document.getElementById('menu-list')
 const menuBtnRight = document.getElementById('menu-button-right');
 const menuBtnLeft = document.getElementById('menu-button-left')
@@ -46,15 +45,13 @@ const numbersPrevButtons = document.getElementsByClassName('num-prev-btn');
 const bannerNextButtons = document.getElementsByClassName('banner-next-btn');
 const bannerPrevButtons = document.getElementsByClassName('banner-prev-btn');
 
-
 const topArrowButtons = document.getElementsByClassName('top-arrow');
 const bottomArrowButtons = document.getElementsByClassName('bottom-arrow');
 
-
+// Other constants
 const TOP_MENU_MAX = 9;
 const MENU_MAX = 10;
 const CAROUSEL_ALL_MAX = 10;
-const PROMOTIONS_MAX = 4;
 
 const BRANDS = [
     {
@@ -136,3 +133,5 @@ const MONTHS = [
     {value: 10, name: "Октябрь"},
     {value: 11, name: "Декабрь"}
 ];
+
+const cartValues = document.getElementById('cart-values');

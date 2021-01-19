@@ -147,15 +147,8 @@
                 <div class="main-slider-wrap">
                     <figure class="banner-prev-btn left-arr"></figure>
                     <figure class="banner-next-btn right-arr"></figure>
-                    <div class="main-slider__nav">
-                        <input class="nav-radio" type="radio" name="nav-btn" id="nav-btn-1" checked>
-                        <label for="nav-btn-1"></label>
-                        <input class="nav-radio" type="radio" name="nav-btn" id="nav-btn-2">
-                        <label for="nav-btn-2"></label>
-                        <input class="nav-radio" type="radio" name="nav-btn" id="nav-btn-3">
-                        <label for="nav-btn-3"></label>
-                        <input class="nav-radio" type="radio" name="nav-btn" id="nav-btn-4">
-                        <label for="nav-btn-4"></label>
+                    <div id="banner-carousel-nav" class="main-slider__nav">
+
                     </div>
                     <div id="banner-carousel" class="slider">
                         <div id="banner-carousel-block" class="slide">
@@ -660,13 +653,28 @@
     </div>
 </footer>
 
-<script src="js/htmlTemplates.js" charset="utf-8"></script>
-<script src="js/constants.js" charset="utf-8"></script>
 <script src="js/config.js" charset="utf-8"></script>
-<script src="js/validation.js" charset="utf-8"></script>
-<script src="js/carouselsModel.js" charset="utf-8"></script>
-<script src="js/carousels.js" charset="utf-8"></script>
+
+<script src="js/services/currencyService.js" charset="utf-8"></script>
+<script src="js/services/cartService.js" charset="utf-8"></script>
+<script src="js/services/dateService.js" charset="utf-8"></script>
+
+<script src="js/constants/constants.js" charset="utf-8"></script>
+<script src="js/constants/HTMLTemplates.js" charset="utf-8"></script>
+
 <script src="js/index.js" charset="utf-8"></script>
+
+<script src="js/validation.js" charset="utf-8"></script>
+<script src="js/models/carouselModel.js" charset="utf-8"></script>
+
+<script src="js/initialization/topMenuInit.js" charset="utf-8"></script>
+<script src="js/initialization/menuInit.js" charset="utf-8"></script>
+<script src="js/initialization/newsInit.js" charset="utf-8"></script>
+<script src="js/initialization/carouselInit.js" charset="utf-8"></script>
+<script src="js/initialization/bannerInit.js" charset="utf-8"></script>
+<script src="js/initialization/buyingNowInit.js" charset="utf-8"></script>
+
+<script src="js/mediaQueries.js" charset="utf-8"></script>
 
 </body>
 </html>

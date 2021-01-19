@@ -241,12 +241,22 @@ const BANNER = [
     {
         order: 1,
         img: './resources/image/block-6-background.png',
-        url: 'voip_equipment.html',
+        url: '1.html',
     },
     {
         order: 2,
         img: './resources/image/block-10-img-1.png',
-        url: 'voip_equipment.html',
+        url: '2.html',
+    },
+    {
+        order: 3,
+        img: './resources/image/block-6-background.png',
+        url: '3.html',
+    },
+    {
+        order: 4,
+        img: './resources/image/block-10-img-1.png',
+        url: '4.html',
     }
 ];
 
