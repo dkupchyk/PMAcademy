@@ -1,6 +1,6 @@
 class Carousel {
 
-    constructor(type, itemsArray, carouselElement, carouselSlidesElement, nextButtons, prevButtons, templateHTMLFunc, maxItemsInRow = 4) {
+    constructor(type, itemsArray, carouselElement, carouselSlidesElement, nextButtons, prevButtons, templateHTMLFunc, maxItemsInRow = 4, isAutomatic = false) {
         this.type = type;
         this.itemsArray = itemsArray;
         this.carouselElement = carouselElement;
@@ -9,11 +9,17 @@ class Carousel {
         this.maxItemsInRow = maxItemsInRow;
         this.nextButtons = nextButtons;
         this.prevButtons = prevButtons;
+        this.isAutomatic = isAutomatic;
+
         this.startIndex = 0;
         this.activeSlides = this.itemsArray.slice(this.startIndex, this.startIndex + maxItemsInRow);
 
         this.addNextSlideClick();
         this.addPrevSlideClick();
+
+        if (this.isAutomatic) {
+            this.timer = this.initInterval();
+        }
     }
 
     initCarousel() {
@@ -43,13 +49,27 @@ class Carousel {
 
         for (let item of this.activeSlides) {
 
-            if (this.type === 'new' || this.type === 'rec' || this.type === 'sales'){
+            if (this.type === 'new' || this.type === 'rec' || this.type === 'sales') {
                 item.price = CurrencyService.changeCurrency(item.price, item.currency);
                 item.oldPrice = CurrencyService.changeCurrency(item.oldPrice, item.currency);
                 item.currency = CURRENCY;
             }
 
             this.carouselSlidesElement.innerHTML += this.templateHTMLFunc(item, isAvailableCarouselItem(item));
+        }
+
+        if (this.isAutomatic) {
+            clearInterval(this.timer);
+            this.timer = this.initInterval();
+        }
+    }
+
+    nextSlide() {
+        this.startIndex++;
+        this.changeSlides();
+
+        if (this.type === 'banner') {
+            this.changeFocusNav();
         }
     }
 
@@ -58,8 +78,8 @@ class Carousel {
             element.addEventListener('click', () => {
                 this.startIndex++;
                 this.changeSlides();
+
                 if (this.type === 'banner') {
-                    console.log("++++++++")
                     this.changeFocusNav();
                 }
             });
@@ -71,6 +91,7 @@ class Carousel {
             element.addEventListener('click', () => {
                 this.startIndex--;
                 this.changeSlides();
+
                 if (this.type === 'banner') {
                     this.changeFocusNav();
                 }
@@ -83,6 +104,13 @@ class Carousel {
     }
 
 }
+
+Carousel.prototype.initInterval = function () {
+    const _this = this;
+    return setInterval(function () {
+        _this.nextSlide();
+    }, 5000);
+};
 
 const changeButtonsVisability = (carousel) => {
     if (screenWidth < 1140) {
