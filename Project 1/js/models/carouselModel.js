@@ -28,7 +28,7 @@ class Carousel {
     }
 
     initCarousel() {
-        if (!blockExists(this.carouselSlidesElement) && allCarouselItemAreInvalid(this.carouselSlidesElement)) {
+        if (!blockExists(this.carouselSlidesElement)) {
             this.carouselElement.style.display = 'none';
             return;
         }
@@ -53,6 +53,7 @@ class Carousel {
         this.changeButtonsVisability();
 
         for (let item of this.activeSlides) {
+            if(!item.hasOwnProperty('img') || item.img === '') item.img = DEFAULT_IMG;
 
             if (this.type === 'new' || this.type === 'rec' || this.type === 'sales') {
                 item.price = CurrencyService.changeCurrency(item.price, item.currency);

@@ -6,7 +6,7 @@ const TEMPLATE_TOP_MENU = function (key) {
 }
 
 const TEMPLATE_CAROUSEL_BANNER = function (item) {
-    return `<img src="${item.img}" alt="banner-slide">
+    return `<img onerror="this.src = DEFAULT_IMG" src="${item.img}" alt="banner-slide">
             <div class="slide__text">
                 <p>РЕВОЛЮЦИОННОЕ РЕШЕНИЕ</p>
                 <p>НА РЫНКЕ СРЕДИ СИСТЕМ ВКС!</p>
@@ -25,7 +25,7 @@ const TEMPLATE_CAROUSEL_BANNER = function (item) {
 const TEMPLATE_NEWS = function (item) {
     return `<div class="item">
                 <div class="col img-col">
-                    <img src="${item.img}" alt="background">
+                    <img onerror="this.src = DEFAULT_IMG" src="${item.img}"alt="background">
                     <div class="day">${item.date.day}</div>
                         <p>${item.date.month}</p>
                     </div>
@@ -42,7 +42,7 @@ const CAROUSEL_NEW_OVERLAY = `<div class="overlay overlay-news">
                                </div>`;
 
 const CAROUSEL_REC_OVERLAY = `<div class="overlay overlay-rec">
-                                  <img class="like-icon" src="resources/icon/block-8-like.svg" alt="like">
+                                  <img class="like-icon" onerror="this.src = DEFAULT_IMG" src="resources/icon/block-8-like.svg" alt="like">
                               </div>`;
 
 const CAROUSEL_SALE_OVERLAY = `<div class="overlay overlay-sale">
@@ -52,7 +52,7 @@ const CAROUSEL_SALE_OVERLAY = `<div class="overlay overlay-sale">
 const CAROUSEL_BOTTOM_AVAIL = function (price) {
     return `<div class="bottom">
                 <button onclick="CartService.addItemToCart(${price})">
-                    <img class="cart" src="resources/icon/cart.svg" alt="cart">
+                    <img class="cart" onerror="this.src = DEFAULT_IMG" src="resources/icon/cart.svg" alt="cart">
                     КУПИТЬ
                 </button>
                 <a href="#" class="links-details">Подробнее</a>
@@ -66,7 +66,7 @@ const CAROUSEL_BOTTOM_NOT_AVAIL = `<div class="bottom">
 const TEMPLATE_CAROUSEL_ITEM = function (item, overlayBlock, available) {
     return `<div class="carousel-block__instance">`
         + overlayBlock +
-        `<img class="item-image" src="${item.img}" alt="item">
+        `<img class="item-image" onerror="this.src = DEFAULT_IMG" src="${item.img}" alt="item">
          <a href="${item.url}">${item.description}</a>`
         + (available ? `<p>Цена: <span class="bold">${item.price} <span class="currency">${CURRENCY}</span></span> <span class="crossed"> ${item.oldPrice} <span class="currency">${CURRENCY}</span></span></p>` : ``)
         + (available ? CAROUSEL_BOTTOM_AVAIL(item.price) : CAROUSEL_BOTTOM_NOT_AVAIL) +
@@ -112,7 +112,7 @@ const TEMPLATE_CAROUSEL_PROM = function (item) {
 
     return `<div class="carousel-block__instance sales-instance">
                 <a href="${item.url}">${item.title}</a>
-                <img class="item-image" src="${item.img}" alt="item">
+                <img class="item-image" src="${item.img}" onerror="this.src = DEFAULT_IMG" alt="item">
                 <p>${item.description}</p>
                 <div class="timing">
                     <p>Срок действия:</p>`
@@ -125,7 +125,7 @@ const TEMPLATE_CAROUSEL_PROM = function (item) {
 }
 
 const TEMPLATE_CAROUSEL_BRANDS = function (item) {
-    return `<img src="${item.src}" alt="${item.alt}">`;
+    return `<img src="${item.src}" onerror="this.src = DEFAULT_IMG" alt="${item.alt}">`;
 }
 
 const TEMPLATE_CAROUSEL_NUMBERS = function (item) {
@@ -139,7 +139,7 @@ const TEMPLATE_CAROUSEL_NUMBERS = function (item) {
 
 const TEMPLATE_BUYING_NOW = function (item) {
     return `<div>
-                <img src="${item.img}" alt="item-img">
+                <img src="${item.img}" onerror="this.src = DEFAULT_IMG" alt="item-img">
                 <a href="${item.url}">${item.title}</a>
             </div>`;
 }

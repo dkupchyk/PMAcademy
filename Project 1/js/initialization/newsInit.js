@@ -27,7 +27,9 @@ const initNews = () => {
         .slice(0, 3);
 
     for (let item of chosenNews) {
+        if(!item.hasOwnProperty('img') || item.img === '') item.img = DEFAULT_IMG;
         item.date = parseDate(item.date)
+
         news[0].innerHTML += TEMPLATE_NEWS(item);
     }
 };

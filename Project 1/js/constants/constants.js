@@ -135,3 +135,5 @@ const MONTHS = [
 ];
 
 const cartValues = document.getElementById('cart-values');
+
+const DEFAULT_IMG = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ432ju-gdS2nl6CEobTaFXEe6_gRmK5DkWuQ&usqp=CAU';

@@ -3,17 +3,23 @@
 let screenWidth = 1140;
 
 //Initialization of item arrays for carousels
-const itemsNewArrayFiltered = ITEMS.filter(item => item.type === 'new')
+const itemsNewArrayFiltered = ITEMS
+    .filter(item => item.type === 'new')
+    .filter(element => isValidCarouselItem(element))
     .sort(function (a, b) {
         return new Date(b.date) - new Date(a.date);
     });
 
-const itemsRecArrayFiltered = ITEMS.filter(item => item.type === 'recommended')
+const itemsRecArrayFiltered = ITEMS
+    .filter(item => item.type === 'recommended')
+    .filter(element => isValidCarouselItem(element))
     .sort(function (a, b) {
         return a.price - b.price;
     });
 
-const itemsSaleArrayFiltered = ITEMS.filter(item => item.type === 'sale')
+const itemsSaleArrayFiltered = ITEMS
+    .filter(item => item.type === 'sale')
+    .filter(element => isValidCarouselItem(element))
     .sort(function (a, b) {
         return (a.oldPrice - a.price) - (b.oldPrice - b.price);
     });

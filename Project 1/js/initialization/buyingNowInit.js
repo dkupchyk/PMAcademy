@@ -1,4 +1,5 @@
 // BUYING_RIGHT_NOW -> Block 11
+
 const buyingRightNowArraySorted = order(BUYING_RIGHT_NOW.filter((item => isValidBuyingNowItem(item))));
 
 const initBuyingRightNow = () => {
@@ -10,9 +11,10 @@ const initBuyingRightNow = () => {
     let buyingNow = document.getElementById('buying-now-items');
 
     for (let item of buyingRightNowArraySorted) {
+        if(!item.hasOwnProperty('img') || item.img === '') item.img = DEFAULT_IMG;
+
         buyingNow.innerHTML += TEMPLATE_BUYING_NOW(item);
     }
 };
 
 initBuyingRightNow();
-
