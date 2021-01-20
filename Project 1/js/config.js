@@ -332,96 +332,96 @@ const ITEMS = [
         date: '2021/05/15',
         url: 'new_items/item1.html'
     },
-    {
-        type: 'recommended',
-        description: '3200',
-        img: 'resources/image/block-7-img-4.png',
-        price: '3200',
-        oldPrice: '1100',
-        currency: 'RUB',
-        date: '2020/12/25',
-        url: 'new_items/item.html'
-    },
-    {
-        type: 'sale',
-        description: '15',
-        img: 'resources/image/block-7-img-4.png',
-        price: '150',
-        oldPrice: '200',
-        currency: 'USD',
-        date: '2021/01/13',
-        url: 'https://same_url/item.html'
-    },
-    {
-        type: 'new',
-        description: '2019/05/15',
-        img: 'resources/image/block-7-img-4.png',
-        price: '1000',
-        oldPrice: '1100',
-        currency: 'UAH',
-        date: '2019/05/15',
-        url: 'new_items/item1.html'
-    },
-    {
-        type: 'recommended',
-        description: '4',
-        img: 'resources/image/block-7-img-4.png',
-        price: '300',
-        oldPrice: '1100',
-        currency: 'RUB',
-        date: '2020/12/25',
-        url: 'new_items/item.html'
-    },
-    {
-        type: 'sale',
-        description: '4',
-        img: 'resources/image/block-7-img-4.png',
-        price: '150',
-        oldPrice: '200',
-        currency: 'USD',
-        date: '2021/01/13',
-        url: 'https://same_url/item.html'
-    },
-    {
-        type: 'new',
-        description: '5',
-        img: 'resources/image/block-7-img-4.png',
-        price: '1000',
-        oldPrice: '1100',
-        currency: 'UAH',
-        date: '2021/01/01',
-        url: 'new_items/item1.html'
-    },
-    {
-        type: 'recommended',
-        description: '5',
-        img: 'resources/image/block-7-img-4.png',
-        price: '300',
-        oldPrice: '1100',
-        currency: 'RUB',
-        date: '2020/12/25',
-        url: 'new_items/item.html'
-    },
-    {
-        type: 'sale',
-        description: '5',
-        img: 'resources/image/block-7-img-4.png',
-        price: '150',
-        oldPrice: '200',
-        currency: 'USD',
-        date: '2021/01/13',
-        url: 'https://same_url/item.html'
-    },
-    {
-        type: 'recommended',
-        description: '6',
-        img: 'resources/image/block-7-img-4.png',
-        price: '300',
-        oldPrice: '1100',
-        currency: 'RUB',
-        date: '2020/12/25',
-        url: 'new_items/item.html'
-    },
+    // {
+    //     type: 'recommended',
+    //     description: '3200',
+    //     img: 'resources/image/block-7-img-4.png',
+    //     price: '3200',
+    //     oldPrice: '1100',
+    //     currency: 'RUB',
+    //     date: '2020/12/25',
+    //     url: 'new_items/item.html'
+    // },
+    // {
+    //     type: 'sale',
+    //     description: '15',
+    //     img: 'resources/image/block-7-img-4.png',
+    //     price: '150',
+    //     oldPrice: '200',
+    //     currency: 'USD',
+    //     date: '2021/01/13',
+    //     url: 'https://same_url/item.html'
+    // },
+    // {
+    //     type: 'new',
+    //     description: '2019/05/15',
+    //     img: 'resources/image/block-7-img-4.png',
+    //     price: '1000',
+    //     oldPrice: '1100',
+    //     currency: 'UAH',
+    //     date: '2019/05/15',
+    //     url: 'new_items/item1.html'
+    // },
+    // {
+    //     type: 'recommended',
+    //     description: '4',
+    //     img: 'resources/image/block-7-img-4.png',
+    //     price: '300',
+    //     oldPrice: '1100',
+    //     currency: 'RUB',
+    //     date: '2020/12/25',
+    //     url: 'new_items/item.html'
+    // },
+    // {
+    //     type: 'sale',
+    //     description: '4',
+    //     img: 'resources/image/block-7-img-4.png',
+    //     price: '150',
+    //     oldPrice: '200',
+    //     currency: 'USD',
+    //     date: '2021/01/13',
+    //     url: 'https://same_url/item.html'
+    // },
+    // {
+    //     type: 'new',
+    //     description: '5',
+    //     img: 'resources/image/block-7-img-4.png',
+    //     price: '1000',
+    //     oldPrice: '1100',
+    //     currency: 'UAH',
+    //     date: '2021/01/01',
+    //     url: 'new_items/item1.html'
+    // },
+    // {
+    //     type: 'recommended',
+    //     description: '5',
+    //     img: 'resources/image/block-7-img-4.png',
+    //     price: '300',
+    //     oldPrice: '1100',
+    //     currency: 'RUB',
+    //     date: '2020/12/25',
+    //     url: 'new_items/item.html'
+    // },
+    // {
+    //     type: 'sale',
+    //     description: '5',
+    //     img: 'resources/image/block-7-img-4.png',
+    //     price: '150',
+    //     oldPrice: '200',
+    //     currency: 'USD',
+    //     date: '2021/01/13',
+    //     url: 'https://same_url/item.html'
+    // },
+    // {
+    //     type: 'recommended',
+    //     description: '6',
+    //     img: 'resources/image/block-7-img-4.png',
+    //     price: '300',
+    //     oldPrice: '1100',
+    //     currency: 'RUB',
+    //     date: '2020/12/25',
+    //     url: 'new_items/item.html'
+    // },
     // {
     //     type: 'sale',
     //     description: '6',

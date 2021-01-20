@@ -7,8 +7,13 @@ class Carousel {
         this.carouselSlidesElement = carouselSlidesElement;
         this.templateHTMLFunc = templateHTMLFunc;
         this.maxItemsInRow = maxItemsInRow;
+
         this.nextButtons = nextButtons;
         this.prevButtons = prevButtons;
+
+        this.topButtons = this.getTopButtons();
+        this.bottomButtons = this.getBottomButtons();
+
         this.isAutomatic = isAutomatic;
 
         this.startIndex = 0;
@@ -45,7 +50,7 @@ class Carousel {
         this.carouselSlidesElement.innerHTML = "";
         this.activeSlides = this.changeActiveSlides();
 
-        changeButtonsVisability(this);
+        this.changeButtonsVisability();
 
         for (let item of this.activeSlides) {
 
@@ -99,8 +104,53 @@ class Carousel {
         }, this);
     }
 
+    getTopButtons() {
+        return [...Array.from(this.prevButtons), ...Array.from(this.nextButtons)].filter((element) => element.classList.contains('top-arrow'))
+    }
+
+    getBottomButtons() {
+        return [...Array.from(this.prevButtons), ...Array.from(this.nextButtons)].filter((element) => element.classList.contains('bottom-arrow'))
+    }
+
     changeFocusNav = () => {
         document.querySelector("#nav-btn-" + this.startIndex).checked = 'true';
+    }
+
+    changeVisabilityTopButtons(displayValue) {
+        this.topButtons.forEach(function (element) {
+            element.style.display = displayValue;
+        });
+    }
+
+    changeVisabilityBottomButtons(displayValue) {
+        this.bottomButtons.forEach(function (element) {
+            element.style.display = displayValue;
+        });
+    }
+
+    changeButtonsVisability() {
+        if (screenWidth < 1140) {
+            this.changeVisabilityTopButtons('inline');
+            this.changeVisabilityBottomButtons('none');
+        } else {
+            this.changeVisabilityTopButtons('none');
+            this.changeVisabilityBottomButtons('inline');
+        }
+
+        if (this.itemsArray.length <= this.maxItemsInRow) {
+
+            if (this.topButtons) {
+                this.topButtons.forEach(function (element) {
+                    element.style.display = 'none';
+                })
+            }
+
+            if (this.bottomButtons) {
+                this.bottomButtons.forEach(function (element) {
+                    element.style.display = 'none';
+                })
+            }
+        }
     }
 
 }
@@ -111,30 +161,3 @@ Carousel.prototype.initInterval = function () {
         _this.nextSlide();
     }, 5000);
 };
-
-const changeButtonsVisability = (carousel) => {
-    if (screenWidth < 1140) {
-        changeVisabilityTopButtons('inline');
-        changeVisabilityBottomButtons('none');
-    } else {
-        changeVisabilityTopButtons('none');
-        changeVisabilityBottomButtons('inline');
-    }
-
-    if (carousel.itemsArray.length <= carousel.maxItemsInRow) {
-        changeVisabilityTopButtons('none');
-        changeVisabilityBottomButtons('none');
-    }
-}
-
-const changeVisabilityTopButtons = (displayValue) => {
-    Array.from(topArrowButtons).forEach(function (element) {
-        element.style.display = displayValue;
-    });
-}
-
-const changeVisabilityBottomButtons = (displayValue) => {
-    Array.from(bottomArrowButtons).forEach(function (element) {
-        element.style.display = displayValue;
-    });
-}
