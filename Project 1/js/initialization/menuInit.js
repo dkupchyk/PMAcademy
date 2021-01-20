@@ -6,7 +6,7 @@ const menuArraySorted = order(MENU.filter(item => isValidMenuItem(item)));
 const menuAmountElementsMin = menuArraySorted.length < MENU_MAX ? menuArraySorted.length : MENU_MAX;
 
 const initMenu = () => {
-    if (!blockExists(menuArraySorted) || !isValidMenu(menuArraySorted)) {
+    if (!blockExists(menuArraySorted)) {
         document.getElementsByClassName('catalog-navigation')[0].style.display = 'none';
         return;
     }

@@ -12,10 +12,7 @@ const createNavElement = (key) => {
     let item = document.createElement('div');
 
     item.classList.add('nav__dropdown', 'dropdown');
-    item.innerHTML += "<a class=\"nav__link\" href=\"#\">" +
-        `${key.title}` +
-        "<img class=\"arrow-down\" src=\"resources/icon/arrow-down.svg\" alt=\"arrow-down\">" +
-        "</a>";
+    item.innerHTML += TEMPLATE_TOP_MENU(key);
     item.innerHTML += createDropdown(order(key.submenu));
 
     return item;
@@ -33,7 +30,7 @@ const createDropdown = (submenuArray) => {
 }
 
 const initTopMenu = () => {
-    if (!blockExists(topMenuArraySorted) || !isValidMenu(topMenuArraySorted)) {
+    if (!blockExists(topMenuArraySorted)) {
         document.getElementsByClassName('nav')[0].style.display = 'none';
         return;
     }
@@ -44,7 +41,8 @@ const initTopMenu = () => {
         if (+index === TOP_MENU_MAX) break;
 
         let key = topMenuArraySorted[index];
-        if (key.hasOwnProperty('submenu') && isValidMenu(key.submenu)) {
+
+        if (key.hasOwnProperty('submenu') && blockExists((key.submenu).filter(element => isValidMenuItem(element)))) {
             nav[0].appendChild(createNavElement(key));
         } else {
             nav[0].innerHTML += `<a class=\"nav__link\" href=\"https://homy.ru/support/\">${key.title}</a>`

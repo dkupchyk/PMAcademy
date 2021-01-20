@@ -197,7 +197,7 @@ const NEWS = [
         date: '2021/01/01',
         title: '2021/01/01',
         description: 'Предприятие «Элтекс» запустило производство точки доступа WEP-2ac.',
-        img: 'https://www.freecodecamp.org/news/content/images/2020/04/w-qjCHPZbeXCQ-unsplash.jpg',
+        img: '',
         url: 'voip_equipment.html',
     },
     {

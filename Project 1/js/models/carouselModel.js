@@ -152,7 +152,6 @@ class Carousel {
             }
         }
     }
-
 }
 
 Carousel.prototype.initInterval = function () {

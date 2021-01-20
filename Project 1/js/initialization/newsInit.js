@@ -12,7 +12,7 @@ const parseDate = (date) => {
 }
 
 const initNews = () => {
-    if (!blockExists(newsArraySorted) || !isValidNews(newsArraySorted)) {
+    if (!blockExists(newsArraySorted)) {
         document.getElementsByClassName('news')[0].style.display = 'none';
         document.querySelector('.important-info .advert').style.width = '100%';
         return;

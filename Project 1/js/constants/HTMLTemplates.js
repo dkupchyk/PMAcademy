@@ -1,3 +1,10 @@
+const TEMPLATE_TOP_MENU = function (key) {
+    return `<a class="nav__link" href="#">
+                ${key.title} 
+                <img class="arrow-down" src="resources/icon/arrow-down.svg" alt="arrow-down">
+            </a>`;
+}
+
 const TEMPLATE_CAROUSEL_BANNER = function (item) {
     return `<img src="${item.img}" alt="banner-slide">
             <div class="slide__text">
@@ -109,10 +116,10 @@ const TEMPLATE_CAROUSEL_PROM = function (item) {
                 <p>${item.description}</p>
                 <div class="timing">
                     <p>Срок действия:</p>`
-                        + (item.hasOwnProperty('time_action') && item.time_action
-                            ? TEMPLATE_CAROUSEL_PROM_WITH_DATE(DateService.convertDateToHTML(item.time_action))
-                            : TEMPLATE_CAROUSEL_PROM_WITHOUT_DATE) +
-               `</div>
+        + (item.hasOwnProperty('time_action') && item.time_action
+            ? TEMPLATE_CAROUSEL_PROM_WITH_DATE(DateService.convertDateToHTML(item.time_action))
+            : TEMPLATE_CAROUSEL_PROM_WITHOUT_DATE) +
+        `</div>
                 <a class="centered" href="#">Подробнее</a>
              </div>`;
 }

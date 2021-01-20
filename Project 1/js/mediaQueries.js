@@ -14,7 +14,7 @@ const updateMaxSizes = function () {
         screenWidth = 750;
 
     } else if (document.documentElement.clientWidth < 1140) {
-        newCarousel.maxItemsInRow = recCarousel.maxItemsInRow = saleCarousel.maxItemsInRow =  promoCarousel.maxItemsInRow = 4;
+        newCarousel.maxItemsInRow = recCarousel.maxItemsInRow = saleCarousel.maxItemsInRow = promoCarousel.maxItemsInRow = 4;
         brandsCarousel.maxItemsInRow = 7;
         numbersCarousel.maxItemsInRow = 6;
         screenWidth = 980;
