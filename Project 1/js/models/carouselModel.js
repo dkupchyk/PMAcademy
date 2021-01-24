@@ -58,7 +58,7 @@ class Carousel {
             if (this.type === 'new' || this.type === 'rec' || this.type === 'sales') {
                 item.price = CurrencyService.changeCurrency(item.price, item.currency);
                 item.oldPrice = CurrencyService.changeCurrency(item.oldPrice, item.currency);
-                item.currency = CURRENCY;
+                 item.currency = CURRENCY;
             }
 
             this.carouselSlidesElement.innerHTML += this.templateHTMLFunc(item, isAvailableCarouselItem(item));
