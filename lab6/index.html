@@ -16,30 +16,98 @@
 <body>
 
 <!-- Запросить у пользователя id - вывести данные по пользователю. -->
-<!-- Запросить у пользователя id, если такой есть - запросить дополнительное поле - адрес. Вывести адрес. -->
-<!-- Запросить у пользователя ввести название компании - найти пользователя с такой компанией - вернуть объект пользователя.-->
-<!-- Сделать каждый property id пользователя неудаляемым и запретить его мутацию/изменение.-->
-<!-- Написать сеттер - чтобы при изменении phone - проверялась валидность номера телефона при помощи регулярного выражения для (ххх) ххх-хх-хх - все х - числа.-->
+<div class="form-wrapper">
+    <form>
+        <div class="inputs">
+            <div>
+                <label for="task-1-id">Введите id пользователя:</label>
+                <input type="number" id="task-1-id">
+            </div>
+        </div>
+        <br>
 
+        <button id="task-1-button" type="button" name="button">Вывести данные по пользователю.</button>
+        <br>
+
+        <div id="task-1-answer" class="answer"></div>
+    </form>
+</div>
+
+<!-- Запросить у пользователя id, если такой есть - запросить дополнительное поле - адрес. Вывести адрес. -->
+<div class="form-wrapper">
+    <form>
+        <div class="inputs">
+            <div>
+                <label for="task-2-id">Введите id пользователя:</label>
+                <input type="number" id="task-2-id">
+            </div>
+        </div>
+        <br>
+
+        <button id="task-2-button" type="button" name="button">Вывести адрес пользователя.</button>
+        <br>
+
+        <div id="task-2-answer" class="answer"></div>
+    </form>
+</div>
+
+<!-- Запросить у пользователя ввести название компании - найти пользователя с такой компанией - вернуть объект пользователя.-->
 <!--<div class="form-wrapper">-->
 <!--    <form>-->
 <!--        <div class="inputs">-->
 <!--            <div>-->
-<!--                <label for="task-1-n">Введите id пользователя:</label>-->
-<!--                <input type="number" id="task-1-n">-->
+<!--                <label for="task-2-n">Введите id пользователя:</label>-->
+<!--                <input type="number" id="task-2-n">-->
 <!--            </div>-->
 <!--        </div>-->
 <!--        <br>-->
 
-<!--        <button id="task-1-button" type="button" name="button">Вывести данные по пользователю.</button>-->
+<!--        <button id="task-2-button" type="button" name="button">Вывести данные по пользователю.</button>-->
 <!--        <br>-->
 
-<!--        <div id="task-1-answer" class="answer"></div>-->
+<!--        <div id="task-2-answer" class="answer"></div>-->
+<!--    </form>-->
+<!--</div>-->
+
+<!-- Сделать каждый property id пользователя неудаляемым и запретить его мутацию/изменение.-->
+<!--<div class="form-wrapper">-->
+<!--    <form>-->
+<!--        <div class="inputs">-->
+<!--            <div>-->
+<!--                <label for="task-2-n">Введите id пользователя:</label>-->
+<!--                <input type="number" id="task-2-n">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <br>-->
+
+<!--        <button id="task-2-button" type="button" name="button">Вывести данные по пользователю.</button>-->
+<!--        <br>-->
+
+<!--        <div id="task-2-answer" class="answer"></div>-->
+<!--    </form>-->
+<!--</div>-->
+
+<!-- Написать сеттер - чтобы при изменении phone - проверялась валидность номера телефона при помощи регулярного выражения для (ххх) ххх-хх-хх - все х - числа.-->
+<!--<div class="form-wrapper">-->
+<!--    <form>-->
+<!--        <div class="inputs">-->
+<!--            <div>-->
+<!--                <label for="task-2-n">Введите id пользователя:</label>-->
+<!--                <input type="number" id="task-2-n">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <br>-->
+
+<!--        <button id="task-2-button" type="button" name="button">Вывести данные по пользователю.</button>-->
+<!--        <br>-->
+
+<!--        <div id="task-2-answer" class="answer"></div>-->
 <!--    </form>-->
 <!--</div>-->
 
 
 <script src="js/constants.js" charset="utf-8"></script>
+<script src="js/validation.js" charset="utf-8"></script>
 <script src="js/index.js" charset="utf-8"></script>
 
 </body>
