@@ -63,6 +63,7 @@ const printUser = function (obj, spaces = 1) {
 
 let task1Id = document.getElementById("task-1-id");
 let task2Id = document.getElementById("task-2-id");
+let task3Company = document.getElementById("task-3-company");
 
 document.getElementById("task-1-button").addEventListener("click", () => {
     if (valid("ЗАДАНИЕ 1: Введите id пользователя.", 0, task1Id.value.length)) {
@@ -90,3 +91,33 @@ document.getElementById("task-2-button").addEventListener("click", () => {
         document.getElementById("task-2-answer").innerHTML = answer;
     }
 });
+
+document.getElementById("task-3-button").addEventListener("click", () => {
+    if (valid("ЗАДАНИЕ 3: Введите компанию.", 0, task3Company.value.length)) {
+        const filtered = filter(usersHashMap, task3Company.value);
+
+        let answer = `Ответ: `;
+        if (Object.keys(filtered).length === 0) {
+            answer += `такого пользователя не существует.` ;
+        } else {
+            for (let user in filtered) {
+                answer += `<br> { <br> ${printUser(filtered[user])} } <br>`
+                answer += '_'.repeat(80) + `<br>`;
+            }
+        }
+
+        document.getElementById("task-3-answer").innerHTML = answer;
+    }
+});
+
+const filter = (hashMap, companyName) => {
+    let result = {}
+    for (let i in hashMap) {
+        let user = hashMap[i];
+        if (user.company.name === companyName) {
+            result[user.id] = user;
+        }
+    }
+    return result;
+}
+

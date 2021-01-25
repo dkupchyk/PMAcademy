@@ -185,7 +185,7 @@ const USERS = [
         website: "elvis.io",
         company:
             {
-                name: "Johns Group",
+                name: "Hoeger LLC",
                 catchPhrase: "Configurable multimedia task-force",
                 bs: "generate enterprise e-tailers"
             }
