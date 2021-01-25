@@ -73,7 +73,7 @@ document.getElementById("task-1-button").addEventListener("click", () => {
         let answer = `Ответ: `;
         (usersHashMap.hasOwnProperty(task1Id.value))
             ? answer += `<br> { <br> ${printUser(user)} }`
-            : answer += `такого пользователя не существует.` ;
+            : answer += `такого пользователя не существует.`;
 
         document.getElementById("task-1-answer").innerHTML = answer;
     }
@@ -86,7 +86,7 @@ document.getElementById("task-2-button").addEventListener("click", () => {
         let answer = `Ответ: `;
         (usersHashMap.hasOwnProperty(task2Id.value))
             ? answer += `<br> { <br> ${printUser(user.address)} }`
-            : answer += `такого пользователя не существует.` ;
+            : answer += `такого пользователя не существует.`;
 
         document.getElementById("task-2-answer").innerHTML = answer;
     }
@@ -98,7 +98,7 @@ document.getElementById("task-3-button").addEventListener("click", () => {
 
         let answer = `Ответ: `;
         if (Object.keys(filtered).length === 0) {
-            answer += `такого пользователя не существует.` ;
+            answer += `такого пользователя не существует.`;
         } else {
             for (let user in filtered) {
                 answer += `<br> { <br> ${printUser(filtered[user])} } <br>`
@@ -107,6 +107,15 @@ document.getElementById("task-3-button").addEventListener("click", () => {
         }
 
         document.getElementById("task-3-answer").innerHTML = answer;
+    }
+});
+
+document.getElementById("task-4-button").addEventListener("click", () => {
+    for (let user in usersHashMap) {
+        Object.defineProperty(usersHashMap[user], 'id', {
+            configurable: false,
+            writable: false
+        });
     }
 });
 
