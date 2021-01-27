@@ -9,6 +9,10 @@ body {
     min-width: 650px;
 }
 
+h2 {
+    font-size: 2em;
+}
+
 h3, h2 {
     text-align: center;
     color: #03FD15;
@@ -26,6 +30,7 @@ form .inputs {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 25px;
 }
 
 label {
@@ -45,7 +50,7 @@ input {
 
 button {
     padding: 2%;
-    margin: 25px 0;
+    margin-bottom: 25px;
 
     border: 2px solid #03FD15;
     border-radius: 5px;

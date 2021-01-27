@@ -1,4 +1,4 @@
-class HashMap {
+class Hashmap {
 
     constructor(array) {
         this.initialize(array);
@@ -34,12 +34,13 @@ class HashMap {
     }
 
     displayAllUsers() {
+        console.log("---------------------------------------- HashMap ----------------------------------------")
         for (let x in this) {
-            console.log('Key:\n—- ' + x + '\n');
+            console.log('Key: ' + x + '\n');
             console.log('Values: ');
             let value = this[x];
             for (let y in value) {
-                console.log('—- ' + y + ':' + value[y]);
+                console.log('-- ' + y + ':' + value[y]);
             }
             console.log('\n');
         }

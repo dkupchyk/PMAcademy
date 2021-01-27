@@ -31,7 +31,7 @@ const USERS = [
         name: "Ervin Howell",
         username: "Antonette",
         email: "Shanna@melissa.tv",
-        registrationDate: "Mon, 11 Jan 2021 12: 28: 18 + 0000",
+        registrationDate: "Mon, 18 Jan 2021 12: 28: 18 + 0000",
         address:
             {
                 street: "Victor Plains",
@@ -85,7 +85,7 @@ const USERS = [
         name: "Patricia Lebsack",
         username: "Karianne",
         email: "Julianne.OConner@kory.org",
-        registrationDate: "Mon, 11 Jan 2021 18: 28: 18 + 0000",
+        registrationDate: "Mon, 11 Jan 2011 18: 28: 18 + 0000",
         address:
             {
                 street: "Hoeger Mall",
@@ -112,7 +112,7 @@ const USERS = [
         name: "Chelsey Dietrich",
         username: "Kamren",
         email: "Lucio_Hettinger@annie.ca",
-        registrationDate: "Mon, 11 Jan 2021 18: 48: 18 + 0000",
+        registrationDate: "Mon, 11 Jan 2029 18: 48: 18 + 0000",
         address:
             {
                 street: "Skiles Walks",

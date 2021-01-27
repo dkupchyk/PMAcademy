@@ -15,6 +15,8 @@
 
 <body>
 
+<h2>HashMap</h2>
+
 <!-- Запросить у пользователя id - вывести данные по пользователю. -->
 <div class="form-wrapper">
     <form>
@@ -72,7 +74,9 @@
 <!-- Сделать каждый property id пользователя неудаляемым и запретить его мутацию/изменение.-->
 <div class="form-wrapper">
     <form>
-        <button id="task-4-button" type="button" name="button">Сделать каждый property id пользователя неудаляемым и запретить его мутацию/изменение.</button>
+        <button id="task-4-button" type="button" name="button">Сделать каждый property id пользователя неудаляемым и
+            запретить его мутацию/изменение.
+        </button>
         <br>
 
         <div id="task-4-answer" class="answer"></div>
@@ -101,9 +105,92 @@
     </form>
 </div>
 
-<script src="js/hashmap.js" charset="utf-8"></script>
+
+<h2>Arrays</h2>
+
+<!-- Написать функцию которая находила бы первый и последний индекс вхождения в массив переданного числа (запросить у пользователя). И выводила  в виде [[FIRST_INDEX], [LAST_INDEX]]. -->
+<!-- Если такого числа нет - выводить вместо индексов -1 [-1,-1]. -->
+<div class="form-wrapper">
+    <form>
+        <div class="inputs">
+            <div>
+                <label for="task-6-array">Введите массив чисел:</label>
+                <input type="text" id="task-6-array" placeholder="1,2,3,4,5,6...">
+            </div>
+            <div>
+                <label for="task-6-number">Введите число:</label>
+                <input type="text" id="task-6-number">
+            </div>
+        </div>
+        <br>
+
+        <button id="task-6-button" type="button" name="button">Найти первый и последний индекс вхождения в массив переданного числа.</button>
+        <br>
+
+        <div id="task-6-answer" class="answer"></div>
+    </form>
+</div>
+
+<!--Пересечение массивов. Дано два массива, напишите функцию для вычисления их пересечения.-->
+<div class="form-wrapper">
+    <form>
+        <div class="inputs">
+            <div>
+                <label for="task-7-array-1">Введите первый массив чисел:</label>
+                <input type="text" id="task-7-array-1" placeholder="1,2,3,4,5,6...">
+            </div>
+            <div>
+                <label for="task-7-array-2">Введите второй массив чисел:</label>
+                <input type="text" id="task-7-array-2" placeholder="1,2,3,4,5,6...">
+            </div>
+        </div>
+        <br>
+
+        <button id="task-7-button" type="button" name="button">Найти пересечение этих массивов.</button>
+        <br>
+
+        <div id="task-7-answer" class="answer"></div>
+    </form>
+</div>
+
+<!--Написать функцию, которая принимает два массива и индекс.-->
+<!--Возвращает новый массив в котором в первый массив по переданному индексу записывается второй массив.-->
+<div class="form-wrapper">
+    <form>
+        <div class="inputs">
+            <div>
+                <label for="task-8-array-1">Введите первый массив чисел:</label>
+                <input type="text" id="task-8-array-1" placeholder="1,2,3,4,5,6...">
+            </div>
+            <div>
+                <label for="task-8-array-2">Введите второй массив чисел:</label>
+                <input type="text" id="task-8-array-2" placeholder="1,2,3,4,5,6...">
+            </div>
+        </div>
+
+        <div class="inputs">
+            <div>
+                <label for="task-8-index">Введите индекс:</label>
+                <input type="number" id="task-8-index">
+            </div>
+        </div>
+
+        <br>
+
+        <button id="task-8-button" type="button" name="button">Вывести массив в котором в первый массив по переданному индексу записывается второй массив.</button>
+        <br>
+
+        <div id="task-8-answer" class="answer"></div>
+    </form>
+</div>
+
+<h3>Для заданий на сортировку результаты в консоли</h3>
+
 <script src="js/constants.js" charset="utf-8"></script>
+<script src="js/dateService.js" charset="utf-8"></script>
+<script src="js/hashmap.js" charset="utf-8"></script>
 <script src="js/validation.js" charset="utf-8"></script>
+<script src="js/arrays.js" charset="utf-8"></script>
 <script src="js/index.js" charset="utf-8"></script>
 
 </body>
