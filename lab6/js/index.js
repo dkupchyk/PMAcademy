@@ -73,11 +73,12 @@ document.getElementById("task-4-button").addEventListener("click", () => {
 
 document.getElementById("task-5-button").addEventListener("click", () => {
     if (valid("HASHMAP | ЗАДАНИЕ 5: Введите правильные значения.", 0, task5Id.value.length, task5Phone.value.length)) {
-
-        const isValidPhone = /^\s*\(\d{3}\) \d{3}-\d{2}-\d{2}\s*$/.test(task5Phone.value);
         let answer = `Ответ: `;
+        const isValidPhone = /^\s*\(\d{3}\) \d{3}-\d{2}-\d{2}\s*$/.test(task5Phone.value);
 
-        if (!isValidPhone) {
+        if (!usersHashMap.hasOwnProperty(task5Id.value)) {
+            answer += `такого пользователя не существует.`
+        } else if (!isValidPhone) {
             answer += `введите валидный номер телефона.`;
         } else {
             usersHashMap.setPhone(+task5Id.value, task5Phone.value)

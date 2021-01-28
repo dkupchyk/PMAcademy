@@ -40,7 +40,7 @@ class Hashmap {
             console.log('Values: ');
             let value = this[x];
             for (let y in value) {
-                console.log('-- ' + y + ':' + value[y]);
+                console.log('   ' + y + ':' + value[y]);
             }
             console.log('\n');
         }
@@ -82,7 +82,6 @@ class Hashmap {
                 return user;
             }
         }
-
         return -1;
     }
 

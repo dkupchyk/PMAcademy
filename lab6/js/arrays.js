@@ -2,12 +2,7 @@ const toNumArray = (array) => {
     return array.value.split(",").map(Number);
 }
 
-const findIndexes = (array, value) => {
-    console.log(array)
-    console.log(array.lastIndexOf(value))
-
-    return [array.indexOf(value), array.lastIndexOf(value)]
-};
+const findIndexes = (array, value) => [array.indexOf(value), array.lastIndexOf(value)];
 
 const intersection = (array1, array2) => array1.filter(value => array2.includes(value));
 
