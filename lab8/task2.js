@@ -46,9 +46,8 @@ const assert
     = require('assert');
 
 
-function flatWhite() {
-
-// Implementation
+function flatWhite(array) {
+    return [].concat(...array);
 
 }
 

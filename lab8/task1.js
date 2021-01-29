@@ -48,7 +48,7 @@ const assert
 
 
 function multiplyBy(multiplier, ...numbers) {
-    return numbers.map(num => num * multiplier)
+    return numbers.map(num => num * multiplier);
 }
 
 
