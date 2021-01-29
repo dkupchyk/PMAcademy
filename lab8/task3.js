@@ -57,6 +57,7 @@ function extendWith(obj1, obj2) {
     return newObj;
 }
 
+module.exports = { extendWith };
 
 assert.deepStrictEqual(extendWith(
     {

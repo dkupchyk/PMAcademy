@@ -41,56 +41,56 @@
  *
 
  * */
+const task3 = require("./task3");
 
 
 const assert
     = require('assert');
 
 
-function extendWithEndless() {
+function extendWithEndless(...objects) {
+    let objectsArray = objects.reverse();
 
-// Implementation
+    if (objectsArray.length === 0) return;
 
+    let newObj = objectsArray[0];
+    for (let i = 1; i < objectsArray.length; i++)
+        newObj = task3.extendWith(newObj, objectsArray[i]);
+
+    return newObj;
 }
 
 
 assert.deepStrictEqual(extendWithEndless(
-    {flatWhite: ['doppio', 'hot', 'milk'], isValid: true},
+    {
+        flatWhite: ['doppio', 'hot', 'milk'],
+        isValid: true
+    },
 
     {
-        isValid:
-            false,
+        isValid: false,
         additionalProp: {thisIsGoodProp: 123}
     },
 
     {
-        prop3:
-            true
+        prop3: true
     },
 
     {
-        prop4:
-            true
+        prop4: true
     },
 
     {
-        isValid:
-            [false, false]
+        isValid: [false, false]
     },
     ),
 
     {
-
         flatWhite: ['doppio', 'hot', 'milk'],
-
         isValid: [false, false],
-
         additionalProp: {thisIsGoodProp: 123},
-
         prop3: true,
-
         prop4: true
-
     }
 );
 
