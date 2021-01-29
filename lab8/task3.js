@@ -47,15 +47,22 @@ const assert
     = require('assert');
 
 
-function extendWith() {
-
-// Implementation
-
+function extendWith(obj1, obj2) {
+    let newObj = {...obj1};
+    for (const key in obj2) {
+        if (!newObj.hasOwnProperty(key)) {
+            newObj[key] = obj2[key];
+        }
+    }
+    return newObj;
 }
 
 
 assert.deepStrictEqual(extendWith(
-    {flatWhite: ['doppio', 'hot', 'milk'], isValid: true},
+    {
+        flatWhite: ['doppio', 'hot', 'milk'],
+        isValid: true
+    },
 
     {
         isValid: false,
@@ -63,7 +70,11 @@ assert.deepStrictEqual(extendWith(
     }
     ),
 
-    {flatWhite: ['doppio', 'hot', 'milk'], isValid: true, additionalProp: {thisIsGoodProp: 123}}
+    {
+        flatWhite: ['doppio', 'hot', 'milk'],
+        isValid: true,
+        additionalProp: {thisIsGoodProp: 123}
+    }
 );
 
 
