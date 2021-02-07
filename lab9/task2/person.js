@@ -11,41 +11,40 @@ class Person {
     }
 
     constructor(name = 'NoName', gender = Person.GENDER.NOT_DEFINED) {
-        this.setName = name;
-        this.setGender = gender;
+        this.name = name;
+        this.gender = gender;
     }
 
-    get getName() {
+    get name() {
         return this.#name;
     }
 
-    set setName(name) {
+    set name(name) {
         this.#name = name;
     }
 
-    get getGender() {
+    get gender() {
         return this.#gender;
     }
 
-    set setGender(gender) {
+    set gender(gender) {
         try {
             if (!Person.#validateGender(gender)) {
                 this.#gender = gender;
             }
-
         } catch (e) {
             console.error(e);
         }
     }
 
-    static #validateGender = function(gender) {
+    static #validateGender = function (gender) {
         if (Object.values(Person.GENDER).indexOf(gender) === -1) {
             throw new PersonGenderError("Gender is not valid!");
         }
     }
 
     getInfo() {
-        return `Name: ${this.getName}; Gender: ${this.getGender}`;
+        return `Name: ${this.name}; Gender: ${this.gender}`;
     }
 }
 

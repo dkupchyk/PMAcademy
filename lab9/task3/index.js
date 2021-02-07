@@ -1,13 +1,13 @@
-const Person = require("./personLog");
+const PersonLog = require("./personLog");
 
-const person1 = new Person();
-console.log(person1.getInfo());
+const person1 = new PersonLog();
 
-const person2 = new Person('John', Person.GENDER.MAN);
-console.log(person2.getInfo());
+person1.name = 'Dan';
+person1.gender = 1;
 
-const person3 = new Person('Emma', 2);
-console.log(person3.getInfo());
+person1.name = 'Emma';
+person1.gender = 2;
+person1.gender = 2;
+person1.gender = 6;
 
-const person4 = new Person('Dan', 7);
-console.log(person4.getInfo());
+console.log(person1.printLogs());
