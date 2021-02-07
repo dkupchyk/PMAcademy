@@ -48,7 +48,6 @@ const assert
 
 function flatWhite(array) {
     return [].concat(...array);
-
 }
 
 

@@ -49,15 +49,23 @@ const assert
 
 
 function extendWithEndless(...objects) {
-    let objectsArray = objects.reverse();
+    let newObj = {};
 
-    if (objectsArray.length === 0) return;
-
-    let newObj = objectsArray[0];
-    for (let i = 1; i < objectsArray.length; i++)
-        newObj = task3.extendWith(newObj, objectsArray[i]);
+    objects.forEach( obj => {
+        newObj = {...newObj, ...obj}
+    })
 
     return newObj;
+
+    // let objectsArray = objects.reverse();
+
+    // if (objectsArray.length === 0) return;
+    //
+    // let newObj = objectsArray[0];
+    // for (let i = 1; i < objectsArray.length; i++)
+    //     newObj = task3.extendWith(newObj, objectsArray[i]);
+    //
+    // return newObj;
 }
 
 

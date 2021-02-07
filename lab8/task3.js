@@ -48,13 +48,14 @@ const assert
 
 
 function extendWith(obj1, obj2) {
-    let newObj = {...obj1};
-    for (const key in obj2) {
-        if (!newObj.hasOwnProperty(key)) {
-            newObj[key] = obj2[key];
-        }
-    }
-    return newObj;
+    return {...obj2, ...obj1};
+    // let newObj = {...obj1};
+    // for (const key in obj2) {
+    //     if (!newObj.hasOwnProperty(key)) {
+    //         newObj[key] = obj2[key];
+    //     }
+    // }
+    // return newObj;
 }
 
 module.exports = { extendWith };
