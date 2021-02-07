@@ -1,6 +1,5 @@
-const Person = require("./person");
+const Person = require("./personLog");
 
-// Trying to create person with valid age
 const person1 = new Person();
 console.log(person1.getInfo());
 
@@ -10,10 +9,5 @@ console.log(person2.getInfo());
 const person3 = new Person('Emma', 2);
 console.log(person3.getInfo());
 
-// Trying to change already existing persons age
-person3.setGender = 7;
-console.log(person3.getInfo());
-
-// Trying to create person with invalid age
 const person4 = new Person('Dan', 7);
 console.log(person4.getInfo());

@@ -1,8 +1,8 @@
 const PersonGenderError = require("./personGenderError");
 
 class Person {
-    #name = 'NoName'
-    #gender = Person.GENDER.NOT_DEFINED
+    #name = 'NoName';
+    #gender = Person.GENDER.NOT_DEFINED;
 
     static GENDER = {
         NOT_DEFINED: 0,
@@ -29,7 +29,7 @@ class Person {
 
     set setGender(gender) {
         try {
-            if (!Person.validateGender(gender)) {
+            if (!Person.#validateGender(gender)) {
                 this.#gender = gender;
             }
 
@@ -38,7 +38,7 @@ class Person {
         }
     }
 
-    static validateGender(gender) {
+    static #validateGender = function(gender) {
         if (Object.values(Person.GENDER).indexOf(gender) === -1) {
             throw new PersonGenderError("Gender is not valid!");
         }
