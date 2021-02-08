@@ -5,32 +5,23 @@ class PersonLog extends Person {
 
     constructor() {
         super();
+        Object.freeze(this);
     }
 
     set name(name) {
-        if (!this.logs) {
-            super.name = name;
-            return;
-        }
-
         let oldName = super.name;
         super.name = name;
 
         if (oldName !== super.name) {
-            this.addLog('name', oldName, super.name)
+            this.addLog('name', oldName, super.name);
         }
     }
 
     set gender(gender) {
-        if (!this.logs) {
-            super.gender = gender;
-            return;
-        }
-
         let oldGender = super.gender;
         super.gender = gender;
 
-        if (oldGender !== super.genders) {
+        if (oldGender !== super.gender) {
             this.addLog('gender', oldGender, super.gender);
         }
     }

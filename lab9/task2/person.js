@@ -12,7 +12,7 @@ class Person {
 
     constructor(name = 'NoName', gender = Person.GENDER.NOT_DEFINED) {
         this.name = name;
-        this.gender = gender;
+        this.updateGender(gender);
     }
 
     get name() {
@@ -28,6 +28,10 @@ class Person {
     }
 
     set gender(gender) {
+        this.updateGender(gender);
+    }
+
+    updateGender(gender) {
         try {
             if (!Person.#validateGender(gender)) {
                 this.#gender = gender;
@@ -39,7 +43,7 @@ class Person {
 
     static #validateGender = function (gender) {
         if (Object.values(Person.GENDER).indexOf(gender) === -1) {
-            throw new PersonGenderError("Gender is not valid!");
+            throw new PersonGenderError(`Gender ${gender} is not valid!`);
         }
     }
 

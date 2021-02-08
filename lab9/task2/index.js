@@ -11,7 +11,7 @@ const person3 = new Person('Emma', 2);
 console.log(person3.getInfo());
 
 // Trying to change already existing persons age
-person3.gender = 7;
+// person3.setGender(7);
 console.log(person3.getInfo());
 
 // Trying to create person with invalid age
