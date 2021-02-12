@@ -1,18 +1,13 @@
-const usernameValue = document.getElementById('username');
-const searchButton = document.getElementById('searchButton');
-
-const infoContainer = document.getElementById('container__user')
-
 const fetchUsers = (username) => {
     return fetchData(`https://api.github.com/users/${username}?`);
 }
 
 const fetchUserRepos = (username) => {
-    return fetchData(`https://api.github.com/users/${username}/followers?`);
+    return fetchData(`https://api.github.com/users/${username}/repos?`);
 }
 
 const fetchUserFollowers = (username) => {
-    return fetchData(`https://api.github.com/users/${username}/repos?`);
+    return fetchData(`https://api.github.com/users/${username}/followers?`);
 }
 
 const fetchData = async (url) => {
@@ -27,21 +22,32 @@ const fetchData = async (url) => {
     })
 }
 
-const showData = (data) => {
-    infoContainer.innerHTML = `<img class="container__user-avatar" src="${data.avatar_url}" alt="avatar">`
+const getUsersRepos = () => {
+    return fetchUserRepos(usernameValue.value);
 }
 
-const showError = (data) => {
-    infoContainer.innerHTML = `<p class="error">There is no such user...<p>`;
+const getUsersFollowers = () => {
+    return fetchUserFollowers(usernameValue.value);
 }
+
+const showData = async (data) => {
+    const repos = await getUsersRepos();
+    const followers = await getUsersFollowers();
+
+    console.log(data)
+
+    infoContainer.innerHTML = USER_HTML_TEMPLATE(data.avatar_url, data.name, data.bio, data.location, repos, followers);
+}
+
+const showError = () => infoContainer.innerHTML = `<p class="error">There is no such user...<p>`;
 
 const processData = () => {
     fetchUsers(usernameValue.value)
         .then(response => {
             showData(response);
         })
-        .catch(response => {
-            showError(response);
+        .catch(() => {
+            showError();
         })
 }
 
