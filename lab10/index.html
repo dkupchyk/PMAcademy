@@ -9,17 +9,19 @@
 </head>
 <body>
 
-<div class="container">
-    <img class="logo" src="resources/GitHub_Logo_White.png" alt="logo">
+<div class="container__form">
+    <img class="container__logo" src="resources/GitHub_Logo_White.png" alt="logo">
 
-    <form>
-        <input type="text" placeholder="Enter nickname" id="nickname">
-        <button>Search</button>
-    </form>
-
+    <div class="form">
+        <input id="username" type="text" placeholder="Enter a username">
+        <button id="searchButton">Search</button>
+    </div>
 </div>
 
-<script src="js/index.js" charset="utf-8"></script>
+<div id="container__user">
+</div>
+
+<script src="./js/index.js" charset="utf-8"></script>
 
 </body>
 </html>
