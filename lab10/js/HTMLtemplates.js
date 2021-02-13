@@ -1,4 +1,4 @@
-const USER_HTML_TEMPLATE = function (avatar_url, name, bio, location, repos, followers) {
+const USER_HTML_TEMPLATE = function (avatar_url, link, name, bio, location, repos, followers) {
     const validatedName = validate(name);
     const validatedBio = validate(bio);
     const validatedLocation = validate(location);
@@ -7,8 +7,8 @@ const USER_HTML_TEMPLATE = function (avatar_url, name, bio, location, repos, fol
     const followersHTML = generateFollowersHTML(followers);
 
     return `<div class="container__user-avatar">
-                <img src="${avatar_url}" alt="avatar">
-                <h2>${validatedName}</h2>
+                <a href="${link}"><img src="${avatar_url}" alt="avatar"></a>
+                <a href="${link}" class="heading">${validatedName}</a>
                 <p>${validatedLocation}</p>
                 <p>${validatedBio}</p>
             </div>

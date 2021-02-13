@@ -33,8 +33,14 @@ const getUsersFollowers = () => {
 const showData = async (data) => {
     const repos = await getUsersRepos();
     const followers = await getUsersFollowers();
+    const html = USER_HTML_TEMPLATE(data.avatar_url,
+                                    data.html_url,
+                                    data.name,
+                                    data.bio,
+                                    data.location,
+                                    repos,
+                                    followers);
 
-    const html = USER_HTML_TEMPLATE(data.avatar_url, data.name, data.bio, data.location, repos, followers);
     return Promise.resolve(html);
 }
 
