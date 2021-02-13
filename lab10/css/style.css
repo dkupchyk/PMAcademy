@@ -86,7 +86,7 @@ body, .container__form, .form, #container__user {
 }
 
 #container__user {
-    width: 75%;
+    width: 80%;
     margin: 2% 40px;
 
     flex-direction: row;
@@ -95,7 +95,7 @@ body, .container__form, .form, #container__user {
 }
 
 #container__user h2 {
-    font-size: 1.4em;
+    font-size: 1.6em;
     margin-bottom: 7px;
 }
 
@@ -118,6 +118,20 @@ body, .container__form, .form, #container__user {
 
 #container__user .container__user-avatar {
     line-height: 1.5;
+    width: 30%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#container__user .container__user-repos,
+#container__user .container__user-followers {
+    border-radius: 5px;
+    border: 2px solid #ffffff;
+    padding: 2%;
+    width: 30%;
 }
 
 #container__user .container__user-avatar img {
@@ -129,4 +143,26 @@ body, .container__form, .form, #container__user {
 
 .error {
     text-align: center;
+}
+
+.scrollbar {
+    float: left;
+    height: 250px;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 12px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #555;
 }

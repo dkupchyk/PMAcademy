@@ -1,21 +1,31 @@
 const USER_HTML_TEMPLATE = function (avatar_url, name, bio, location, repos, followers) {
+    const validatedName = validate(name);
+    const validatedBio = validate(bio);
+    const validatedLocation = validate(location);
+
     const reposHTML = generateReposHTML(repos);
     const followersHTML = generateFollowersHTML(followers);
 
     return `<div class="container__user-avatar">
                 <img src="${avatar_url}" alt="avatar">
-                <h2>${name}</h2>
-                <p>${location}</p>
-                <p>${bio}</p>
+                <h2>${validatedName}</h2>
+                <p>${validatedLocation}</p>
+                <p>${validatedBio}</p>
             </div>
+            
             <div class="container__user-repos">
                 <h2>Repositories</h2>
-                ${reposHTML}
+                  <div class="scrollbar">${reposHTML}</div>
             </div>
+            
             <div class="container__user-followers">
                 <h2>Followers</h2>
-                ${followersHTML}
+                 <div class="scrollbar">${followersHTML}</div>
             </div>`;
+}
+
+const validate = (value) => {
+    return value ? value : "";
 }
 
 const generateReposHTML = (repos) => {
