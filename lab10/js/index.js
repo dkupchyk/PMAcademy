@@ -51,11 +51,11 @@ const processData = () => {
         .then(response => {
             return showData(response);
         })
-        .catch(() => {
-            showError();
-        })
         .then(html => {
             infoContainer.innerHTML = html;
+        })
+        .catch(() => {
+            showError();
         });
 }
 
