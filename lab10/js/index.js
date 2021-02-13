@@ -34,9 +34,8 @@ const showData = async (data) => {
     const repos = await getUsersRepos();
     const followers = await getUsersFollowers();
 
-    console.log(data)
-
-    infoContainer.innerHTML = USER_HTML_TEMPLATE(data.avatar_url, data.name, data.bio, data.location, repos, followers);
+    const html = USER_HTML_TEMPLATE(data.avatar_url, data.name, data.bio, data.location, repos, followers);
+    return Promise.resolve(html);
 }
 
 const showError = () => infoContainer.innerHTML = `<p class="error">There is no such user...<p>`;
@@ -44,11 +43,14 @@ const showError = () => infoContainer.innerHTML = `<p class="error">There is no 
 const processData = () => {
     fetchUsers(usernameValue.value)
         .then(response => {
-            showData(response);
+            return showData(response);
         })
         .catch(() => {
             showError();
         })
+        .then(html => {
+            infoContainer.innerHTML = html;
+        });
 }
 
 searchButton.addEventListener('click', () => {
