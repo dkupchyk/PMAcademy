@@ -3,8 +3,8 @@ const USER_HTML_TEMPLATE = function (avatar_url, link, name, bio, location, repo
     const validatedBio = validate(bio);
     const validatedLocation = validate(location);
 
-    const reposHTML = generateReposHTML(repos);
-    const followersHTML = generateFollowersHTML(followers);
+    const reposHTML = generateListHTML(repos, 'html_url', 'name');
+    const followersHTML = generateListHTML(followers, 'html_url', 'login');
 
     return `<div class="container__user-avatar">
                 <a href="${link}"><img src="${avatar_url}" alt="avatar"></a>
@@ -28,20 +28,10 @@ const validate = (value) => {
     return value ? value : "";
 }
 
-const generateReposHTML = (repos) => {
+const generateListHTML = (list, urlProp, nameProp) => {
     let html = '';
-    repos.forEach(repo => {
-        html += `<a href="${repo.html_url}">${repo.name}</a> <br>`;
+    list.forEach(item => {
+        html += `<a href="${item[urlProp]}">${item[nameProp]}</a><br>`;
     })
     return html;
 }
-
-const generateFollowersHTML = (followers) => {
-    let html = '';
-    followers.forEach(follower => {
-        html += `<a href="${follower.html_url}">${follower.login}</a> <br>`;
-    })
-    return html;
-}
-
-
