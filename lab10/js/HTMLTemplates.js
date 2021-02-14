@@ -1,3 +1,7 @@
+const LOADING_HTML_TEMPLATE = `<p class="loading">Loading...</p>`;
+
+const ERROR_HTML_TEMPLATE = `<p class="error">There is no such user...</p>`;
+
 const USER_HTML_TEMPLATE = function (avatar_url, link, name, bio, location, repos, followers) {
     const validatedName = validate(name);
     const validatedBio = validate(bio);

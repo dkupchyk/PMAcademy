@@ -1,8 +1,12 @@
 let oldUsernameValue = infoContainer.value;
 
-const getUsersRepos = () => fetchUserRepos(usernameValue.value);
+const getUsersRepos = () => fetchUserRepos(usernameInput.value);
 
-const getUsersFollowers = () => fetchUserFollowers(usernameValue.value);
+const getUsersFollowers = () => fetchUserFollowers(usernameInput.value);
+
+const showLoading = () => infoContainer.innerHTML = LOADING_HTML_TEMPLATE;
+
+const showError = () => infoContainer.innerHTML = ERROR_HTML_TEMPLATE;
 
 const showData = async (data) => {
     const repos = await getUsersRepos();
@@ -18,13 +22,24 @@ const showData = async (data) => {
     return Promise.resolve(html);
 }
 
-const showError = () => infoContainer.innerHTML = `<p class="error">There is no such user...<p>`;
+const debounce = (func, wait) => {
+    let timeout;
+
+    return function execute() {
+        const later = () => {
+            clearTimeout(timeout);
+            func();
+        };
+
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+};
 
 const processData = () => {
-    if (usernameValue.value !== oldUsernameValue) {
-        fetchUsers(usernameValue.value)
+    if (usernameInput.value !== oldUsernameValue) {
+        fetchUsers(usernameInput.value)
             .then(response => {
-                oldUsernameValue = usernameValue.value;
                 return showData(response);
             })
             .then(html => {
@@ -36,4 +51,7 @@ const processData = () => {
     }
 }
 
+const debounceInvoked = debounce(processData, 1000);
+
 searchButton.addEventListener('click', processData);
+usernameInput.addEventListener('input', debounceInvoked);

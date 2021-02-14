@@ -5,6 +5,8 @@ const fetchUserRepos = (username) => fetchData(`https://api.github.com/users/${u
 const fetchUserFollowers = (username) => fetchData(`https://api.github.com/users/${username}/followers?`);
 
 const fetchData = async (url) => {
+    showLoading();
+
     return fetch(url).then(response => {
         if (response.ok) {
             return Promise.resolve(response.json())
