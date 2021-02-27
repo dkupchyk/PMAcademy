@@ -1,25 +1,38 @@
 import './App.css';
-import React, {useState} from 'react';
+import React from 'react';
 import {API} from "./constants";
 
 function App() {
 
-    const [query, setQuery] = useState('');
-    const [weather, setWeather] = useState({});
+    let query = '';
+    let weather = {};
 
-    const search = evt => {
-        if (evt.key === "Enter") {
-            fetch(`${API.url}weather?q=${query}&units=metric&APPID=${API.key}`)
+    const  searchWeather = evt => {
+        return fetch(`${API.url}weather?q=${query}&units=metric&APPID=${API.key}`)
+            .then(res => res.json())
+            .then(result => {
+                query = '';
+                return result;
+            });
+    }
+
+    const searchNext7 = evt => {
+        if(Object.keys(weather).length !== 0){
+            fetch(`${API.url}find?lat=${weather.coord.lat}&lon=${weather.coord.lon}&cnt=7&appid=${API.key}`)
                 .then(res => res.json())
                 .then(result => {
-                    setQuery('');
-                    setWeather(result);
                     console.log(result)
+                    return result;
                 });
         }
+    }
 
-        console.log(weather)
-        console.log(Object.keys(weather).length === 0)
+    const search = async evt => {
+        if (evt.key === "Enter") {
+            weather = await searchWeather(evt);
+            console.log(weather)
+            searchNext7(evt);
+        }
     }
 
     return (
@@ -29,8 +42,7 @@ function App() {
                 <input type="text"
                        className="search-bar"
                        placeholder="Enter city.."
-                       onChange={e => setQuery(e.target.value)}
-                       value={query}
+                       onChange={e => {query = e.target.value}}
                        onKeyPress={search}/>
             </div>
 
