@@ -2,7 +2,6 @@ import './WeatherToday.css';
 import React from "react";
 
 const WeatherToday = ({weatherItem}) => {
-    console.log(weatherItem)
     return (Object.keys(weatherItem).length !== 0)
         ? <div className="container">
 
@@ -16,7 +15,43 @@ const WeatherToday = ({weatherItem}) => {
             </div>
 
             <div className="weather-details-box">
-                <div className="weather">{weatherItem.overallWeather}</div>
+                <div className="row">{weatherItem.overallWeather}</div>
+
+                <div className="row">
+                    <p>Maximum temperature</p>
+                    <p>{weatherItem.maxTemp}°c</p>
+                </div>
+
+                <div className="row">
+                    <p>Minimum temperature</p>
+                    <p>{weatherItem.minTemp}°c</p>
+                </div>
+
+                <div className="row">
+                    <p>Feels like</p>
+                    <p>{weatherItem.feelsLike}°c</p>
+                </div>
+
+                <div className="row">
+                    <p>Humidity</p>
+                    <p>{weatherItem.humidity}%</p>
+                </div>
+
+                <div className="row">
+                    <p>Pressure</p>
+                    <p>{weatherItem.pressure}</p>
+                </div>
+
+                <div className="row">
+                    <p>Wind speed</p>
+                    <p>{weatherItem.windSpeed}</p>
+                </div>
+
+                <div className="row">
+                    <p>Wind degree</p>
+                    <p>{weatherItem.windDeg}</p>
+                </div>
+
             </div>
         </div>
         : '';

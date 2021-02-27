@@ -21,31 +21,30 @@ function App() {
     }
 
     const initWeatherItem = (todayWeather) => {
-        console.log(todayWeather)
         return Object.keys(todayWeather).length !== 0
             ? new WeatherItem(
                 todayWeather.name + ', ' + todayWeather.sys.country,
-                todayWeather.weather.overallWeather,
+                todayWeather.weather[0].main,
                 todayWeather.main.humidity,
                 todayWeather.main.pressure,
                 Math.round(todayWeather.main.temp),
-                Math.round(todayWeather.main.max_temp),
-                Math.round(todayWeather.main.min_temp),
+                Math.round(todayWeather.main.temp_max),
+                Math.round(todayWeather.main.temp_min),
                 Math.round(todayWeather.main.feels_like),
-                todayWeather.weather.description,
+                todayWeather.wind.speed,
+                todayWeather.wind.deg,
+                todayWeather.weather[0].description,
                 new Date().toLocaleDateString())
-            : '----------';
+            : '';
     }
 
     return (
         <div className="App">
-
             <div className="weather-today">
                 <WeatherToday weatherItem={todayWeatherItem}/>
             </div>
 
             <div className="weather-future-list">
-
                 <div className="search-box">
                     <input type="text"
                            className="search-bar"
@@ -55,10 +54,7 @@ function App() {
                            }}
                            onKeyPress={(evt) => getWeather(evt, query)}/>
                 </div>
-
             </div>
-
-
         </div>
     );
 }
