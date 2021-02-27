@@ -1,6 +1,8 @@
 .container {
     height: 100%;
     width: 100%;
+
+    padding: 2%;
 }
 
 .row, .col {
@@ -15,4 +17,41 @@
 
 .col {
     flex-direction: column;
+}
+
+.weather-main-box {
+    color: rgba(0, 0, 0, 0.7);
+    background-color: #ffffff;
+
+    border-radius: 5px;
+    padding: 5%;
+    margin: 2% 5%;
+
+    font-size: 1.2em;
+    height: 30%;
+}
+
+.weather-main-box .temperature {
+    font-size: 2em;
+    margin-right: 40px;
+}
+
+.weather-main-box .temperature .temperature-number {
+    font-size: 3em;
+}
+
+.weather-main-box .location-box {
+    font-weight: 400;
+    align-items: start;
+}
+
+.weather-main-box .location-box .location {
+    font-size: 1.2em;
+
+    margin-bottom: 5px;
+}
+
+.weather-main-box .location-box .date {
+    font-size: 0.85em;
+    opacity: 0.8;
 }
