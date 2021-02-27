@@ -12,6 +12,8 @@ body {
 
   min-width: 980px;
   line-height: 1.2;
+
+  overflow: hidden;
 }
 
 #root {
