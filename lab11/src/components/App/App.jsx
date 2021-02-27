@@ -3,11 +3,13 @@ import React, {useState} from 'react';
 import WeatherToday from "../WeatherToday/WeatherToday";
 import {search} from "../../sercives/apiCalls";
 import {WeatherItem} from "../../models/WeatherItem";
+import {WEATHER_TYPES} from "../../common/constants";
 
 function App() {
 
     const [futureWeather, setFutureWeather] = useState({});
     const [todayWeatherItem, setTodayWeatherItem] = useState({});
+    const [background, setBackgroundImage] = useState(WEATHER_TYPES.default);
 
     let query = '';
 
@@ -17,6 +19,7 @@ function App() {
 
             setFutureWeather(weather.futureWeather);
             setTodayWeatherItem(initWeatherItem(weather.todayWeather));
+            setBackgroundImage(WEATHER_TYPES[weather.todayWeather.weather[0].main]);
         }
     }
 
@@ -38,8 +41,11 @@ function App() {
             : '';
     }
 
+
+    console.log(background)
+
     return (
-        <div className="App">
+        <div className="App" style={{backgroundImage: `url(${background})`}}>
             <div className="weather-today">
                 <WeatherToday weatherItem={todayWeatherItem}/>
             </div>

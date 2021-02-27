@@ -10,11 +10,16 @@
 
     color: #fff;
 
-    background: url('https://photos.travellerspoint.com/250455/large_IMG_0101.jpg') no-repeat center center fixed;
+    transition: 0.4s ease-out;
+
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
 }
 
 .weather-today {
