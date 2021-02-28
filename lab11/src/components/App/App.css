@@ -44,6 +44,14 @@
 
 .weather-future .search-box {
     width: 100%;
+    font-size: 1.5em;
+    padding: 14% 0;
+}
+
+.weather-future .search-box .error-message {
+    padding-top: 10px;
+    font-size: 0.5em;
+    font-style: italic;
 }
 
 .weather-future .search-box input{

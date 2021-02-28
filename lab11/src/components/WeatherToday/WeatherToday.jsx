@@ -2,8 +2,7 @@ import './WeatherToday.css';
 import React from "react";
 
 const WeatherToday = ({weatherItem}) => {
-    return (Object.keys(weatherItem).length !== 0)
-        ? <div className="container">
+    return <div className="container">
 
             <div className="row weather-main-box">
                 <div className="temperature">
@@ -62,8 +61,7 @@ const WeatherToday = ({weatherItem}) => {
                 </div>
 
             </div>
-        </div>
-        : '';
+        </div>;
 }
 
 export default WeatherToday;

@@ -8,19 +8,24 @@ import WeatherFutureList from "../WeatherFutureList/WeatherFutureList";
 
 function App() {
 
+    const [query, setQuery] = useState('');
     const [futureWeather, setFutureWeather] = useState([]);
-    const [todayWeatherItem, setTodayWeatherItem] = useState({});
+    const [todayWeather, setTodayWeatherItem] = useState({});
     const [background, setBackgroundImage] = useState(WEATHER_TYPES.default);
 
-    let query = '';
 
     const getWeather = async evt => {
         if (evt.key === "Enter") {
             const weather = await search(evt, query);
 
-            setFutureWeather(initFutureWeatherList(weather.next));
-            setTodayWeatherItem(initTodayWeatherItem(weather.today));
-            setBackgroundImage(WEATHER_TYPES[weather.today.weather[0].main]);
+            if (weather) {
+                setFutureWeather(initFutureWeatherList(weather.next));
+                setTodayWeatherItem(initTodayWeatherItem(weather.today));
+                setBackgroundImage(WEATHER_TYPES[weather.today.weather[0].main]);
+            } else {
+                setFutureWeather([]);
+                setTodayWeatherItem({});
+            }
         }
     }
 
@@ -39,24 +44,22 @@ function App() {
         return a.toDateString();
     }
 
-    const initTodayWeatherItem = (todayWeather) => {
+    const initTodayWeatherItem = (item) => {
 
-        console.log(todayWeather)
-
-        return Object.keys(todayWeather).length !== 0
+        return Object.keys(item).length !== 0
             ? new WeatherItem(
                 query,
-                todayWeather.clouds,
-                todayWeather.humidity,
-                todayWeather.pressure,
-                Math.round(todayWeather.temp.day),
-                Math.round(todayWeather.temp.max),
-                Math.round(todayWeather.temp.min),
-                Math.round(todayWeather.feels_like.day),
-                todayWeather.wind_speed,
-                todayWeather.wind_deg,
-                todayWeather.weather[0].description,
-                convertDate(todayWeather.dt))
+                item.clouds,
+                item.humidity,
+                item.pressure,
+                Math.round(item.temp.day),
+                Math.round(item.temp.max),
+                Math.round(item.temp.min),
+                Math.round(item.feels_like.day),
+                item.wind_speed,
+                item.wind_deg,
+                item.weather[0].description,
+                convertDate(item.dt))
             : '';
     }
 
@@ -84,27 +87,34 @@ function App() {
         return arr;
     }
 
+    const isQuerySuccessful = () => {
+        return futureWeather.length !== 0 && Object.keys(todayWeather).length !== 0
+    }
+
     return (
         <div className="App" style={{backgroundImage: `url(${background})`}}>
             <div className="weather-today">
-                <WeatherToday weatherItem={todayWeatherItem}/>
+                {isQuerySuccessful() ?  <WeatherToday weatherItem={todayWeather}/> : ''}
             </div>
 
             <div className="weather-future">
                 <div className="search-box">
                     <input type="text"
                            className="search-bar"
-                           placeholder="Enter city.."
+                           placeholder="Enter a city.."
                            onChange={e => {
-                               query = e.target.value
+                               setQuery(e.target.value)
                            }}
                            onKeyPress={(evt) => getWeather(evt, query)}/>
+
+                    <p className='error-message'>{isQuerySuccessful() ? '' : 'City is invalid. Try one more time.'}</p>
                 </div>
 
-                <WeatherFutureList weatherList={futureWeather}/>
+                {isQuerySuccessful() ? <WeatherFutureList weatherList={futureWeather}/> : ''}
             </div>
         </div>
-    );
+)
+    ;
 }
 
 export default App;
