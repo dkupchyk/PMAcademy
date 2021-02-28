@@ -17,7 +17,6 @@ export const searchAllDays = (evt, lat, lon, tadayWeatherExists) => {
 
 export const search = async (evt, query) => {
     const currentWeather = await searchLonLat(evt, query);
-    console.log(currentWeather)
 
     if (currentWeather.cod === '404') return null
 

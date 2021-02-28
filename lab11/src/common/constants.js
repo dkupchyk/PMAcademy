@@ -3,6 +3,8 @@ export const API = {
     url: 'https://api.openweathermap.org/data/2.5/'
 }
 
+export const INVALID_CITY_MESSAGE = 'City is invalid. Try one more time :)'
+
 export const WEATHER_TYPES = {
     'default': 'https://photos.travellerspoint.com/250455/large_IMG_0101.jpg',
     'Thunderstorm': 'https://images.unsplash.com/photo-1564343921985-91ced954364a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80',
@@ -23,5 +25,11 @@ export const WEATHER_TYPES = {
 }
 
 export const ICONS = {
-
+    MAX_TEMP: './icons/thermometer-three-quarters-solid.svg',
+    MIN_TEMP: './icons/thermometer-quarter-solid.svg',
+    AVG_TEMP: './icons/thermometer-half-solid.svg',
+    HUMIDITY: './icons/humidity.svg',
+    CLOUDS: './icons/cloud-solid.svg',
+    PRESSURE: './icons/gauge.svg',
+    WIND: './icons/wind-solid.svg',
 }
