@@ -31,7 +31,7 @@ export const WEEK_DAYS = [
 ]
 
 export const WEATHER_TYPES = {
-    'default': 'https://photos.travellerspoint.com/250455/large_IMG_0101.jpg',
+    'default': 'https://pics.freeartbackgrounds.com/fullhd/Blue_Sky_with_Clouds_Background-1453.jpg',
     'Thunderstorm': 'https://images.unsplash.com/photo-1564343921985-91ced954364a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80',
     'Drizzle': 'https://images.unsplash.com/photo-1505404919723-002ecad81b92?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
     'Rain': 'https://wallpapercave.com/wp/b3AoVSu.jpg',
