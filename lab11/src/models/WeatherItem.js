@@ -1,8 +1,8 @@
 export class WeatherItem {
 
-    constructor(location, overallWeather, humidity, pressure, temp, maxTemp, minTemp, feelsLike, windSpeed, windDeg, description, date) {
+    constructor(location, clouds, humidity, pressure, temp, maxTemp, minTemp, feelsLike, windSpeed, windDeg, description, date) {
         this.location = location;
-        this.overallWeather = overallWeather;
+        this.clouds = clouds;
         this.humidity = humidity;
         this.pressure = pressure;
         this.temp = temp;

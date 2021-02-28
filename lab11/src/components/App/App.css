@@ -29,20 +29,24 @@
     backdrop-filter: blur(3px);
 }
 
-.weather-future-list {
+.weather-future {
     width: 40%;
     height: 100%;
 
     padding: 2% 4%;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     backdrop-filter: blur(10px) brightness(80%);
 }
 
-.weather-future-list .search-box {
+.weather-future .search-box {
     width: 100%;
 }
 
-.weather-future-list .search-box input{
+.weather-future .search-box input{
     width: 100%;
 
     font-size: 1em;
@@ -57,7 +61,7 @@
     border-bottom: 2px solid rgba(255, 255, 255, 0.7);
 }
 
-.weather-future-list .search-box input::placeholder {
+.weather-future .search-box input::placeholder {
     opacity: 0.8;
     color: #fff;
 }

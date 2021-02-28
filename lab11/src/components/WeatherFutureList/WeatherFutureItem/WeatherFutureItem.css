@@ -1,0 +1,15 @@
+.weather-future-item-container {
+    width: 100%;
+}
+
+.weather-future-item-container > .row {
+    width: 100%;
+
+    margin: 4% 0;
+    padding: 2%;
+
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #fff;
+}

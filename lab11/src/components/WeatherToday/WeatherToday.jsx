@@ -7,7 +7,8 @@ const WeatherToday = ({weatherItem}) => {
 
             <div className="row weather-main-box">
                 <div className="temperature">
-                    <span className="temperature-number">{weatherItem.temp}</span>°c</div>
+                    <span className="temperature-number">{weatherItem.temp}</span>°c
+                </div>
                 <div className="col location-box">
                     <div className="location">{weatherItem.location}</div>
                     <div className="date">{weatherItem.date}</div>
@@ -15,10 +16,18 @@ const WeatherToday = ({weatherItem}) => {
             </div>
 
             <div className="weather-details-box">
-                <div className="row">{weatherItem.overallWeather}</div>
 
                 <div className="row">
-                    <p>Maximum temperature</p>
+                    <p>Clouds</p>
+                    <p>{weatherItem.clouds}%</p>
+                </div>
+
+
+                <div className="row">
+                    <div className="icon-container">
+                        {/*<img src=`http://openweathermap.org/img/w/${code}.png` alt="icon" />*/}
+                        <p>Maximum temperature</p>
+                    </div>
                     <p>{weatherItem.maxTemp}°c</p>
                 </div>
 

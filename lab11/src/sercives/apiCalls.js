@@ -1,24 +1,24 @@
 import {API} from "../common/constants";
 
 
-export const searchWeather = (evt, query) => {
+export const searchLonLat = (evt, query) => {
     return fetch(`${API.url}weather?q=${query}&units=metric&APPID=${API.key}`)
         .then(res => res.json())
         .then(result => result);
 }
 
-export const searchNext7Days = (evt, lat, lon, tadayWeatherExists) => {
+export const searchAllDays = (evt, lat, lon, tadayWeatherExists) => {
     if(tadayWeatherExists){
-        return fetch(`${API.url}find?lat=${lat}&lon=${lon}&cnt=7&appid=${API.key}`)
+        return fetch(`${API.url}onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&cnt=7&units=metric&appid=${API.key}`)
             .then(res => res.json())
             .then(result => result);
     }
 }
 
 export const search = async (evt, query) => {
-        const todayWeather = await searchWeather(evt, query);
-        const futureWeather = await searchNext7Days(evt, todayWeather.coord.lat, todayWeather.coord.lon, Object.keys(todayWeather).length !== 0);
+        const currentWeather = await searchLonLat(evt, query);
+        const forecast = await searchAllDays(evt, currentWeather.coord.lat, currentWeather.coord.lon, Object.keys(currentWeather).length !== 0);
 
-        return { todayWeather, futureWeather }
+        return {today: forecast.daily[0], next: forecast.daily.slice(1)};
 
 }

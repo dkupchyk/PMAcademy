@@ -22,3 +22,6 @@ export const WEATHER_TYPES = {
     'Clouds': 'https://pics.freeartbackgrounds.com/fullhd/Blue_Sky_with_Clouds_Background-1453.jpg',
 }
 
+export const ICONS = {
+
+}
