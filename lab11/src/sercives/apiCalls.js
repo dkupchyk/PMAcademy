@@ -1,25 +1,20 @@
 import {API} from "../common/constants";
 
-
-export const searchLonLat = (evt, query) => {
-    return fetch(`${API.url}weather?q=${query}&units=metric&APPID=${API.key}`)
+const fetchData = (query) => {
+    return fetch(query)
         .then(res => res.json())
         .then(result => result);
 }
 
-export const searchAllDays = (evt, lat, lon, tadayWeatherExists) => {
-    if (tadayWeatherExists) {
-        return fetch(`${API.url}onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&cnt=7&units=metric&appid=${API.key}`)
-            .then(res => res.json())
-            .then(result => result);
-    }
-}
+export const searchLonLat = (query) => fetchData(`${API.url}weather?q=${query}&units=metric&APPID=${API.key}`);
+
+export const searchAllDays = (lat, lon) => fetchData(`${API.url}onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&cnt=7&units=metric&appid=${API.key}`);
 
 export const search = async (evt, query) => {
-    const currentWeather = await searchLonLat(evt, query);
+    const currentWeather = await searchLonLat(query);
 
     if (currentWeather.cod === '404') return null
 
-    const forecast = await searchAllDays(evt, currentWeather.coord.lat, currentWeather.coord.lon, Object.keys(currentWeather).length !== 0);
+    const forecast = await searchAllDays(currentWeather.coord.lat, currentWeather.coord.lon);
     return {today: forecast.daily[0], next: forecast.daily.slice(1)};
 }

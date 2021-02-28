@@ -3,7 +3,32 @@ export const API = {
     url: 'https://api.openweathermap.org/data/2.5/'
 }
 
-export const INVALID_CITY_MESSAGE = 'City is invalid. Try one more time :)'
+export const INVALID_CITY_MESSAGE = 'City is invalid. Try one more time :)';
+
+export const MONTHS = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+]
+
+export const WEEK_DAYS = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday'
+]
 
 export const WEATHER_TYPES = {
     'default': 'https://photos.travellerspoint.com/250455/large_IMG_0101.jpg',
