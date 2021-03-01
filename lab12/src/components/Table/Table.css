@@ -1,6 +1,54 @@
 .table-container {
-    width: 30%;
+    width: 32%;
     height: 100%;
 
-    border: 1px solid black;
+    padding: 2%;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.table-container:before {
+    content: '';
+
+    width: 100%;
+    height: 100%;
+
+    background: inherit;
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.3);
+    filter: blur(10px);
+}
+
+.table-container h1 {
+    text-align: center;
+
+    font-size: 1.4em;
+}
+
+.table-container button {
+    cursor: pointer;
+
+    font-size: 1.1em;
+
+    width: 100%;
+    padding: 2% 0;
+    margin: 5% 0;
+
+    color: #fff;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.table-container button:hover {
+    color: transparent;
+    background: #fff;
 }
