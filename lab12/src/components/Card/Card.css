@@ -1,8 +1,90 @@
 .card-container {
     width: 100%;
 
-    padding: 2%;
+    padding: 4%;
     margin: 2% 0;
 
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 3px;
+
+    /*border: 1px solid rgba(255, 255, 255, 0.4);*/
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.holder:before,
+.holder:after {
+    animation: orbit 5s linear infinite;
+    border-radius: 50%;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+    content: '';
+    height: 150px;
+    position: absolute;
+    width: 150px;
+}
+
+.card-container:before {
+    content: '';
+
+    width: 105%;
+    height: 105%;
+
+    background: inherit;
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.35);
+    filter: blur(10px);
+}
+
+.text-col {
+    width: 70%;
+
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+}
+
+.text-col .text {
+    font-size: 1.3em;
+}
+
+.text-col .date {
+    margin-top: 7px;
+}
+
+.icon-col, .icon-col .col {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon-col .col {
+    flex-direction: column;
+
+    margin: 0 4px;
+}
+
+.icon-col .col img {
+    cursor: pointer;
+
+    height: 25px;
+    margin-bottom: 3px;
+
+    filter: invert(100%) sepia(1%) saturate(7474%) hue-rotate(12deg) brightness(110%) contrast(108%);
+}
+
+.icon-col .col img:hover {
+    filter: invert(98%) sepia(48%) saturate(6549%) hue-rotate(325deg) brightness(101%) contrast(99%);
+}
+
+.icon-col .col p,
+.text-col .date  {
+    font-size: 0.7em;
 }
