@@ -4,6 +4,8 @@ import React from 'react';
 import Card from "../Card/Card";
 import {CardModel} from "../Card/Card.model";
 
+const INVALID_INPUT = 'Enter a valid input.';
+
 class Table extends React.Component {
 
     constructor(props) {
@@ -12,6 +14,8 @@ class Table extends React.Component {
         this.state = {
             cards: [],
             inputText: '',
+            commentsAmount: 0,
+            isInvalidInput: false,
             isAddFormOpen: false
         }
 
@@ -21,11 +25,19 @@ class Table extends React.Component {
     }
 
     addCard() {
-        this.setState((state) => ({
-            cards: [...state.cards, new CardModel(state.inputText)],
-            inputText: '',
-            isAddFormOpen: false
-        }))
+        if (this.state.inputText) {
+            this.setState((state) => ({
+                cards: [...state.cards, new CardModel(state.inputText)],
+                inputText: '',
+                isInvalidInput: false,
+                commentsAmount: state.commentsAmount + 1,
+                isAddFormOpen: false
+            }))
+        } else {
+            this.setState(() => ({
+                isInvalidInput: true
+            }))
+        }
     }
 
     changeText(event) {
@@ -42,18 +54,26 @@ class Table extends React.Component {
 
     render() {
         const {openAddForm, changeText, addCard} = this;
-        const {cards} = this.state;
+        const {cards, commentsAmount, isAddFormOpen, isInvalidInput} = this.state;
+        const {background, name} = this.props;
 
-        return <div className="table-container">
-            <h1>{this.props.name}</h1>
+        return <div className="container" style={{background: background}}>
+
+            <div className="header">
+                <h1>{name}</h1>
+                <p>{commentsAmount}</p>
+            </div>
 
             <div className="button-container">
-                {this.state.isAddFormOpen
-                    ? <div className="add-card">
-                        <input type="text"
-                               onChange={changeText}
-                               placeholder="Enter text..."/>
-                        <button onClick={addCard}>Create</button>
+                {isAddFormOpen
+                    ? <div>
+                        <div className="add-card">
+                            <input type="text"
+                                   onChange={changeText}
+                                   placeholder="Enter text..."/>
+                            <button onClick={addCard}>Create</button>
+                        </div>
+                        <p className="error">{isInvalidInput ? INVALID_INPUT: ''}</p>
                     </div>
                     : <button onClick={openAddForm}>Add</button>}
             </div>
