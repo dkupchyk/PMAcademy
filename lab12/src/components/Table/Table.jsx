@@ -2,7 +2,7 @@ import './Table.css';
 
 import React from 'react';
 import Card from "../Card/Card";
-import {CardModel} from "../Card/Card.model";
+import {CardModel} from "../Card/CardModel";
 
 const INVALID_INPUT = 'Enter a valid input.';
 

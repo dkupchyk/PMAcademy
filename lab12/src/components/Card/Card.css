@@ -80,7 +80,7 @@
     filter: invert(100%) sepia(1%) saturate(7474%) hue-rotate(12deg) brightness(110%) contrast(108%);
 }
 
-.icon-col .col img:hover {
+.icon-col .col > img:hover, .icon-col .col .yellow-icon {
     filter: invert(98%) sepia(48%) saturate(6549%) hue-rotate(325deg) brightness(101%) contrast(99%);
 }
 
