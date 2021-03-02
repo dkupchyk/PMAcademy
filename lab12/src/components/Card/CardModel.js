@@ -9,21 +9,11 @@ export class CardModel {
         this.dislikes = 0;
 
         CardModel.freeId++;
+
+        this.updateLikes = this.updateLikes.bind(this)
     }
 
-    incrementLikes() {
-        return this.likes += 1;
-    }
-
-    incrementDislikes() {
-        return this.dislikes += 1;
-    }
-
-    decrementLikes() {
-        return this.likes -= 1;
-    }
-
-    decrementDislikes() {
-        return this.dislikes -= 1;
+    updateLikes(prop, value) {
+        return this[prop] += value;
     }
 }

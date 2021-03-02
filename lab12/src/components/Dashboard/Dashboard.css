@@ -4,12 +4,26 @@
 
     color: #fff;
 
-    background: rgb(244,107,69);
-    background: linear-gradient(90deg, #41106A 0%, #6A1D5C 100%);
-
     padding: 2% 5%;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    background: linear-gradient(-45deg, #41106A, #6A1D5C, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+    background-size: 400% 400%;
+    animation: gradient 100s ease infinite;
+}
+
+
+@keyframes gradient {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
 }

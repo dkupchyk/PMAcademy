@@ -1,13 +1,13 @@
 import './Card.css';
 
 import React from 'react';
-import {CardModel} from "./CardModel";
 
 class Card extends React.Component {
 
     constructor(props) {
         super(props);
 
+        this.card = this.props.item;
         this.state = {
             likes: this.props.item.likes,
             dislikes: this.props.item.dislikes,
@@ -17,39 +17,36 @@ class Card extends React.Component {
 
         this.addLike = this.addLike.bind(this);
         this.addDislikes = this.addDislikes.bind(this);
+        this.setLikes = this.setLikes.bind(this);
         this.changeLikes = this.changeLikes.bind(this);
     }
 
-    addLike() {
-        if (this.state.isLiked) return;
+    addLike = () => this.changeLikes(true, this.state.isLiked, this.state.isDisliked);
 
-        this.state.isDisliked
-            ? this.changeLikes(this.props.item.incrementLikes(), this.props.item.decrementDislikes(), true, false)
-            : this.changeLikes(this.props.item.incrementLikes(), this.state.dislikes, true, false);
+    addDislikes = () => this.changeLikes(false, this.state.isDisliked, this.state.isLiked);
+
+    changeLikes(isLike, isAlreadySelected, isOppositeSelected) {
+        if (isAlreadySelected) return;
+
+        isOppositeSelected
+            ? this.setLikes(this.card.updateLikes('likes', isLike ? 1 : -1), this.card.updateLikes('dislikes', isLike ? -1 : 1), isLike, !isLike)
+            : this.setLikes(this.card.updateLikes('likes', isLike ? 1 : 0), this.card.updateLikes('dislikes', isLike ? 0 : 1), isLike, !isLike);
     }
 
-    addDislikes() {
-        if (this.state.isDisliked) return;
-
-        this.state.isLiked
-            ? this.changeLikes(this.props.item.decrementLikes(), this.props.item.incrementDislikes(), false, true)
-            : this.changeLikes(this.state.likes, this.props.item.incrementDislikes(), false, true);
-    }
-
-    changeLikes(newLikes, newDislikes, newIsLiked, newIsDisliked) {
+    setLikes(newLikes, newDislikes, newIsLiked, newIsDisliked) {
         this.setState(_ => ({
             likes: newLikes,
             dislikes: newDislikes,
             isLiked: newIsLiked,
             isDisliked: newIsDisliked
-        })) ;
+        }));
         this.props.sort();
     }
 
     render() {
         const {addLike, addDislikes} = this;
 
-        const {text, date} = this.props.item;
+        const {text, date} = this.card;
         const {likes, dislikes, isLiked, isDisliked} = this.state;
 
         return <div className="card-container">
@@ -65,7 +62,8 @@ class Card extends React.Component {
                 </div>
 
                 <div className="col dislike-col">
-                    <img className={isDisliked ? "yellow-icon" : "icon"} onClick={addDislikes} src="./icons/dislike.svg" alt="icon"/>
+                    <img className={isDisliked ? "yellow-icon" : "icon"} onClick={addDislikes} src="./icons/dislike.svg"
+                         alt="icon"/>
                     <p>{dislikes}</p>
                 </div>
 
