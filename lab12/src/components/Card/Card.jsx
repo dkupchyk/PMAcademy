@@ -8,7 +8,6 @@ class Card extends React.Component {
     constructor(props) {
         super(props);
 
-
         this.state = {
             likes: this.props.item.likes,
             dislikes: this.props.item.dislikes,
@@ -25,25 +24,26 @@ class Card extends React.Component {
         if (this.state.isLiked) return;
 
         this.state.isDisliked
-            ? this.changeLikes(this.state.likes + 1, this.state.dislikes - 1, true, false)
-            : this.changeLikes(this.state.likes + 1, this.state.dislikes, true, false);
+            ? this.changeLikes(this.props.item.incrementLikes(), this.props.item.decrementDislikes(), true, false)
+            : this.changeLikes(this.props.item.incrementLikes(), this.state.dislikes, true, false);
     }
 
     addDislikes() {
         if (this.state.isDisliked) return;
 
         this.state.isLiked
-            ? this.changeLikes(this.state.likes - 1, this.state.dislikes + 1, false, true)
-            : this.changeLikes(this.state.likes, this.state.dislikes + 1, false, true);
+            ? this.changeLikes(this.props.item.decrementLikes(), this.props.item.incrementDislikes(), false, true)
+            : this.changeLikes(this.state.likes, this.props.item.incrementDislikes(), false, true);
     }
 
     changeLikes(newLikes, newDislikes, newIsLiked, newIsDisliked) {
-        this.setState((state) => ({
+        this.setState(_ => ({
             likes: newLikes,
             dislikes: newDislikes,
             isLiked: newIsLiked,
             isDisliked: newIsDisliked
-        }))
+        })) ;
+        this.props.sort();
     }
 
     render() {

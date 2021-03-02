@@ -8,6 +8,22 @@ export class CardModel {
         this.likes = 0;
         this.dislikes = 0;
 
-        CardModel.freeId ++;
+        CardModel.freeId++;
+    }
+
+    incrementLikes() {
+        return this.likes += 1;
+    }
+
+    incrementDislikes() {
+        return this.dislikes += 1;
+    }
+
+    decrementLikes() {
+        return this.likes -= 1;
+    }
+
+    decrementDislikes() {
+        return this.dislikes -= 1;
     }
 }

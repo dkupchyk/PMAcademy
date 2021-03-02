@@ -22,6 +22,15 @@ class Table extends React.Component {
         this.openAddForm = this.openAddForm.bind(this);
         this.changeText = this.changeText.bind(this);
         this.addCard = this.addCard.bind(this);
+        this.sortCards = this.sortCards.bind(this);
+    }
+
+    sortCards() {
+        this.setState((state) => ({
+            cards: state.cards.sort(function (a, b) {
+                return (b.likes - b.dislikes) - (a.likes - a.dislikes);
+            })
+        }))
     }
 
     addCard() {
@@ -33,6 +42,7 @@ class Table extends React.Component {
                 commentsAmount: state.commentsAmount + 1,
                 isAddFormOpen: false
             }))
+            this.sortCards();
         } else {
             this.setState(() => ({
                 isInvalidInput: true
@@ -78,7 +88,9 @@ class Table extends React.Component {
                     : <button onClick={openAddForm}>Add</button>}
             </div>
 
-            {cards.map(item => <Card key={item.id} item={item}/>)}
+            <div className="cards-container">
+                {cards.map(item => <Card key={item.id} item={item} sort={this.sortCards}/>)}
+            </div>
 
         </div>;
     }
