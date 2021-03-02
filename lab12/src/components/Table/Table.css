@@ -19,14 +19,39 @@
     font-size: 1.4em;
 }
 
-.table-container > button {
+.table-container .button-container {
+    height: 35px;
+    margin: 5% 0;
+}
+
+.table-container .button-container .add-card {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-container .button-container .add-card input {
+    width: 70%;
+
+    color: #fff;
+    background: transparent;
+
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.table-container .button-container button {
     cursor: pointer;
 
     font-size: 1.1em;
 
+    height: 90%;
     width: 100%;
     padding: 2% 0;
-    margin: 5% 0;
 
     color: #fff;
     background: transparent;
@@ -34,9 +59,15 @@
     border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-.table-container > button:hover {
+.table-container .button-container button:hover {
     color: #000;
     color: rgba(0, 0, 0, 0.5);
 
     background-color: #fff;
+}
+
+.table-container .button-container .add-card button {
+    width: 20%;
+
+    font-size: 0.8em;
 }

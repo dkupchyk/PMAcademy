@@ -47,14 +47,16 @@ class Table extends React.Component {
         return <div className="table-container">
             <h1>{this.props.name}</h1>
 
-            {this.state.isAddFormOpen
-                ? <div>
-                    <input type="text"
-                           onChange={changeText}
-                           placeholder="Enter text..."/>
-                    <button onClick={addCard}>Create</button>
+            <div className="button-container">
+                {this.state.isAddFormOpen
+                    ? <div className="add-card">
+                        <input type="text"
+                               onChange={changeText}
+                               placeholder="Enter text..."/>
+                        <button onClick={addCard}>Create</button>
+                    </div>
+                    : <button onClick={openAddForm}>Add</button>}
             </div>
-                : <button onClick={openAddForm}>Add</button>}
 
             {cards.map(item => <Card key={item.id} item={item}/>)}
 
