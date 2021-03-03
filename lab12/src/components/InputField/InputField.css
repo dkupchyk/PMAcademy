@@ -1,0 +1,44 @@
+.input-container {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-container input {
+    font-size: 1.2em;
+
+    width: 80%;
+    margin-right: 10px;
+
+    color: #fff;
+    background: transparent;
+
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.input-container button {
+    width: 25%;
+
+    cursor: pointer;
+
+    font-size: 0.98em;
+
+    height: 90%;
+    padding: 2%;
+
+    color: #fff;
+    background: transparent;
+
+    outline: none;
+
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.input-container input::placeholder {
+    color: #fff;
+    opacity: 0.6;
+}

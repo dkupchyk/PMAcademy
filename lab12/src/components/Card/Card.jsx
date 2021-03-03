@@ -1,6 +1,8 @@
 import './Card.css';
 
 import React from 'react';
+import InputField from "../InputField/InputField";
+import {CardModel} from "./CardModel";
 
 class Card extends React.Component {
 
@@ -11,6 +13,7 @@ class Card extends React.Component {
         this.state = {
             likes: this.props.item.likes,
             dislikes: this.props.item.dislikes,
+            isEditFormOpen: false,
             isLiked: false,
             isDisliked: false
         }
@@ -19,6 +22,9 @@ class Card extends React.Component {
         this.addDislikes = this.addDislikes.bind(this);
         this.setLikes = this.setLikes.bind(this);
         this.changeLikes = this.changeLikes.bind(this);
+        this.openEditForm = this.openEditForm.bind(this);
+        this.editCardItem = this.editCardItem.bind(this);
+
     }
 
     addLike = () => this.changeLikes(true, this.state.isLiked, this.state.isDisliked);
@@ -33,6 +39,20 @@ class Card extends React.Component {
             : this.setLikes(this.card.updateLikes('likes', isLike ? 1 : 0), this.card.updateLikes('dislikes', isLike ? 0 : 1), isLike, !isLike);
     }
 
+    openEditForm() {
+        this.setState(_ => ({
+            isEditFormOpened: true
+        }));
+    }
+
+    editCardItem(text) {
+        this.card.text = text;
+
+        this.setState(_ => ({
+            isEditFormOpened: false
+        }));
+    }
+
     setLikes(newLikes, newDislikes, newIsLiked, newIsDisliked) {
         this.setState(_ => ({
             likes: newLikes,
@@ -44,30 +64,39 @@ class Card extends React.Component {
     }
 
     render() {
-        const {addLike, addDislikes} = this;
+        const {addLike, addDislikes, editCardItem, openEditForm} = this;
 
         const {text, date} = this.card;
-        const {likes, dislikes, isLiked, isDisliked} = this.state;
+        const {likes, dislikes, isLiked, isDisliked, isEditFormOpened} = this.state;
 
         return <div className="card-container">
-            <div className="col text-col">
-                <p className="text">{text}</p>
-                <p className="date">{date}</p>
-            </div>
+            {isEditFormOpened
+            ? <InputField buttonFunction={editCardItem} buttonText="Edit"/>
+            : <div className="card">
+                    <div className="info-container">
+                        <div className="col text-col">
+                            <p className="text">{text}</p>
+                            <p className="date">{date}</p>
+                        </div>
 
-            <div className="col icon-col">
-                <div className="col like-col">
-                    <img className={isLiked ? "yellow-icon" : ""} onClick={addLike} src="./icons/like.svg" alt="icon"/>
-                    <p>{likes}</p>
+                        <div className="col icon-col">
+                            <div className="col like-col">
+                                <img className={isLiked ? "yellow-icon" : ""} onClick={addLike} src="./icons/like.svg"
+                                     alt="icon"/>
+                                <p>{likes}</p>
+                            </div>
+
+                            <div className="col dislike-col">
+                                <img className={isDisliked ? "yellow-icon" : "icon"} onClick={addDislikes}
+                                     src="./icons/dislike.svg"
+                                     alt="icon"/>
+                                <p>{dislikes}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p className="edit-button" onClick={openEditForm}>Edit</p>
                 </div>
-
-                <div className="col dislike-col">
-                    <img className={isDisliked ? "yellow-icon" : "icon"} onClick={addDislikes} src="./icons/dislike.svg"
-                         alt="icon"/>
-                    <p>{dislikes}</p>
-                </div>
-
-            </div>
+            }
 
         </div>;
     }

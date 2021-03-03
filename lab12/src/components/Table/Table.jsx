@@ -4,8 +4,7 @@ import React from 'react';
 
 import Card from "../Card/Card";
 import {CardModel} from "../Card/CardModel";
-
-const INVALID_INPUT = 'Enter a valid input.';
+import InputField from "../InputField/InputField";
 
 class Table extends React.Component {
 
@@ -16,13 +15,10 @@ class Table extends React.Component {
             cards: [],
             inputText: '',
             commentsAmount: 0,
-            isInvalidInput: false,
             isAddFormOpen: false
         }
 
         this.openAddForm = this.openAddForm.bind(this);
-        this.changeText = this.changeText.bind(this);
-        this.addCardIfValid = this.addCardIfValid.bind(this);
         this.addCardItem = this.addCardItem.bind(this);
         this.sortCards = this.sortCards.bind(this);
     }
@@ -35,32 +31,17 @@ class Table extends React.Component {
         }))
     }
 
-    addCardIfValid() {
-        if (!this.state.inputText) {
-            return this.setState(() => ({
-                isInvalidInput: true
-            }));
-        }
 
-        this.addCardItem();
-        this.sortCards();
-    }
-
-    addCardItem() {
+    addCardItem(text) {
         this.setState((state) => ({
-            cards: [...state.cards, new CardModel(state.inputText)],
-            inputText: '',
-            isInvalidInput: false,
+            cards: [...state.cards, new CardModel(text)],
             commentsAmount: state.commentsAmount + 1,
             isAddFormOpen: false
         }));
+
+        this.sortCards();
     }
 
-    changeText(event) {
-        this.setState(() => ({
-            inputText: event.target.value
-        }))
-    }
 
     openAddForm() {
         this.setState(() => ({
@@ -69,8 +50,8 @@ class Table extends React.Component {
     }
 
     render() {
-        const {openAddForm, changeText, addCardIfValid} = this;
-        const {cards, commentsAmount, isAddFormOpen, isInvalidInput} = this.state;
+        const {openAddForm, addCardItem} = this;
+        const {cards, commentsAmount, isAddFormOpen} = this.state;
         const {background, name} = this.props;
 
         return <div className="container" style={{background: background}}>
@@ -82,16 +63,8 @@ class Table extends React.Component {
 
             <div className="button-container">
                 {isAddFormOpen
-                    ? <div>
-                        <div className="add-card">
-                            <input type="text"
-                                   onChange={changeText}
-                                   placeholder="Enter text..."/>
-                            <button onClick={addCardIfValid}>Create</button>
-                        </div>
-                        <p className="error">{isInvalidInput ? INVALID_INPUT : ''}</p>
-                    </div>
-                    : <button onClick={openAddForm}>Add</button>}
+                    ? <InputField buttonFunction={addCardItem} buttonText="Create"/>
+                    : <button className="add-button" onClick={openAddForm}>Add</button>}
             </div>
 
             <div className="cards-container">
