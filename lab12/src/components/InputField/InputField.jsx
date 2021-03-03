@@ -43,7 +43,7 @@ class InputField extends React.Component {
             <div className="input-container">
                 <input type="text"
                        onChange={changeText}
-                       placeholder = "Enter text..."
+                       placeholder="Enter text..."
                        value={inputText}/>
                 <button onClick={execute}>{buttonText}</button>
             </div>

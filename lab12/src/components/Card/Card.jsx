@@ -1,8 +1,8 @@
 import './Card.css';
 
 import React from 'react';
+
 import InputField from "../InputField/InputField";
-import {CardModel} from "./CardModel";
 
 class Card extends React.Component {
 
@@ -70,9 +70,10 @@ class Card extends React.Component {
         const {likes, dislikes, isLiked, isDisliked, isEditFormOpened} = this.state;
 
         return <div className="card-container">
+
             {isEditFormOpened
-            ? <InputField buttonFunction={editCardItem} buttonText="Edit" textValue={text}/>
-            : <div className="card">
+                ? <InputField buttonFunction={editCardItem} buttonText="Edit" textValue={text}/>
+                : <div className="card">
                     <div className="info-container">
                         <div className="col text-col">
                             <p className="text">{text}</p>

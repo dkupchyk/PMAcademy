@@ -31,7 +31,6 @@ class Table extends React.Component {
         }))
     }
 
-
     addCardItem(text) {
         this.setState((state) => ({
             cards: [...state.cards, new CardModel(text)],
@@ -41,8 +40,7 @@ class Table extends React.Component {
 
         this.sortCards();
     }
-
-
+    
     openAddForm() {
         this.setState(() => ({
             isAddFormOpen: true
