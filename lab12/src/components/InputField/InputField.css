@@ -38,6 +38,13 @@
     border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
+.input-container button:hover {
+    color: #000;
+    color: rgba(0, 0, 0, 0.5);
+
+    background-color: #fff;
+}
+
 .input-container input::placeholder {
     color: #fff;
     opacity: 0.6;

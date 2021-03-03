@@ -30,29 +30,6 @@
     margin: 5% 0;
 }
 
-/*.container .button-container .add-card {*/
-/*    height: 100%;*/
-/*    width: 100%;*/
-/*}*/
-
-/*.container .button-container .add-card input {*/
-/*    font-size: 1.2em;*/
-
-/*    width: 70%;*/
-
-/*    color: #fff;*/
-/*    background: transparent;*/
-
-/*    outline: none;*/
-/*    border: none;*/
-/*    border-bottom: 1px solid rgba(255, 255, 255, 0.5);*/
-/*}*/
-
-/*.container .button-container .add-card input::placeholder {*/
-/*    color: #fff;*/
-/*    opacity: 0.6;*/
-/*}*/
-
 .container .button-container .error {
     font-size: 0.8em;
 
@@ -82,12 +59,6 @@
 
     background-color: #fff;
 }
-
-/*.container .button-container .add-card button {*/
-/*    width: 20%;*/
-
-/*    font-size: 0.8em;*/
-/*}*/
 
 .cards-container {
     height: 80%;

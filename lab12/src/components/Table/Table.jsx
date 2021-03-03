@@ -63,7 +63,7 @@ class Table extends React.Component {
 
             <div className="button-container">
                 {isAddFormOpen
-                    ? <InputField buttonFunction={addCardItem} buttonText="Create"/>
+                    ? <InputField buttonFunction={addCardItem} buttonText="Create" textValue=""/>
                     : <button className="add-button" onClick={openAddForm}>Add</button>}
             </div>
 

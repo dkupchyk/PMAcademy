@@ -71,7 +71,7 @@ class Card extends React.Component {
 
         return <div className="card-container">
             {isEditFormOpened
-            ? <InputField buttonFunction={editCardItem} buttonText="Edit"/>
+            ? <InputField buttonFunction={editCardItem} buttonText="Edit" textValue={text}/>
             : <div className="card">
                     <div className="info-container">
                         <div className="col text-col">

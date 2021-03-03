@@ -1,7 +1,6 @@
 import './InputField.css';
 
 import React from 'react';
-import {CardModel} from "../Card/CardModel";
 
 const INVALID_INPUT = 'Enter a valid input.';
 
@@ -11,7 +10,7 @@ class InputField extends React.Component {
         super(props);
 
         this.state = {
-            inputText: '',
+            inputText: this.props.textValue,
             isInvalidInput: false,
         }
 
@@ -36,15 +35,16 @@ class InputField extends React.Component {
     }
 
     render() {
-        const {execute, changeText, addCardIfValid} = this;
-        const {isInvalidInput} = this.state;
-        const {buttonFunction, buttonText} = this.props;
+        const {execute, changeText} = this;
+        const {isInvalidInput, inputText} = this.state;
+        const {buttonText} = this.props;
 
         return <div>
             <div className="input-container">
                 <input type="text"
                        onChange={changeText}
-                       placeholder="Enter text..."/>
+                       placeholder = "Enter text..."
+                       value={inputText}/>
                 <button onClick={execute}>{buttonText}</button>
             </div>
             <p className="error">{isInvalidInput ? INVALID_INPUT : ''}</p>
