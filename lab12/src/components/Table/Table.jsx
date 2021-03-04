@@ -40,7 +40,7 @@ class Table extends React.Component {
 
         this.sortCards();
     }
-    
+
     openAddForm() {
         this.setState(() => ({
             isAddFormOpen: true
