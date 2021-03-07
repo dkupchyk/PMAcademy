@@ -1,10 +1,10 @@
-import './Table.css';
-
 import React from 'react';
+
+import './Table.css';
 
 import Card from "../Card/Card";
 import {CardItem} from "../../../models/CardItem";
-import InputField from "../InputField/InputField";
+import InputField from "../../../common/InputField/InputField";
 
 class Table extends React.Component {
 

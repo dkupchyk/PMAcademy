@@ -2,43 +2,37 @@ import React, {useState} from 'react';
 
 import './Weather.css';
 
-import {INVALID_CITY_MESSAGE, WEATHER_TYPES} from "../../common/constants";
 import {search} from "../../sercives/apiCalls";
 import {WeatherItem} from "../../models/WeatherItem";
 import WeatherToday from "./WeatherToday/WeatherToday";
 import WeatherFutureList from "./WeatherFutureList/WeatherFutureList";
+import InputField from "../../common/InputField/InputField";
 
 function Weather() {
 
     const [query, setQuery] = useState('');
-    const [error, setError] = useState('');
-
-    const [futureWeather, setFutureWeather] = useState([]);
+    const [futureWeather, setFutureWeather] = useState(null);
     const [todayWeather, setTodayWeatherItem] = useState({});
-    const [background, setBackgroundImage] = useState(WEATHER_TYPES.default);
 
-    const getWeather = async evt => {
-        if (evt.key === "Enter") {
-            const weather = await search(evt, query);
+    const getWeather = async (query) => {
+        setQuery(query);
 
-            if (!weather) return resetData();
+        const weather = await search(query);
 
-            const newFutureWeather = initFutureWeatherList(weather.next);
-            const newTodayWeather = initTodayWeatherItem(weather.today);
-            const newBackground = WEATHER_TYPES[weather.today.weather[0].main];
+        if (!weather) return resetData();
 
-            updateData(newFutureWeather, newTodayWeather, newBackground);
-        }
+        const newFutureWeather = initFutureWeatherList(weather.next);
+        const newTodayWeather = initTodayWeatherItem(weather.today);
+
+        updateData(newFutureWeather, newTodayWeather);
     }
 
-    const updateData = (newFutureWeather, newTodayWeather, newBackground, newError) => {
+    const updateData = (newFutureWeather, newTodayWeather) => {
         setFutureWeather(newFutureWeather);
         setTodayWeatherItem(newTodayWeather);
-        setBackgroundImage(newBackground);
-        setError(newError);
     }
 
-    const resetData = () => updateData([], {}, background, INVALID_CITY_MESSAGE);
+    const resetData = () => updateData([], {});
 
     const createWeatherItem = (item) => {
         return new WeatherItem(
@@ -60,25 +54,17 @@ function Weather() {
 
     const initFutureWeatherList = (futureWeatherList) => futureWeatherList.map(item => createWeatherItem(item));
 
-    const isQuerySuccessful = () => futureWeather.length !== 0 && Object.keys(todayWeather).length !== 0;
+    const isQuerySuccessful = () => futureWeather && futureWeather.length !== 0 && Object.keys(todayWeather).length !== 0;
 
-    return (<div className="weather-container" style={{backgroundImage: `url(${background})`}}>
+    return (<div className="component-wrapper weather-container">
             <div className="weather-today">
                 {isQuerySuccessful() ? <WeatherToday weatherItem={todayWeather}/> : ''}
             </div>
 
             <div className="weather-future">
-                <div className="search-box">
-                    <input type="text"
-                           className="search-bar"
-                           placeholder="Enter a city and press enter.."
-                           onChange={e => setQuery(e.target.value)}
-                           onKeyPress={(evt) => getWeather(evt, query)}/>
-
-                    <p className='error-message'>{error}</p>
-                </div>
-
-                {isQuerySuccessful() ? <WeatherFutureList weatherList={futureWeather}/> : ''}
+                <InputField buttonFunction={getWeather} buttonText="Search" textValue=""/>
+                {futureWeather ? (isQuerySuccessful() ?
+                    <WeatherFutureList weatherList={futureWeather}/> : 'City is invalid. Try again.') : ''}
             </div>
         </div>
     );

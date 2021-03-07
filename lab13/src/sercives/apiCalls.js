@@ -10,7 +10,7 @@ export const searchLonLat = (query) => fetchData(`${API.url}weather?q=${query}&u
 
 export const searchAllDays = (lat, lon) => fetchData(`${API.url}onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&cnt=7&units=metric&appid=${API.key}`);
 
-export const search = async (evt, query) => {
+export const search = async (query) => {
     const currentWeather = await searchLonLat(query);
 
     if (currentWeather.cod === '404') return null

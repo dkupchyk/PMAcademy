@@ -12,13 +12,13 @@ function App() {
     return (
         <Router>
             <div className="App">
-                <Navigation/>
+                <Navigation className="nav"/>
 
-               <Switch>
-                   <Route path="/" exact component={Weather} />
-                   <Route path="/weather/" component={Weather} />
-                   <Route path="/retro/" component={Dashboard} />
-               </Switch>
+                <Switch>
+                    <Route path="/" exact component={Weather}/>
+                    <Route path="/weather/" component={Weather}/>
+                    <Route path="/retro/" component={Dashboard}/>
+                </Switch>
             </div>
         </Router>);
 }

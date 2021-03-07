@@ -1,8 +1,8 @@
-import './Card.css';
-
 import React from 'react';
 
-import InputField from "../InputField/InputField";
+import './Card.css';
+
+import InputField from "../../../common/InputField/InputField";
 
 class Card extends React.Component {
 
@@ -24,7 +24,6 @@ class Card extends React.Component {
         this.changeLikes = this.changeLikes.bind(this);
         this.openEditForm = this.openEditForm.bind(this);
         this.editCardItem = this.editCardItem.bind(this);
-
     }
 
     addLike = () => this.changeLikes(true, this.state.isLiked, this.state.isDisliked);

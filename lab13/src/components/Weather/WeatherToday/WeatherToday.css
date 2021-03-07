@@ -1,21 +1,22 @@
-.container {
+.weather-today-container {
     height: 100%;
     width: 100%;
 
     padding: 3% 7%;
 }
 
-.row, .col {
+.weather-today-container .row,
+.weather-today-container .col {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.row {
+.weather-today-container .row {
     flex-direction: row;
 }
 
-.col {
+.weather-today-container .col {
     flex-direction: column;
 }
 

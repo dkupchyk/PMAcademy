@@ -15,7 +15,7 @@ const CharacteristicContainer = ({iconPath, text, value}) => {
 }
 
 const WeatherToday = ({weatherItem}) => {
-    return <div className="container">
+    return <div className="weather-today-container">
 
         <div className="row weather-main-box">
             <div className="temperature">

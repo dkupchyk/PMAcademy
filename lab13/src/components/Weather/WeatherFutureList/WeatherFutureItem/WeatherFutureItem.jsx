@@ -1,6 +1,6 @@
-import './WeatherFutureItem.css';
-
 import React from "react";
+
+import './WeatherFutureItem.css';
 
 const WeatherFutureItem = ({weatherItem}) => {
     return <div className="weather-future-item-container">

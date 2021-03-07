@@ -1,6 +1,6 @@
-import './InputField.css';
-
 import React from 'react';
+
+import './InputField.css';
 
 const INVALID_INPUT = 'Enter a valid input.';
 
