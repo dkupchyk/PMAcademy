@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Weather from "./components/Weather/Weather";
 import Navigation from "./components/Navigation/Navigation";
 import Dashboard from "./components/Retrospective/Dashboard/Dashboard";
+import Todo from "./components/Todo/Todo";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                     <Route path="/" exact component={Weather}/>
                     <Route path="/weather/" component={Weather}/>
                     <Route path="/retro/" component={Dashboard}/>
+                    <Route path="/todos/" component={Todo}/>
                 </Switch>
             </div>
         </Router>);

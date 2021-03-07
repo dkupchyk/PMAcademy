@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import './Weather.css';
 
-import {search} from "../../sercives/apiCalls";
+import {search} from "../../sercives/weatherApiCalls";
 import {WeatherItem} from "../../models/WeatherItem";
 import WeatherToday from "./WeatherToday/WeatherToday";
 import WeatherFutureList from "./WeatherFutureList/WeatherFutureList";
@@ -62,7 +62,7 @@ function Weather() {
             </div>
 
             <div className="weather-future">
-                <InputField buttonFunction={getWeather} buttonText="Search" textValue=""/>
+                <InputField buttonFunction={getWeather} buttonText="Search" textValue="" placeholder="Enter a city..."/>
                 {futureWeather ? (isQuerySuccessful() ?
                     <WeatherFutureList weatherList={futureWeather}/> : 'City is invalid. Try again.') : ''}
             </div>

@@ -37,13 +37,13 @@ class InputField extends React.Component {
     render() {
         const {execute, changeText} = this;
         const {isInvalidInput, inputText} = this.state;
-        const {buttonText} = this.props;
+        const {buttonText, placeholder} = this.props;
 
         return <div>
             <div className="input-container">
                 <input type="text"
                        onChange={changeText}
-                       placeholder="Enter text..."
+                       placeholder={placeholder ? placeholder : "Enter text..."}
                        value={inputText}/>
                 <button onClick={execute}>{buttonText}</button>
             </div>

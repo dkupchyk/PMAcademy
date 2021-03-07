@@ -1,0 +1,45 @@
+.dropdown-container {
+    height: 30px;
+    width: 200px;
+    left: 15px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+    margin: 0;
+    padding: 0;
+
+    position: relative;
+
+    cursor: pointer;
+}
+
+.dropdown-selected {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    padding: 4px 12px;
+    vertical-align: middle;
+}
+
+.dropdown-items div {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+
+    padding: 10px 5px 10px 20px;
+}
+
+.dropdown-arrow {
+    width: 22px;
+    height: 22px;
+    padding-top: 10px;
+
+    opacity: 0.6;
+
+    display: inline-block;
+
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
