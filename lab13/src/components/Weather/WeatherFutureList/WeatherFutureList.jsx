@@ -1,6 +1,7 @@
+import React from "react";
+
 import './WeatherFutureList.css';
 
-import React from "react";
 import WeatherFutureItem from "./WeatherFutureItem/WeatherFutureItem";
 
 const WeatherFutureList = ({weatherList}) => {

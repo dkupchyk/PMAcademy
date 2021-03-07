@@ -1,6 +1,7 @@
+import React, {useState} from 'react';
+
 import './Weather.css';
 
-import React, {useState} from 'react';
 import {INVALID_CITY_MESSAGE, WEATHER_TYPES} from "../../common/constants";
 import {search} from "../../sercives/apiCalls";
 import {WeatherItem} from "../../models/WeatherItem";
@@ -61,7 +62,7 @@ function Weather() {
 
     const isQuerySuccessful = () => futureWeather.length !== 0 && Object.keys(todayWeather).length !== 0;
 
-    return (<div className="App" style={{backgroundImage: `url(${background})`}}>
+    return (<div className="weather-container" style={{backgroundImage: `url(${background})`}}>
             <div className="weather-today">
                 {isQuerySuccessful() ? <WeatherToday weatherItem={todayWeather}/> : ''}
             </div>

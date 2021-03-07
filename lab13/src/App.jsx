@@ -2,9 +2,10 @@ import './App.css';
 
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
 import Weather from "./components/Weather/Weather";
-import Dashboard from "./components/Retrospective/Dashboard/Dashboard";
 import Navigation from "./components/Navigation/Navigation";
+import Dashboard from "./components/Retrospective/Dashboard/Dashboard";
 
 
 function App() {

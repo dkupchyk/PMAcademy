@@ -1,22 +1,17 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
+
 import './Navigation.css';
 
 function Navigation() {
     return (
-        <div>
-            <Link to="/weather">
-                <p>Weather</p>
-            </Link>
+        <ul className="navigation">
+            <NavLink to="/weather" activeClassName="nav-link-selected" className="nav-link">Weather</NavLink>
 
-            <Link to="/retro">
-                <p>Retrospective</p>
-            </Link>
+            <NavLink to="/retro" activeClassName="nav-link-selected" className="nav-link">Retrospective</NavLink>
 
-            <Link to="/todos">
-                <p>To do dashboard</p>
-            </Link>
-        </div>
+            <NavLink to="/todos" activeClassName="nav-link-selected" className="nav-link">To do</NavLink>
+        </ul>
     );
 }
 

@@ -1,6 +1,7 @@
+import React from "react";
+
 import './WeatherToday.css';
 
-import React from "react";
 import {ICONS} from "../../../common/constants";
 
 const CharacteristicContainer = ({iconPath, text, value}) => {
