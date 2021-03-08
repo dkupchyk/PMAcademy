@@ -27,10 +27,7 @@ class Todo extends React.Component {
     }
 
     async componentDidMount() {
-        await fetchAllUsers().then(result => {
-            const users = result.map(user => ({id: user.id, name: user.name}));
-            this.setState({users: users})
-        });
+        await fetchAllUsers().then(result => this.setState({users: result.map(user => ({id: user.id, name: user.name}))}));
 
         await this.changeUser(this.state.users[0].id);
     }
@@ -47,13 +44,9 @@ class Todo extends React.Component {
     }
 
     searchText(text) {
-        let filtered = [];
-
-        this.state.usersTodos.map(item => {
-            if(item.title.match(new RegExp(text, 'g'))){
-                filtered.push(item.id);
-            }
-        })
+        const filtered = this.state.usersTodos
+            .filter(item => item.title.match(new RegExp(text, 'g')))
+            .map(item => item.id)
 
         this.setState({highlightedTodos: filtered})
     }

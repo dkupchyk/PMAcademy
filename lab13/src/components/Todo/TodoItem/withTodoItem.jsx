@@ -1,6 +1,6 @@
 import React from 'react';
-import {patchToDo} from "../../../sercives/todoApiCalls";
 
+import {patchToDo} from "../../../sercives/todoApiCalls";
 
 function withTodoItem(TodoItem) {
 
@@ -18,7 +18,7 @@ function withTodoItem(TodoItem) {
         }
 
         render() {
-            return <TodoItem  {...this.props}  changeComplete={this.changeComplete}/>;
+            return <TodoItem  {...this.props} changeComplete={this.changeComplete}/>;
         }
     }
 }

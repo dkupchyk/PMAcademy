@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 
-import './SearchTodo.css';
-
 const INVALID_INPUT = 'Enter a valid input.';
 
 function SearchTodo(props) {
@@ -20,7 +18,6 @@ function SearchTodo(props) {
             <p className="error">{inputValue || inputValue !== '' ? '' : INVALID_INPUT}</p>
         </div>
     );
-
 }
 
 export default SearchTodo;
