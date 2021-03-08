@@ -19,11 +19,10 @@ class InputField extends React.Component {
     }
 
     execute() {
-        if (!this.state.inputText) {
-            return this.setState(() => ({
-                isInvalidInput: true
-            }));
-        }
+        if (!this.state.inputText) return this.setState(() => ({isInvalidInput: true}));
+
+        this.nameInput.focus();
+        this.setState(() => ({inputText: ''}));
 
         this.props.buttonFunction(this.state.inputText);
     }
@@ -42,6 +41,9 @@ class InputField extends React.Component {
         return <div>
             <div className="input-container">
                 <input type="text"
+                       ref={(input) => {
+                           this.nameInput = input;
+                       }}
                        onChange={changeText}
                        placeholder={placeholder ? placeholder : "Enter text..."}
                        value={inputText}/>
