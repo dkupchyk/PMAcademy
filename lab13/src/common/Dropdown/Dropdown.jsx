@@ -19,10 +19,13 @@ class Dropdown extends React.Component {
     };
 
     selectItem = item => {
-        this.setState({
-            selectedItem: item,
-            showItems: false
-        });
+        if (item !== this.state.selectedItem) {
+            this.setState({selectedItem: item});
+
+            this.props.itemWasChanged(item);
+        }
+
+        this.setState({showItems: false});
     };
 
     componentWillReceiveProps(nextProps) {

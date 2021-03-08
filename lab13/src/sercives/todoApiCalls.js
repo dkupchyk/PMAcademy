@@ -1,8 +1,8 @@
 import {fetchData} from "./apiCalls";
 
-export const getAllUsers = () => fetchData(`https://jsonplaceholder.typicode.com/users`);
+export const fetchAllUsers = () => fetchData(`https://jsonplaceholder.typicode.com/users`);
 
-export const getUsersToDos = () => fetchData(`https://jsonplaceholder.typicode.com/todos?userId={userId}`);
+export const fetchUsersToDos = (id) => fetchData(`https://jsonplaceholder.typicode.com/todos?userId=${id}`);
 
 
 // Селект “User” повинен містити в собі список користувачів (https://jsonplaceholder.typicode.com/users),
