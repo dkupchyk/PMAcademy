@@ -8,16 +8,14 @@ class Dropdown extends React.Component {
         super(props);
 
         this.state = {
-            items: this.props.items || [],
+            items: [],
             showItems: false,
-            selectedItem: this.props.items && this.props.items[0]
+            selectedItem: null
         };
     }
 
     dropDown = () => {
-        this.setState(prevState => ({
-            showItems: !prevState.showItems
-        }));
+        this.setState(prevState => ({showItems: !prevState.showItems}));
     };
 
     selectItem = item => {
@@ -27,26 +25,34 @@ class Dropdown extends React.Component {
         });
     };
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            items: nextProps.items,
+            selectedItem: nextProps.items[0]
+        });
+    }
+
     render() {
         const {dropDown, selectItem} = this;
         const {selectedItem, showItems, items} = this.state;
 
         return (<div className="dropdown-container">
-                <div className="dropdown-selected" onClick={dropDown}>{selectedItem.name}</div>
+                <div className="dropdown-selected"
+                     onClick={dropDown}>{items.length !== 0 ? selectedItem.name : ''}</div>
 
                 {showItems
                     ? <img className="dropdown-arrow" src='./icons/up-arrow.svg' alt="icon" onClick={dropDown}/>
                     : <img className="dropdown-arrow" src='./icons/down-arrow.svg' alt="icon" onClick={dropDown}/>}
 
-                <div style={{display: showItems ? "block" : "none"}} className={"dropdown-items"}>
+                <div style={{display: showItems ? "block" : "none"}} className="dropdown-items">
                     {items.map(item => (
                         <div key={item.id}
-                             onClick={() => selectItem(item)}
-                             className={selectedItem === item ? "selected" : ""}>
+                             onClick={() => selectItem(item)}>
                             {item.name}
                         </div>
                     ))}
                 </div>
+
             </div>
         );
     }

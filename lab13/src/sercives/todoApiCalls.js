@@ -1,15 +1,21 @@
-import {WEATHER_API} from "../common/constants";
 import {fetchData} from "./apiCalls";
 
-// export const searchLonLat = (query) => fetchData(`${API.url}weather?q=${query}&units=metric&APPID=${API.key}`);
+export const getAllUsers = () => fetchData(`https://jsonplaceholder.typicode.com/users`);
+
+export const getUsersToDos = () => fetchData(`https://jsonplaceholder.typicode.com/todos?userId={userId}`);
+
+
+// Селект “User” повинен містити в собі список користувачів (https://jsonplaceholder.typicode.com/users),
+// при виборі користувача повинен відображатись список його справ (https://jsonplaceholder.typicode.com/todos?userId={userId}).
+// По дефолту повинен бути вибраний перший доступний юзер.
 //
-// export const searchAllDays = (lat, lon) => fetchData(`${API.url}onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&cnt=7&units=metric&appid=${API.key}`);
 //
-// export const search = async (query) => {
-//     const currentWeather = await searchLonLat(query);
+// Поле Type new todo here призначене для створення нової справи. По кнопці Add повинен відрпавлятись запит POST
+// https://jsonplaceholder.typicode.com/todos
+// і нова справа повинна бути додана до списку.
 //
-//     if (currentWeather.cod === '404') return null
 //
-//     const forecast = await searchAllDays(currentWeather.coord.lat, currentWeather.coord.lon);
-//     return {today: forecast.daily[0], next: forecast.daily.slice(1)};
-// }
+// По кліку на “x” в компоненті справи, справа повинна бути відмічена як виконана і повинен відпрівитись запит на PATCH
+// https://jsonplaceholder.typicode.com/todos/{todoId}
+// з відповідними змінами.
+//
