@@ -4,7 +4,7 @@ export const fetchAllUsers = () => fetchData(`https://jsonplaceholder.typicode.c
 
 export const fetchUsersToDos = (id) => fetchData(`https://jsonplaceholder.typicode.com/todos?userId=${id}`);
 
-export const postToDo = (userId, text) => fetchData('https://httpbin.org/post', {
+export const postToDo = (userId, text) => fetch('https://jsonplaceholder.typicode.com/todos', {
     method: 'POST',
     headers: {
         'Accept': 'application/json',

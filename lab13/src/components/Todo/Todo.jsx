@@ -6,6 +6,7 @@ import InputField from "../../common/InputField/InputField";
 import Dropdown from "../../common/Dropdown/Dropdown";
 import {fetchAllUsers, fetchUsersToDos, postToDo} from "../../sercives/todoApiCalls";
 import TodoItem from "./TodoItem/TodoItem";
+import SearchTodo from "./SearchTodo/SearchTodo";
 
 class Todo extends React.Component {
 
@@ -15,7 +16,8 @@ class Todo extends React.Component {
         this.state = {
             users: [],
             selectedUserId: null,
-            usersTodos: []
+            usersTodos: [],
+            highlightedTodos: []
         }
 
         this.addTodoItem = this.addTodoItem.bind(this);
@@ -45,7 +47,15 @@ class Todo extends React.Component {
     }
 
     searchText(text) {
+        let filtered = [];
 
+        this.state.usersTodos.map(item => {
+            if(item.title.match(new RegExp(text, 'g'))){
+                filtered.push(item.id);
+            }
+        })
+
+        this.setState({highlightedTodos: filtered})
     }
 
     changeItemStatus(id, value) {
@@ -60,22 +70,22 @@ class Todo extends React.Component {
 
     render() {
         const {addTodoItem, changeUser, searchText, changeItemStatus} = this;
-        const {users, usersTodos} = this.state;
+        const {users, usersTodos, highlightedTodos} = this.state;
 
         return <div className="component-wrapper todo-container">
             <div className="todo-inputs">
                 <Dropdown items={users} itemWasChanged={changeUser}/>
                 <InputField buttonFunction={addTodoItem} buttonText="Add" textValue="" placeholder="Type new to do..."/>
-                <InputField buttonFunction={searchText} buttonText="Add" textValue=""
-                            placeholder="Search text in to do"/>
+                <SearchTodo buttonFunction={searchText}/>
             </div>
 
             <div className="todo-list">
-                {usersTodos.map((item, index) => <TodoItem key={item.id}
+                {usersTodos.map((item, index) => <TodoItem key={index}
                                                            id={item.id}
                                                            index={index + 1}
                                                            completed={item.completed}
                                                            text={item.title}
+                                                           idHighlighted={highlightedTodos.indexOf(item.id) !== -1}
                                                            changeComplete={changeItemStatus}/>)}
             </div>
         </div>;
