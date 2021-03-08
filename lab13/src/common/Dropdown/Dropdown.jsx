@@ -8,9 +8,8 @@ class Dropdown extends React.Component {
         super(props);
 
         this.state = {
-            items: [],
+            selectedItemId: 0,
             showItems: false,
-            selectedItem: null
         };
     }
 
@@ -18,30 +17,23 @@ class Dropdown extends React.Component {
         this.setState(prevState => ({showItems: !prevState.showItems}));
     };
 
-    selectItem = item => {
-        if (item !== this.state.selectedItem) {
-            this.setState({selectedItem: item});
-
-            this.props.itemWasChanged(item);
+    selectItem = id => {
+        if (id !== this.state.selectedItemId) {
+            this.setState({selectedItemId: id});
+            this.props.itemWasChanged(id);
         }
 
         this.setState({showItems: false});
     };
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            items: nextProps.items,
-            selectedItem: nextProps.items[0]
-        });
-    }
-
     render() {
         const {dropDown, selectItem} = this;
-        const {selectedItem, showItems, items} = this.state;
+        const {items} = this.props
+        const {selectedItemId, showItems} = this.state;
 
         return (<div className="dropdown-container">
                 <div className="dropdown-selected"
-                     onClick={dropDown}>{items.length !== 0 ? selectedItem.name : ''}</div>
+                     onClick={dropDown}>{items.length !== 0 ? items[selectedItemId].name : ''}</div>
 
                 {showItems
                     ? <img className="dropdown-arrow" src='./icons/up-arrow.svg' alt="icon" onClick={dropDown}/>
@@ -50,7 +42,7 @@ class Dropdown extends React.Component {
                 <div style={{display: showItems ? "block" : "none"}} className="dropdown-items">
                     {items.map(item => (
                         <div key={item.id}
-                             onClick={() => selectItem(item)}>
+                             onClick={() => selectItem(item.id)}>
                             {item.name}
                         </div>
                     ))}

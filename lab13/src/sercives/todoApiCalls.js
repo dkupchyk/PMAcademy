@@ -4,6 +4,23 @@ export const fetchAllUsers = () => fetchData(`https://jsonplaceholder.typicode.c
 
 export const fetchUsersToDos = (id) => fetchData(`https://jsonplaceholder.typicode.com/todos?userId=${id}`);
 
+export const postToDo = (userId, text) => fetchData('https://httpbin.org/post', {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({userId: userId, title: text, completed: false})
+});
+
+export const patchToDo = (todoId, isComplete) => fetchData(`https://jsonplaceholder.typicode.com/todos/${todoId}`, {
+    method: 'PATCH',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({completed: isComplete})
+});
 
 // Селект “User” повинен містити в собі список користувачів (https://jsonplaceholder.typicode.com/users),
 // при виборі користувача повинен відображатись список його справ (https://jsonplaceholder.typicode.com/todos?userId={userId}).

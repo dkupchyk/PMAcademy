@@ -1,16 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import './TodoItem.css';
+import withTodoItem from "./withTodoItem";
 
 function TodoItem(props) {
 
-    // const [query, setQuery] = useState('');
-
     return (<div className="todo-item">
-            <p className="todo-item__text">{props.text}</p>
-            <div className="todo-item__button">X</div>
-    </div>
+            <p className="todo-item__id">{props.index}</p>
+            <p className={`todo-item__text ${props.completed ? 'complete' : 'not-complete'}`}>{props.text}</p>
+            <div className="todo-item__button" onClick={props.changeComplete}>X</div>
+        </div>
     );
 }
 
-export default TodoItem;
+export default withTodoItem(TodoItem);

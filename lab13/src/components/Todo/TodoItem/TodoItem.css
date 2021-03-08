@@ -15,7 +15,7 @@
 }
 
 .todo-item::before {
-    content: ' ';
+    /*content: ' ';*/
 
     width: 105%;
     height: 105%;
@@ -36,4 +36,12 @@
 
 .todo-item__button {
     cursor: pointer;
+}
+
+.complete {
+    text-decoration: line-through;
+}
+
+.not-complete {
+    text-decoration: none;
 }
