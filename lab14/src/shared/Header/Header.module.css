@@ -1,0 +1,38 @@
+.header-wrapper {
+    text-align: center;
+    height: 100%;
+
+    width: 15vh;
+
+    position: fixed;
+
+    display: flex;
+    justify-content: flex-start;
+}
+
+.header-wrapper hr {
+    border: none;
+    border-bottom: 2.5px solid #333;
+}
+
+.header-wrapper > hr {
+    width: 100vh;
+}
+
+.rotated {
+    /*display: flex;*/
+    justify-content: space-between;
+}
+
+.rotated hr {
+    height: 10vw;
+}
+
+.rotated p {
+    display: inline-block;
+    width: 100px;
+}
+
+.header-wrapper > hr, .header-wrapper .rotated p {
+    transform: rotate(-90deg);
+}
