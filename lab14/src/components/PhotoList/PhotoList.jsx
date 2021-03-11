@@ -1,16 +1,26 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 import styles from './PhotoList.module.css';
 
+function PhotoList(props) {
 
-function PhotoList({photos}) {
-
-    console.log(photos)
     return (
         <div className={styles['images-list']}>
-            {photos.map(item => <img key={item.id} src={item.url} className={styles['image']} alt="item"/>)}
+            {props.photos.map(item =>
+                <Link key={item.id}
+                      to={`/photoId=${item.id}`}
+                      className={styles['link']}>
+
+                    <img className={styles['image']}
+                         onClick={() => props.onSelect(item.id)}
+                        src={item.thumbnailUrl}
+                         alt="item"/>
+                </Link>
+            )}
         </div>
     );
+
 }
 
 export default PhotoList;

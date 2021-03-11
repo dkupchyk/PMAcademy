@@ -10,10 +10,13 @@
     flex-wrap: wrap;
 }
 
-.images-list .image {
+.images-list .link {
     width: 300px;
     margin: 1%;
+}
 
+.images-list .image {
+    width: 100%;
     cursor: pointer;
 
     border: 1px solid #333;

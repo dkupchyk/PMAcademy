@@ -5,7 +5,7 @@ import './App.css';
 
 import MainPage from "./components/MainPage/MainPage";
 import Album from "./components/Album/Album";
-import Image from "./components/Image/Image";
+import PhotoDetailed from "./components/PhotoDetailed/PhotoDetailed";
 import Header from "./shared/Header/Header";
 
 function App() {
@@ -19,8 +19,8 @@ function App() {
                 <div className="router-container">
                     <Switch>
                         <Route path="/" exact component={MainPage}/>
-                        <Route path="/album/" component={Album}/>
-                        <Route path="/image/" component={Image}/>
+                        <Route path="/album:id" component={Album}/>
+                        <Route path="/photoId=:id" component={PhotoDetailed}/>
                     </Switch>
                 </div>
             </div>

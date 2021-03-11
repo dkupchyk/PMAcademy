@@ -1,0 +1,25 @@
+.photo-detailed-container {
+    width: 94%;
+    height: 100%;
+
+    padding: 0 3%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.photo-detailed-container .image-url {
+    width: 500px;
+    margin-right: 20px;
+}
+
+.photo-detailed-container .image-description {
+    width: 50%;
+
+    text-align: left;
+}
+
+.photo-detailed-container .image-description h2{
+    font-size: 2.2em;
+}
+

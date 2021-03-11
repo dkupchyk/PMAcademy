@@ -3,8 +3,9 @@ import {reducer} from "./reducers";
 
 export const preloadState = {
     photos: [],
-    selectedPhoto: null,
-    selectedAlbum: null
+    selectedAlbum: null,
+    selectedPhotoId: null,
+    selectedAlbumId: null
 };
 
 const store = createStore(
