@@ -6,15 +6,10 @@ import './App.css';
 import MainPage from "./components/MainPage/MainPage";
 import Album from "./components/Album/Album";
 import PhotoDetailed from "./components/PhotoDetailed/PhotoDetailed";
-import Header from "./shared/Header/Header";
 
 function App() {
     return (<Router>
             <div className="App">
-
-                {/*<div className="header-container">*/}
-                {/*    <Header title="Album"/>*/}
-                {/*</div>*/}
 
                 <div className="router-container">
                     <Switch>
@@ -23,6 +18,7 @@ function App() {
                         <Route path="/photoId=:id" component={PhotoDetailed}/>
                     </Switch>
                 </div>
+
             </div>
         </Router>
     );

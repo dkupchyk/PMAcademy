@@ -1,41 +1,41 @@
 import React, {useEffect} from "react";
-import {connect, useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import styles from './MainPage.module.css';
 
-import {LOAD_PHOTOS, SELECT_PHOTO} from "../../store/actions";
-import {fetchSixPhotos} from "../../shared/API";
 import PhotoList from "../PhotoList/PhotoList";
+import Loader from "../Loader/Loader";
+import {fetchPhotos, SELECT_PHOTO} from "../../store/ducks/photoDuck";
 
-function MainPage(props) {
+function MainPage() {
 
-    const photos = useSelector(state => state.photos)
+    const dispatch = useDispatch();
+    const photos = useSelector(state => state.photosReducer.photos);
 
-    const loadPhotos = (start) => fetchSixPhotos(start).then(data => props.loadPhotos(data));
+    const loadPhotos = (start) => dispatch(fetchPhotos(start));
+    const onSelectPhoto = (id) => dispatch(SELECT_PHOTO(photos[id - 1]));
 
     useEffect(() => {
-        loadPhotos(0)
-    }, [])
-
-    const onSelectPhoto = (id) => props.selectedPhoto(photos[id - 1]);
+        loadPhotos(0);
+    }, []);
 
     return (
         <div className={styles['main-page-container']}>
 
-            <PhotoList photos={photos} onSelect={onSelectPhoto}/>
+            {photos.length === 0
+                ? <Loader loaded={true}/>
+                : <div>
+                    <PhotoList photos={photos} onSelect={onSelectPhoto}/>
 
-            <p className={styles['load-more-text']}
-               onClick={() => loadPhotos(photos.length)}>
-                Load more
-            </p>
+                    <p className={styles['load-more-text']}
+                       onClick={() => loadPhotos(photos.length)}>
+                        Load more
+                    </p>
+                </div>
+            }
+
         </div>
     );
-}
+};
 
-const mapStateToProps = (state) => ({photos: state.photos});
-const mapDispatchToProps = (dispatch) => ({
-    loadPhotos: (photos) => dispatch(LOAD_PHOTOS(photos)),
-    selectedPhoto: (photo) => dispatch(SELECT_PHOTO(photo))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
+export default MainPage;

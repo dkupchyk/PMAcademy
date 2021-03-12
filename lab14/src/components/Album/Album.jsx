@@ -1,63 +1,64 @@
-import React, {useEffect, useState} from "react";
-import {connect, useSelector} from "react-redux";
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useHistory} from "react-router-dom";
 
 import styles from './Album.module.css';
 
-import {fetchAlbumPhotos, fetchUserInfo} from "../../shared/API";
 import PhotoList from "../PhotoList/PhotoList";
-import {LOAD_ALBUM_PHOTOS, SELECT_PHOTO} from "../../store/actions";
+import Loader from "../Loader/Loader";
+import {getUser, getAlbumPhotos} from "../../store/ducks/albumDuck";
+import {SELECT_PHOTO} from "../../store/ducks/photoDuck";
 
-function Album(props) {
+function Album() {
 
-    const [user, setUser] = useState({});
+    const history = useHistory();
+    const dispatch = useDispatch();
 
-    const photos = useSelector(state => state.albumPhotos)
-    const id = useSelector(state => state.selectedAlbumId)
+    const photos = useSelector(state => state.albumReducer.albumPhotos);
+    const id = useSelector(state => state.albumReducer.selectedAlbumId);
+    const user = useSelector(state => state.albumReducer.albumUser);
 
-    const loadPhotos = (start) => fetchAlbumPhotos(id, start).then(data => props.loadAlbumPhotos(data));
-    const loadUserInfo = () => fetchUserInfo(id).then(data => setUser(data.user));
+    const loadPhotos = (start) => dispatch(getAlbumPhotos(id, start));
+    const loadUserInfo = (id) => dispatch(getUser(id));
+    const onSelectPhoto = (id) => dispatch(SELECT_PHOTO(photos[id - 1]));
+
+    const redirectToMain = () => history.push("/")
 
     useEffect(() => {
-        console.log(photos)
-        if(photos.length === 0) {
-            loadPhotos(0);
-            loadUserInfo(id);
-        }
-    }, [])
+        if (photos.length === 0) loadPhotos(0);
 
-    const onSelectPhoto = (id) => props.selectedPhoto(photos[id - 1]);
+        loadUserInfo(id);
+    }, [])
 
     return (
         <div className={styles['album-container']}>
 
-            <div>
-                <h2>Album</h2>
-                <div className={styles['user-info']}>
-                    <p>{user.name}</p>
-                    <p> - </p>
-                    <p>{user.email}</p>
-                </div>
-            </div>
+            {id === null
+                ? redirectToMain()
+                : !user || photos.length === 0
+                    ? <Loader loaded={true}/>
+                    : <div>
 
-            <PhotoList photos={photos} onSelect={onSelectPhoto}/>
+                        <div>
+                            <h2>Album</h2>
+                            <div className={styles['user-info']}>
+                                <p>{user.name}</p>
+                                <p> - </p>
+                                <p>{user.email}</p>
+                            </div>
+                        </div>
 
-            <p className={styles['load-more-text']}
-               onClick={() => loadPhotos(photos.length)}>
-                Load more
-            </p>
+                        <PhotoList photos={photos} onSelect={onSelectPhoto}/>
+
+                        <p className={styles['load-more-text']}
+                           onClick={() => loadPhotos(photos.length)}>
+                            Load more
+                        </p>
+                    </div>
+            }
+
         </div>
     );
 }
 
-const mapStateToProps = (state) => ({
-    albumPhotos: state.albumPhotos,
-    selectedAlbumId: state.selectedAlbumId
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    selectedPhoto: (photo) => dispatch(SELECT_PHOTO(photo)),
-    loadAlbumPhotos: (photos) => dispatch(LOAD_ALBUM_PHOTOS(photos))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Album);
-
+export default Album;

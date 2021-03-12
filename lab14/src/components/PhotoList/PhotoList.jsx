@@ -1,7 +1,13 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import PropTypes from 'prop-types';
 
 import styles from './PhotoList.module.css';
+
+PhotoList.propTypes = {
+    photos: PropTypes.array,
+    onSelect: PropTypes.func
+};
 
 function PhotoList(props) {
 
@@ -20,7 +26,6 @@ function PhotoList(props) {
             )}
         </div>
     );
-
 }
 
 export default PhotoList;

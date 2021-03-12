@@ -1,45 +1,45 @@
 /*Fonts */
 
 @font-face {
-  font-family: 'Yessica';
-  font-style: normal;
-  font-weight: 200;
-  src: local('Yessica'), url('./resources/fonts/Yessica-Thin.otf') format('opentype')
+    font-family: 'Yessica';
+    font-style: normal;
+    font-weight: 200;
+    src: local('Yessica'), url('./resources/fonts/Yessica-Thin.otf') format('opentype')
 }
 
 @font-face {
-  font-family: 'Yessica';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Yessica'), url('./resources/fonts/Yessica-Light.otf') format('opentype')
+    font-family: 'Yessica';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Yessica'), url('./resources/fonts/Yessica-Light.otf') format('opentype')
 }
 
 @font-face {
-  font-family: 'Yessica';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Yessica'), url('./resources/fonts/Yessica-Regular.otf') format('opentype')
+    font-family: 'Yessica';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Yessica'), url('./resources/fonts/Yessica-Regular.otf') format('opentype')
 }
 
 @font-face {
-  font-family: 'Yessica';
-  font-style: normal;
-  font-weight: 500;
-  src: local('Yessica'), url('./resources/fonts/Yessica-Bold.otf') format('opentype')
+    font-family: 'Yessica';
+    font-style: normal;
+    font-weight: 500;
+    src: local('Yessica'), url('./resources/fonts/Yessica-Bold.otf') format('opentype')
 }
 
 /*Styling*/
 
 body {
-  margin: 0;
-  font-family: 'Yessica', sans-serif;
+    margin: 0;
+    font-family: 'Yessica', sans-serif;
 
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 

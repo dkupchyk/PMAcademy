@@ -1,17 +1,20 @@
-import {createStore} from "redux";
-import {reducer} from "./reducers";
+import {combineReducers, compose} from 'redux';
+import {applyMiddleware, createStore} from "redux";
+import thunkMiddleware from 'redux-thunk';
 
-export const preloadState = {
-    photos: [],
-    albumPhotos: [],
-    selectedAlbum: {},
-    selectedPhoto: {},
-    selectedAlbumId: null
-};
+import photosReducer from './ducks/photoDuck';
+import albumReducer from './ducks/albumDuck';
 
-const store = createStore(
-    reducer,
-    preloadState,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const mainReducer = combineReducers({
+    photosReducer,
+    albumReducer
+});
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+export const store = createStore(
+    mainReducer,
+    composeEnhancers(applyMiddleware(thunkMiddleware))
+);
 
 export default store;
