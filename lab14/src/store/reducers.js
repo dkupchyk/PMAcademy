@@ -1,8 +1,6 @@
 import {LOAD_PHOTOS, LOAD_ALBUM_PHOTOS, SELECT_PHOTO, SELECT_ALBUM} from "./actions";
 
 export const reducer = (state, action) => {
-    console.log(action)
-
     switch (action.type) {
 
         case LOAD_PHOTOS().type:

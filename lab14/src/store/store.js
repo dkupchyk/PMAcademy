@@ -3,7 +3,7 @@ import {reducer} from "./reducers";
 
 export const preloadState = {
     photos: [],
-    selectedAlbum: null,
+    selectedAlbum: {},
     selectedPhotoId: null,
     selectedAlbumId: null
 };

@@ -13,7 +13,7 @@ export const SELECT_PHOTO = (id) => ({
     payload: id
 });
 
-export const SELECT_ALBUM = (id) => ({
+export const SELECT_ALBUM = (album) => ({
     type: "select_album",
-    payload: id
+    payload: album
 });
