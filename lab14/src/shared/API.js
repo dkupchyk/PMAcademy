@@ -9,5 +9,5 @@ export const fetchAlbum = (albumId) => fetchData(`https://jsonplaceholder.typico
 
 export const fetchAlbumPhotos = (albumId, start) => fetchData(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}&_start=${start}&_limit=6`)
 
-export const fetchUserInfo = (albumId, start) => fetchData(`https://jsonplaceholder.typicode.com/albums/${albumId}?_expand=user`)
+export const fetchUserInfo = (albumId) => fetchData(`https://jsonplaceholder.typicode.com/albums/${albumId}?_expand=user`)
 

@@ -17,7 +17,7 @@ function MainPage(props) {
         loadPhotos(0)
     }, [])
 
-    const onSelectPhoto = (id) => props.selectedPhotoId(id);
+    const onSelectPhoto = (id) => props.selectedPhoto(photos[id - 1]);
 
     return (
         <div className={styles['main-page-container']}>
@@ -35,7 +35,7 @@ function MainPage(props) {
 const mapStateToProps = (state) => ({photos: state.photos});
 const mapDispatchToProps = (dispatch) => ({
     loadPhotos: (photos) => dispatch(LOAD_PHOTOS(photos)),
-    selectedPhotoId: (id) => dispatch(SELECT_PHOTO(id))
+    selectedPhoto: (photo) => dispatch(SELECT_PHOTO(photo))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

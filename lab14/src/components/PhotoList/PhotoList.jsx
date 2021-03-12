@@ -14,7 +14,7 @@ function PhotoList(props) {
 
                     <img className={styles['image']}
                          onClick={() => props.onSelect(item.id)}
-                        src={item.thumbnailUrl}
+                         src={item.thumbnailUrl}
                          alt="item"/>
                 </Link>
             )}
