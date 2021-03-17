@@ -6,20 +6,8 @@ const StyledStepper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    
-
-  // @media (min-width: 769px) {
-  //   ::-webkit-scrollbar {
-  //     margin-top: 2px;
-  //     height: 15px;
-  //     width: 5px;
-  //   }
-  //   ::-webkit-scrollbar-thumb:horizontal {
-  //     background: white;
-  //     border-radius: 10px;
-  //   }
-  // }
 `;
+
 const StepperCard = styled.div`
     display: flex;
     justify-content: center;
