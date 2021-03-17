@@ -37,7 +37,7 @@ const Stepper = ({amount}) => {
     for (let i = 1; i <= amount; i++) {
         stepper[i] =
             <StepperCard key={i}>
-                <Link to={`/`}>
+                <Link to={`/step-${i}`}>
                     <span>{i}</span>
                 </Link>
                 <hr/>

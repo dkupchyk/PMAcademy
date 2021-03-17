@@ -1,9 +1,13 @@
 import React, {useState} from 'react'
 import styled from 'styled-components';
+import {useHistory} from "react-router-dom";
+import {connect, useSelector} from "react-redux";
+
+import {SET_EMAIL, SET_FIRST_NAME, SET_LAST_NAME, SET_PHONE, SET_POSITION} from "../../store/actions";
 
 const StyledForm = styled.div`
-    width: 60%;
-    margin: 10% auto;
+    width: 40%;
+    margin: 5% auto;
     
     form {
         width: 100%;
@@ -13,7 +17,6 @@ const StyledForm = styled.div`
         align-items: center;
         flex-direction: column;
     }
-  
 `;
 
 const StepperCard = styled.div`
@@ -39,28 +42,34 @@ const StepperCard = styled.div`
     // }
 `;
 
-const NamePhoneForm = () => {
+const NamePhoneForm = (props) => {
+
+    const history = useHistory();
 
     const [form, setForm] = useState({
-        firstName: '',
-        lastName: '',
-        position: '',
-        phone: '',
-        email: '',
+        firstName: useSelector(state => state.firstName),
+        lastName: useSelector(state => state.lastName),
+        position: useSelector(state => state.position),
+        phone: useSelector(state => state.phone),
+        email: useSelector(state => state.email)
     });
+
     const [isValid, setIsValid] = useState(false)
-
-    const toPrevious = (e) => {
-        e.preventDefault();
-
-        console.log("prev")
-    }
 
     const toNext = (e) => {
         e.preventDefault();
 
-        console.log("next")
+        saveChanges();
 
+        history.push("/step-2");
+    }
+
+    const saveChanges = () => {
+        props.setFirstName(form.firstName);
+        props.setLastName(form.lastName);
+        props.setPosition(form.position);
+        props.setPhone(form.phone);
+        props.setEmail(form.email);
     }
 
     const handleChange = (e) => {
@@ -83,19 +92,33 @@ const NamePhoneForm = () => {
 
     return (<StyledForm>
         <form>
-            <input type="text" name="firstName" onChange={handleChange} placeholder="First name"/>
+            <input type="text" name="firstName" value={form.firstName} onChange={handleChange} placeholder="First name"/>
             <input type="text" name="lastName" value={form.lastName} onChange={handleChange} placeholder="Last name"/>
             <input type="text" name="position" value={form.position} onChange={handleChange} placeholder="Position"/>
             <input type="text" name="phone" value={form.phone} onChange={handleChange} placeholder="Phone"/>
             <input type="email" name="email" value={form.email} onChange={handleChange} placeholder="Email"/>
 
-            <div>
-                <button disabled={!isValid} onClick={toPrevious}>Previous</button>
-                <button disabled={!isValid} onClick={toNext}>Next</button>
-            </div>
+            <button disabled={!isValid} onClick={toNext}>Next</button>
+
         </form>
 
     </StyledForm>);
 };
 
-export default NamePhoneForm;
+const mapStateToProps = (state) => ({
+    firstName: state.firstName,
+    lastName: state.lastName,
+    position: state.position,
+    phone: state.phone,
+    email: state.email,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    setFirstName: (name) => dispatch(SET_FIRST_NAME(name)),
+    setLastName: (name) => dispatch(SET_LAST_NAME(name)),
+    setPosition: (position) => dispatch(SET_POSITION(position)),
+    setPhone: (phone) => dispatch(SET_PHONE(phone)),
+    setEmail: (email) => dispatch(SET_EMAIL(email)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NamePhoneForm);
