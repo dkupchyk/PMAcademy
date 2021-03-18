@@ -1,14 +1,16 @@
-export const changeStep = (e, history, url, saveChangesFunc = null) => {
+export const changeStep = (e, history, url, saveChangesFunc = null, isValid = null, errorSetter = null) => {
     e.preventDefault();
 
-    if (saveChangesFunc) {
-        saveChangesFunc();
-    }
+    if (isValid && !isValid()) return errorSetter(true);
+
+    if (saveChangesFunc) saveChangesFunc();
+
+    errorSetter(false);
 
     history.push(url);
 }
 
-export const handleChange = (e, initialForm, formSetter, validate = null) => {
+export const handleChange = (e, initialForm, formSetter, isFormValidSetter) => {
     const fieldName = e.target.name;
     const fieldValue = e.target.value;
 
@@ -17,7 +19,11 @@ export const handleChange = (e, initialForm, formSetter, validate = null) => {
         [fieldName]: fieldValue
     });
 
-    if(validate) validate();
+    for (const property in initialForm) {
+        if (!((property === fieldName && fieldValue) || initialForm[property] !== '')) return isFormValidSetter(false)
+    }
+
+    return isFormValidSetter(true)
 }
 
 export const cancel = (e, initialFormState, formSetter, isFormOpenSetter = null, isFormOpenValue = null) => {

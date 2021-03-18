@@ -4,6 +4,8 @@ import {useHistory} from "react-router-dom";
 import {connect, useSelector} from "react-redux";
 
 import {SET_EMAIL, SET_FIRST_NAME, SET_LAST_NAME, SET_PHONE, SET_POSITION} from "../../store/actions";
+import {changeStep, handleChange} from "../../services/formService";
+import {EMAIL_VALIDATION, PHONE_VALIDATION} from "../../services/validation";
 
 const StyledForm = styled.div`
     width: 40%;
@@ -19,29 +21,6 @@ const StyledForm = styled.div`
     }
 `;
 
-const StepperCard = styled.div`
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    //
-    // span {
-    //     padding: 15px;
-    //     border: 1px solid #333;
-    //     border-radius: 45%;
-    // }
-    //
-    // hr {
-    //     width: 60px;
-    //     margin: 0 5px;
-    //     border: none;
-    //     border-bottom: 1px solid #333;
-    // }
-    //
-    // :last-child hr {
-    //     display: none;
-    // }
-`;
-
 const NamePhoneForm = (props) => {
 
     const history = useHistory();
@@ -55,14 +34,14 @@ const NamePhoneForm = (props) => {
     });
 
     const [isValid, setIsValid] = useState(false)
+    const [hasError, setHasError] = useState(false)
 
-    const toNext = (e) => {
-        e.preventDefault();
+    const toNext = (e) => changeStep(e, history, "/step-2", saveChanges, validate, setHasError);
+    const changeInputs = (e) => handleChange(e, form, setForm, setIsValid);
 
-        saveChanges();
+    const validate = () => (form.firstName && form.lastName && form.position && PHONE_VALIDATION(form.phone) && EMAIL_VALIDATION(form.email));
 
-        history.push("/step-2");
-    }
+    const renderError = () => { if (hasError) return <p>Inputs are invalid</p> }
 
     const saveChanges = () => {
         props.setFirstName(form.firstName);
@@ -72,35 +51,43 @@ const NamePhoneForm = (props) => {
         props.setEmail(form.email);
     }
 
-    const handleChange = (e) => {
-        const fieldName = e.target.name;
-        const fieldValue = e.target.value;
-
-        setForm({
-            ...form,
-            [fieldName]: fieldValue
-        });
-
-        validate();
-    }
-
-    const validate = () => {
-        (form.firstName && form.lastName && form.position && form.phone && form.email)
-            ? setIsValid(true)
-            : setIsValid(false)
-    }
-
     return (<StyledForm>
         <form>
-            <input type="text" name="firstName" value={form.firstName} onChange={handleChange} placeholder="First name"/>
-            <input type="text" name="lastName" value={form.lastName} onChange={handleChange} placeholder="Last name"/>
-            <input type="text" name="position" value={form.position} onChange={handleChange} placeholder="Position"/>
-            <input type="text" name="phone" value={form.phone} onChange={handleChange} placeholder="Phone"/>
-            <input type="email" name="email" value={form.email} onChange={handleChange} placeholder="Email"/>
+            <input
+                type="text"
+                name="firstName"
+                value={form.firstName}
+                onChange={changeInputs}
+                   placeholder="First name"/>
+
+            <input type="text"
+                   name="lastName"
+                   value={form.lastName}
+                   onChange={changeInputs}
+                   placeholder="Last name"/>
+
+            <input type="text"
+                   name="position"
+                   value={form.position}
+                   onChange={changeInputs}
+                   placeholder="Position"/>
+
+            <input type="text"
+                   name="phone"
+                   value={form.phone}
+                   onChange={changeInputs}
+                   placeholder="Phone: XXX-XXX-XXXX"/>
+
+            <input type="email"
+                   name="email"
+                   value={form.email}
+                   onChange={changeInputs}
+                   placeholder="Email: example@gmail.com"/>
 
             <button disabled={!isValid} onClick={toNext}>Next</button>
-
         </form>
+
+        {renderError()}
 
     </StyledForm>);
 };
