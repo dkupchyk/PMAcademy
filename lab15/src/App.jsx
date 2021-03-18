@@ -4,8 +4,8 @@ import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom
 
 import './App.css';
 
-import NamePhoneForm from "./components/Form/NamePhoneForm";
-import WorkForm from "./components/Form/WorkForm";
+import NamePhoneForm from "./components/Form/NamePhone/NamePhoneForm";
+import WorkForm from "./components/Form/Work/WorkForm";
 import CV from "./components/CV/CV";
 import Education from "./components/Form/Education/Education";
 

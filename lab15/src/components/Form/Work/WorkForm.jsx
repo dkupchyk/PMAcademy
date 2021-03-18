@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {useHistory} from "react-router-dom";
 import {connect, useSelector} from "react-redux";
 
-import {ADD_WORK} from "../../store/actions";
+import {ADD_WORK} from "../../../store/actions";
 
 const StyledForm = styled.div`
     width: 60%;

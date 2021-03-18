@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import {useHistory} from "react-router-dom";
 import {connect, useSelector} from "react-redux";
 
-import {SET_EMAIL, SET_FIRST_NAME, SET_LAST_NAME, SET_PHONE, SET_POSITION} from "../../store/actions";
-import {changeStep, handleChange} from "../../services/formService";
-import {EMAIL_VALIDATION, PHONE_VALIDATION} from "../../services/validation";
+import {SET_EMAIL, SET_FIRST_NAME, SET_LAST_NAME, SET_PHONE, SET_POSITION} from "../../../store/actions";
+import {changeStep, handleChange} from "../../../services/formService";
+import {EMAIL_VALIDATION, PHONE_VALIDATION} from "../../../services/validation";
 
 const StyledForm = styled.div`
     width: 40%;
@@ -37,6 +37,7 @@ const NamePhoneForm = (props) => {
     const [hasError, setHasError] = useState(false)
 
     const toNext = (e) => changeStep(e, history, "/step-2", saveChanges, validate, setHasError);
+
     const changeInputs = (e) => handleChange(e, form, setForm, setIsValid);
 
     const validate = () => (form.firstName && form.lastName && form.position && PHONE_VALIDATION(form.phone) && EMAIL_VALIDATION(form.email));

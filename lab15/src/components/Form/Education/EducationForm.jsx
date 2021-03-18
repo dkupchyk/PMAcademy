@@ -27,13 +27,13 @@ const EducationForm = ({onChangeFunc, areButtonsVisible, submit = null, cancel =
                    name="educStartDate"
                    value={item ? item.educStartDate : undefined}
                    onChange={onChangeFunc}
-                   placeholder="Start date"/>
+                   placeholder="Start month/year: 04/2020"/>
 
             <input type="text"
                    name="educEndDate"
                    value={item ? item.educEndDate : undefined}
                    onChange={onChangeFunc}
-                   placeholder="End date"/>
+                   placeholder="End month/year: 04/2020"/>
 
             {areButtonsVisible
                 ? <StyledButtonsRow justify='center'>
