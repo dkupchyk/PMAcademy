@@ -18,12 +18,9 @@ const reducer = (state, {type, payload}) => {
             return {...state, email: payload}
 
         case ADD_EDUCATION().type:
-            console.log(payload)
-
             return {...state, educations: [...state.educations, payload]}
 
         case ADD_WORK().type:
-            console.log(payload)
             return {...state, works: [...state.works, payload]}
 
         default:

@@ -5,9 +5,9 @@ import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom
 import './App.css';
 
 import NamePhoneForm from "./components/Form/NamePhone/NamePhoneForm";
-import WorkForm from "./components/Form/Work/WorkForm";
-import CV from "./components/CV/CV";
 import Education from "./components/Form/Education/Education";
+import Work from "./components/Form/Work/Work";
+import CV from "./components/CV/CV";
 
 function App() {
     return (<Router>
@@ -21,8 +21,8 @@ function App() {
                     }}/>
                     <Route path="/step-1" component={NamePhoneForm}/>
                     <Route path="/step-2" component={Education}/>
-                    <Route path="/step-3" component={WorkForm}/>
-                    <Route path="/step-4" component={CV}/>
+                    <Route path="/step-3" component={Work}/>
+                    <Route path="/cv" component={CV}/>
                 </Switch>
             </div>
         </Router>

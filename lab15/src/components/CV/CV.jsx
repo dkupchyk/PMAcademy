@@ -1,89 +1,78 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styled from 'styled-components';
-import { useHistory } from "react-router-dom";
+import {connect} from "react-redux";
+import WorkForm from "../Form/Work/WorkForm";
 
-// const StyledForm = styled.div`
-//     width: 60%;
-//     margin: 10% auto;
-//
-//     form {
-//         width: 100%;
-//
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//         flex-direction: column;
-//     }
-//
-// `;
-//
-// const StepperCard = styled.div`
-//     // display: flex;
-//     // justify-content: center;
-//     // align-items: center;
-//     //
-//     // span {
-//     //     padding: 15px;
-//     //     border: 1px solid #333;
-//     //     border-radius: 45%;
-//     // }
-//     //
-//     // hr {
-//     //     width: 60px;
-//     //     margin: 0 5px;
-//     //     border: none;
-//     //     border-bottom: 1px solid #333;
-//     // }
-//     //
-//     // :last-child hr {
-//     //     display: none;
-//     // }
-// `;
+const StyledCV = styled.div`
+    width: 60%;
+    margin: 10% auto;
 
-const CV = () => {
+    form {
+        width: 100%;
 
-    const history = useHistory();
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+`;
 
-    const [form, setForm] = useState({
-        firstName: '',
-        lastName: '',
-        position: '',
-        phone: '',
-        email: '',
-    });
-    const [isValid, setIsValid] = useState(false)
+const Heading = styled.h2`
+    margin: 25px 0 10px 0;
+`;
 
-    const toPrevious = (e) => {
-        e.preventDefault();
+const StyledForm = styled.div`
+    width: 60%;
+    margin: 1% auto;
+    
+    border-radius: 3px;
+    border: 1.5px solid #677767;
 
-        history.push("/step-1");
+  /*  form {
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }*/
+`;
+
+const CV = (props) => {
+
+    const renderList = (items, ...properties) => {
+        return items.length !== 0
+            ? items.map(item => <StyledForm>
+                {properties.map(prop => <p>{item[prop]}</p>)}
+            </StyledForm>)
+            : <p>-</p>
     }
 
-    const toNext = (e) => {
-        e.preventDefault();
+    return (<StyledCV>
 
-        history.push("/step-3");
-    }
+        <Heading>{props.firstName} {props.lastName}</Heading>
 
-    const handleChange = (e) => {
-        const fieldName = e.target.name;
-        const fieldValue = e.target.value;
+        <p>Position: {props.position}</p>
+        <p>Phone: {props.phone}</p>
+        <p>Email: {props.email}</p>
 
-        setForm({
-            ...form,
-            [fieldName]: fieldValue
-        });
+        <Heading>EDUCATION</Heading>
+        {renderList(props.educations, 'educName', 'educSpecialization', 'educStartDate', 'educEndDate')}
 
-        validate();
-    }
+        <Heading>WORK</Heading>
+        {renderList(props.works, 'workName', 'workPosition', 'workStartDate', 'workEndDate')}
 
-    const validate = () => {
-        (form.firstName && form.lastName && form.position && form.phone && form.email)
-            ? setIsValid(true)
-            : setIsValid(false)
-    }
-
-    return (<div>CV</div>);
+    </StyledCV>);
 };
 
-export default CV;
+const mapStateToProps = (state) => ({
+    firstName: state.firstName,
+    lastName: state.lastName,
+    position: state.position,
+    phone: state.phone,
+    email: state.email,
+    educations: state.educations,
+    works: state.works
+});
+
+export default connect(mapStateToProps)(CV);
