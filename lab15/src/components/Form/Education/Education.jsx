@@ -36,7 +36,7 @@ const Education = (props) => {
     const educations = useSelector(state => state.educations);
     const [form, setForm] = useState(initialFormState);
     const [isFormOpen, setIsFormOpen] = useState(false);
-    const [hasError, setHasError] = useState(false)
+    const [hasError, setHasError] = useState(false);
 
     const saveChanges = () => props.addEducation({...form});
 
@@ -54,29 +54,34 @@ const Education = (props) => {
 
     const validate = () => (form.educName && form.educSpecialization && DATE_VALIDATION(form.educStartDate) && DATE_VALIDATION(form.educEndDate));
 
-    return (<StyledForm>
+    const renderMainContext = () => {
+        return <StyledForm>
 
-        {educations.map(item => <EducationForm item={item} onChangeFunc={changeInputs} areButtonsVisible={false}/>)}
+            {educations.map(item => <EducationForm item={item} onChangeFunc={changeInputs} areButtonsVisible={false}/>)}
 
-        {!isFormOpen
-            ? <button onClick={() => setIsFormOpen(!isFormOpen)}>Add education</button>
-            : <EducationForm
-                onChangeFunc={changeInputs}
-                areButtonsVisible={true}
-                submit={submitEducForm}
-                cancel={cancelEducForm}/>}
+            {!isFormOpen
+                ? <button onClick={() => setIsFormOpen(!isFormOpen)}>Add education</button>
+                : <EducationForm
+                    onChangeFunc={changeInputs}
+                    areButtonsVisible={true}
+                    submit={submitEducForm}
+                    cancel={cancelEducForm}/>}
 
-        {renderError()}
+            {renderError()}
 
-        <StyledButtonsRow justify='center'>
-            <button onClick={toPrevious}>Previous</button>
-            <button onClick={toNext}>Next</button>
-        </StyledButtonsRow>
+            <StyledButtonsRow justify='center'>
+                <button onClick={toPrevious}>Previous</button>
+                <button onClick={toNext}>Next</button>
+            </StyledButtonsRow>
 
-    </StyledForm>);
+        </StyledForm>
+    }
+
+    return (<div>{!props.firstName ? history.push("/") : renderMainContext()}</div>);
 };
 
 const mapStateToProps = (state) => ({
+    firstName: state.firstName,
     educations: state.educations,
 });
 

@@ -4,7 +4,17 @@ import styled from 'styled-components';
 export const StyledButtonsRow = styled.div`
     display: flex;
     justify-content: ${props => props.justify};
-    align-items: center
+    align-items: center;
+`;
+
+const StyledButton = styled.p`
+    cursor: pointer;
+    color: #677767;
+    margin: 0 10px;
+    
+    :hover {
+        border-bottom: 2px solid #677767;
+    }
 `;
 
 const EducationForm = ({onChangeFunc, areButtonsVisible, submit = null, cancel = null, item = null}) => {
@@ -37,8 +47,8 @@ const EducationForm = ({onChangeFunc, areButtonsVisible, submit = null, cancel =
 
             {areButtonsVisible
                 ? <StyledButtonsRow justify='center'>
-                    <button onClick={submit}>Add</button>
-                    <button onClick={cancel}>Cancel</button>
+                    <StyledButton onClick={submit}>Add</StyledButton>
+                    <StyledButton onClick={cancel}>Cancel</StyledButton>
                 </StyledButtonsRow>
                 : <></>}
         </form>

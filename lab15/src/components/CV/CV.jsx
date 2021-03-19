@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import {connect} from "react-redux";
+import {useHistory} from "react-router-dom";
 
 const StyledCV = styled.div`
     width: 60%;
@@ -26,18 +27,11 @@ const StyledForm = styled.div`
     
     border-radius: 3px;
     border: 1.5px solid #677767;
-
-  /*  form {
-        width: 100%;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }*/
 `;
 
 const CV = (props) => {
+
+    const history = useHistory();
 
     const renderList = (items, ...properties) => {
         return items.length !== 0
@@ -47,21 +41,25 @@ const CV = (props) => {
             : <p>-</p>
     }
 
-    return (<StyledCV>
+    const renderMainContext = () => {
+        return <StyledCV>
 
-        <Heading>{props.firstName} {props.lastName}</Heading>
+            <Heading>{props.firstName} {props.lastName}</Heading>
 
-        <p>Position: {props.position}</p>
-        <p>Phone: {props.phone}</p>
-        <p>Email: {props.email}</p>
+            <p>Position: {props.position}</p>
+            <p>Phone: {props.phone}</p>
+            <p>Email: {props.email}</p>
 
-        <Heading>EDUCATION</Heading>
-        {renderList(props.educations, 'educName', 'educSpecialization', 'educStartDate', 'educEndDate')}
+            <Heading>EDUCATION</Heading>
+            {renderList(props.educations, 'educName', 'educSpecialization', 'educStartDate', 'educEndDate')}
 
-        <Heading>WORK</Heading>
-        {renderList(props.works, 'workName', 'workPosition', 'workStartDate', 'workEndDate')}
+            <Heading>WORK</Heading>
+            {renderList(props.works, 'workName', 'workPosition', 'workStartDate', 'workEndDate')}
 
-    </StyledCV>);
+        </StyledCV>
+    }
+
+    return (<div>{!props.firstName ? history.push("/") : renderMainContext()}</div>);
 };
 
 const mapStateToProps = (state) => ({

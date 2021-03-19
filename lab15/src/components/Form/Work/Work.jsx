@@ -55,29 +55,34 @@ const Work = (props) => {
 
     const validate = () => (form.workName && form.workPosition && DATE_VALIDATION(form.workStartDate) && DATE_VALIDATION(form.workEndDate));
 
-    return (<StyledForm>
+    const renderMainContext = () => {
+        return <StyledForm>
 
-        {works.map(item => <WorkForm item={item} onChangeFunc={changeInputs} areButtonsVisible={false}/>)}
+            {works.map(item => <WorkForm item={item} onChangeFunc={changeInputs} areButtonsVisible={false}/>)}
 
-        {!isFormOpen
-            ? <button onClick={() => setIsFormOpen(!isFormOpen)}>Add work</button>
-            : <WorkForm
-                onChangeFunc={changeInputs}
-                areButtonsVisible={true}
-                submit={submitWorkForm}
-                cancel={cancelWorkForm}/>}
+            {!isFormOpen
+                ? <button onClick={() => setIsFormOpen(!isFormOpen)}>Add work</button>
+                : <WorkForm
+                    onChangeFunc={changeInputs}
+                    areButtonsVisible={true}
+                    submit={submitWorkForm}
+                    cancel={cancelWorkForm}/>}
 
-        {renderError()}
+            {renderError()}
 
-        <StyledButtonsRow justify='center'>
-            <button onClick={toPrevious}>Previous</button>
-            <button onClick={toNext}>Next</button>
-        </StyledButtonsRow>
+            <StyledButtonsRow justify='center'>
+                <button onClick={toPrevious}>Previous</button>
+                <button onClick={toNext}>Next</button>
+            </StyledButtonsRow>
 
-    </StyledForm>);
+        </StyledForm>
+    }
+
+    return (<div>{!props.firstName ? history.push("/") : renderMainContext()}</div>);
 };
 
 const mapStateToProps = (state) => ({
+    firstName: state.firstName,
     works: state.works,
 });
 

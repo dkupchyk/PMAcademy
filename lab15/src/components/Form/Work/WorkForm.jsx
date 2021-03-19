@@ -7,6 +7,16 @@ export const StyledButtonsRow = styled.div`
     align-items: center
 `;
 
+const StyledButton = styled.p`
+    cursor: pointer;
+    color: #677767;
+    margin: 0 10px;
+    
+    :hover {
+        border-bottom: 2px solid #677767;
+    }
+`;
+
 const WorkForm = ({onChangeFunc, areButtonsVisible, submit = null, cancel = null, item = null}) => {
 
     return (
@@ -37,8 +47,8 @@ const WorkForm = ({onChangeFunc, areButtonsVisible, submit = null, cancel = null
 
             {areButtonsVisible
                 ? <StyledButtonsRow justify='center'>
-                    <button onClick={submit}>Add</button>
-                    <button onClick={cancel}>Cancel</button>
+                    <StyledButton onClick={submit}>Add</StyledButton>
+                    <StyledButton onClick={cancel}>Cancel</StyledButton>
                 </StyledButtonsRow>
                 : <></>}
         </form>

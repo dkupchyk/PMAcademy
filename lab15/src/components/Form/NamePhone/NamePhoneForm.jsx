@@ -42,7 +42,9 @@ const NamePhoneForm = (props) => {
 
     const validate = () => (form.firstName && form.lastName && form.position && PHONE_VALIDATION(form.phone) && EMAIL_VALIDATION(form.email));
 
-    const renderError = () => { if (hasError) return <p>Inputs are invalid</p> }
+    const renderError = () => {
+        if (hasError) return <p>Inputs are invalid</p>
+    }
 
     const saveChanges = () => {
         props.setFirstName(form.firstName);
@@ -59,7 +61,7 @@ const NamePhoneForm = (props) => {
                 name="firstName"
                 value={form.firstName}
                 onChange={changeInputs}
-                   placeholder="First name"/>
+                placeholder="First name"/>
 
             <input type="text"
                    name="lastName"

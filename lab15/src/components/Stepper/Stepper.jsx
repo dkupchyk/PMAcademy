@@ -20,8 +20,8 @@ const StepperCard = styled.div`
         border: 1.5px solid #677767;
         border-radius: 45%;
         
-        color: ${props => props.isDone ? '#F7F6F1' : '#677767'};
-        background-color: ${props => props.isDone ? '#677767' : '#F7F6F1'};
+        color: ${props => props.isDone && props.isActive ? '#F7F6F1' : '#677767'};
+        background-color: ${props => props.isDone && props.isActive ? '#677767' : '#F7F6F1'};
         
         text-decoration: none;
     }
@@ -44,10 +44,12 @@ const Stepper = (props) => {
 
     const renderAllSteps = () => {
         let stepper = [];
+
         for (let i = 1; i <= props.amount; i++) {
             stepper[i] =
-                <StepperCard key={i} isDone={i < props.currentStep}>
-                    <Link to={`/step-${i}`} style={{textDecoration: 'none'}} onClick={dispatchStepChange.bind(this, i)}>
+                <StepperCard key={i} isDone={i < props.currentStep} isActive={props.firstName}>
+                    <Link to={props.firstName ? `/step-${i}` : '#'} style={{textDecoration: 'none'}}
+                          onClick={dispatchStepChange.bind(this, i)}>
                         <span>{i}</span>
                     </Link>
                     <hr/>
@@ -60,6 +62,7 @@ const Stepper = (props) => {
     return (<StyledStepper>{renderAllSteps()}</StyledStepper>);
 };
 const mapStateToProps = (state) => ({
+    firstName: state.firstName,
     currentStep: state.currentStep,
 });
 
