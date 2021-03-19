@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components';
 import {Link} from "react-router-dom";
+import {CHANGE_STEP} from "../../store/actions";
+import {connect} from "react-redux";
 
 const StyledStepper = styled.div`
     display: flex;
@@ -15,15 +17,20 @@ const StepperCard = styled.div`
     
     span {
         padding: 15px;
-        border: 1px solid #333;
+        border: 1.5px solid #677767;
         border-radius: 45%;
+        
+        color: ${props => props.isDone ? '#F7F6F1' : '#677767'};
+        background-color: ${props => props.isDone ? '#677767' : '#F7F6F1'};
+        
+        text-decoration: none;
     }
 
     hr {
         width: 60px;
         margin: 0 5px;
         border: none;
-        border-bottom: 1px solid #333;
+        border-bottom: 2px solid #677767;
     }
     
     :last-child hr {
@@ -31,20 +38,33 @@ const StepperCard = styled.div`
     }
 `;
 
-const Stepper = ({amount}) => {
+const Stepper = (props) => {
 
-    let stepper = [];
-    for (let i = 1; i <= amount; i++) {
-        stepper[i] =
-            <StepperCard key={i}>
-                <Link to={`/step-${i}`}>
-                    <span>{i}</span>
-                </Link>
-                <hr/>
-            </StepperCard>
+    const dispatchStepChange = (step) => props.changeStep(step);
+
+    const renderAllSteps = () => {
+        let stepper = [];
+        for (let i = 1; i <= props.amount; i++) {
+            stepper[i] =
+                <StepperCard key={i} isDone={i < props.currentStep}>
+                    <Link to={`/step-${i}`} style={{textDecoration: 'none'}} onClick={dispatchStepChange.bind(this, i)}>
+                        <span>{i}</span>
+                    </Link>
+                    <hr/>
+                </StepperCard>
+        }
+
+        return stepper;
     }
 
-    return (<StyledStepper>{stepper}</StyledStepper>);
+    return (<StyledStepper>{renderAllSteps()}</StyledStepper>);
 };
+const mapStateToProps = (state) => ({
+    currentStep: state.currentStep,
+});
 
-export default Stepper;
+const mapDispatchToProps = (dispatch) => ({
+    changeStep: (step) => dispatch(CHANGE_STEP(step)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Stepper);

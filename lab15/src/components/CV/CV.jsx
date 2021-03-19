@@ -1,11 +1,10 @@
 import React from 'react'
 import styled from 'styled-components';
 import {connect} from "react-redux";
-import WorkForm from "../Form/Work/WorkForm";
 
 const StyledCV = styled.div`
     width: 60%;
-    margin: 10% auto;
+    margin: 5% auto;
 
     form {
         width: 100%;

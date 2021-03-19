@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {useHistory} from "react-router-dom";
 import {connect, useSelector} from "react-redux";
 
-import {SET_EMAIL, SET_FIRST_NAME, SET_LAST_NAME, SET_PHONE, SET_POSITION} from "../../../store/actions";
+import {CHANGE_STEP, SET_EMAIL, SET_FIRST_NAME, SET_LAST_NAME, SET_PHONE, SET_POSITION} from "../../../store/actions";
 import {changeStep, handleChange} from "../../../services/formService";
 import {EMAIL_VALIDATION, PHONE_VALIDATION} from "../../../services/validation";
 
@@ -36,7 +36,7 @@ const NamePhoneForm = (props) => {
     const [isValid, setIsValid] = useState(false)
     const [hasError, setHasError] = useState(false)
 
-    const toNext = (e) => changeStep(e, history, "/step-2", saveChanges, validate, setHasError);
+    const toNext = (e) => changeStep(e, history, 2, props.changeStep, saveChanges, validate, setHasError);
 
     const changeInputs = (e) => handleChange(e, form, setForm, setIsValid);
 
@@ -94,6 +94,7 @@ const NamePhoneForm = (props) => {
 };
 
 const mapStateToProps = (state) => ({
+    currentStep: state.currentStep,
     firstName: state.firstName,
     lastName: state.lastName,
     position: state.position,
@@ -102,6 +103,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+    changeStep: (step) => dispatch(CHANGE_STEP(step)),
     setFirstName: (name) => dispatch(SET_FIRST_NAME(name)),
     setLastName: (name) => dispatch(SET_LAST_NAME(name)),
     setPosition: (position) => dispatch(SET_POSITION(position)),

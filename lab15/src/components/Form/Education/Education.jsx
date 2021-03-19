@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {useHistory} from "react-router-dom";
 import {connect, useSelector} from "react-redux";
 
-import {ADD_EDUCATION} from "../../../store/actions";
+import {ADD_EDUCATION, CHANGE_STEP} from "../../../store/actions";
 import {cancel, changeStep, handleChange, submit} from "../../../services/formService";
 import EducationForm, {StyledButtonsRow} from "./EducationForm";
 import {DATE_VALIDATION} from "../../../services/validation";
@@ -40,8 +40,8 @@ const Education = (props) => {
 
     const saveChanges = () => props.addEducation({...form});
 
-    const toPrevious = (e) => changeStep(e, history, "/step-1");
-    const toNext = (e) => changeStep(e, history, "/step-3");
+    const toPrevious = (e) => changeStep(e, history, 1, 1, props.changeStep,);
+    const toNext = (e) => changeStep(e, history, 3, props.changeStep,);
 
     const changeInputs = (e) => handleChange(e, form, setForm);
 
@@ -81,6 +81,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+    changeStep: (step) => dispatch(CHANGE_STEP(step)),
     addEducation: (education) => dispatch(ADD_EDUCATION(education)),
 });
 

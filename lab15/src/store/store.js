@@ -2,6 +2,7 @@ import reducer from "./reducers";
 import {createStore} from "redux";
 
 const initialState = {
+    currentStep: 1,
     firstName: '',
     lastName: '',
     position: '',

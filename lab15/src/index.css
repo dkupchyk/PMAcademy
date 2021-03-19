@@ -6,6 +6,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
 
     background-color: #F7F6F1;
+
+    min-width: 980px
 }
 
 form {

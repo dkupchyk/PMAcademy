@@ -1,3 +1,8 @@
+export const CHANGE_STEP = (step) => ({
+    type: "change_step",
+    payload: step
+});
+
 export const SET_FIRST_NAME = (name) => ({
     type: "set_first_name",
     payload: name

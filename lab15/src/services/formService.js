@@ -1,4 +1,4 @@
-export const changeStep = (e, history, url, saveChangesFunc = null, isValid = null, errorSetter = null) => {
+export const changeStep = (e, history, stepNumber, changeStepFunc, saveChangesFunc = null, isValid = null, errorSetter = null) => {
     e.preventDefault();
 
     if (isValid) {
@@ -8,7 +8,11 @@ export const changeStep = (e, history, url, saveChangesFunc = null, isValid = nu
 
     if (saveChangesFunc) saveChangesFunc();
 
-    history.push(url);
+    changeStepFunc(stepNumber);
+
+    (stepNumber === 4)
+        ? history.push(`/cv`)
+        : history.push(`/step-${stepNumber}`);
 }
 
 export const handleChange = (e, initialForm, formSetter, isFormValidSetter = null) => {

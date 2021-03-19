@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {useHistory} from "react-router-dom";
 import {connect, useSelector} from "react-redux";
 
-import {ADD_WORK} from "../../../store/actions";
+import {ADD_WORK, CHANGE_STEP} from "../../../store/actions";
 import {cancel, changeStep, handleChange, submit} from "../../../services/formService";
 import {StyledButtonsRow} from "./WorkForm";
 import {DATE_VALIDATION} from "../../../services/validation";
@@ -41,8 +41,8 @@ const Work = (props) => {
 
     const saveChanges = () => props.addWork({...form});
 
-    const toPrevious = (e) => changeStep(e, history, "/step-2");
-    const toNext = (e) => changeStep(e, history, "/cv");
+    const toPrevious = (e) => changeStep(e, history, 2, props.changeStep);
+    const toNext = (e) => changeStep(e, history, 4, props.changeStep);
 
     const changeInputs = (e) => handleChange(e, form, setForm);
 
@@ -82,6 +82,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+    changeStep: (step) => dispatch(CHANGE_STEP(step)),
     addWork: (work) => dispatch(ADD_WORK(work)),
 });
 

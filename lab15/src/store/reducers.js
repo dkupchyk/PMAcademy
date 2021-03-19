@@ -1,7 +1,19 @@
-import {ADD_EDUCATION, ADD_WORK, SET_EMAIL, SET_FIRST_NAME, SET_LAST_NAME, SET_PHONE, SET_POSITION} from "./actions";
+import {
+    ADD_EDUCATION,
+    ADD_WORK,
+    CHANGE_STEP,
+    SET_EMAIL,
+    SET_FIRST_NAME,
+    SET_LAST_NAME,
+    SET_PHONE,
+    SET_POSITION
+} from "./actions";
 
 const reducer = (state, {type, payload}) => {
     switch (type) {
+        case CHANGE_STEP().type:
+            return {...state, currentStep: payload}
+
         case SET_FIRST_NAME().type:
             return {...state, firstName: payload}
 
